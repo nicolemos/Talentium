@@ -1,16 +1,16 @@
 export interface UserProps {
     name: string;
     surname: string;
-    mail: string;
-    password: string;
+    email: string;
+    contrasenia: string;
     speciality?: Specialities;
 }
 
 export interface RegistrationFormProps {
     name: string;
     surname: string;
-    mail: string;
-    password: string;
+    email: string;
+    contrasenia: string;
     avatar?: string | null;
     speciality?: Specialities;
     userType?: UserType;

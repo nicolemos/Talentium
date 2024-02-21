@@ -27,7 +27,7 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
             console.log(data);
 
             // localstorage y el navigate no van acá, debería ir luego del await createUser(data). Lo coloqué simplemente para probar que redirija bien al dashboard ya que falta la conexion a DB para hacer el POST-
-            localStorage.setItem("mail", JSON.stringify(data.mail));
+            localStorage.setItem("email", JSON.stringify(data.email));
             navigate("/");
             ///////////////////////////////////////
             const userCreated = await createUser(data);
@@ -116,18 +116,18 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
             <label
                 className={`text-xs w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
             >
-                {errors.mail?.type === "required" && (
+                {errors.email?.type === "required" && (
                     <p role='alert' className='text-center text-red-500 mb-1'>
-                        {errors.mail.message}
+                        {errors.email.message}
                     </p>
                 )}
-                Email*
+                email*
                 <input
-                    {...register("mail", {
-                        required: "Debes ingresar tu Email",
+                    {...register("email", {
+                        required: "Debes ingresar tu email",
                     })}
-                    aria-invalid={errors.mail ? "true" : "false"}
-                    placeholder='ejemplo@mail.com'
+                    aria-invalid={errors.email ? "true" : "false"}
+                    placeholder='ejemplo@email.com'
                     className='text-base w-full rounded-sm outline-none px-2 py-1 mt-1 bg-white/80 font-normal'
                     type='email'
                     id='email-input'
@@ -137,17 +137,17 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
             <label
                 className={`text-xs w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
             >
-                {errors.password?.message && (
+                {errors.contrasenia?.message && (
                     <p
                         role='alert'
                         className='text-red-500 mb-1 text-center md:w-96 flex'
                     >
-                        {errors.password.message}
+                        {errors.contrasenia.message}
                     </p>
                 )}
                 Contraseña*
                 <input
-                    {...register("password", {
+                    {...register("contrasenia", {
                         required: "Debes ingresar una contraseña",
                         minLength: {
                             value: 8,
@@ -172,7 +172,7 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
             >
                 Avatar (opcional):
                 <input
-                    type='file'
+                    type='text'
                     {...register("avatar")}
                     accept='image/*'
                     onChange={handleAvatarChange}

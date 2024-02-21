@@ -1,18 +1,15 @@
-import { useState } from "react";import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../interfaces/LoginForm";
-import { useAuth } from "../context/AuthContext";
 import NoAvatar from "../../public/NoAvatar.png?url";
+import useCreateUser from "../hooks/useCreateUser";
 
 const Login: React.FC = () => {
-    const auth = useAuth();
-
+    const { loginUser } = useCreateUser();
     const navigate = useNavigate();
 
     const [loginForm, setLoginForm] = useState<LoginForm>({
-        name: "",
         email: "",
-        photoUrl: "",
-        password: "",
+        contrasenia: "",
     });
 
     const [error, setError] = useState<string>("");
@@ -21,21 +18,29 @@ const Login: React.FC = () => {
         setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        auth.login({
-            photoUrl: loginForm.photoUrl,
-            name: loginForm.name,
-            email: loginForm.email,
-        });
 
-        if (!loginForm.email || !loginForm.password) {
+        if (!loginForm.email || !loginForm.contrasenia) {
             setError("Todos los campos son obligatorios");
             return;
         }
-        console.log("formulario enviado", loginForm);
-        navigate("/");
+
+        try {
+            const isLoginSuccessful = await loginUser(loginForm);
+
+            if (isLoginSuccessful) {
+                console.log("Login successful");
+                navigate("/");
+            } else {
+                setError("Login failed. Please check your credentials.");
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            setError("An error occurred during login. Please try again later.");
+        }
     };
+
 
     return (
         <div className='bg-gradient-to-b from-royal-blue-500 to-white h-screen flex flex-col items-center justify-center p-4 gap-3'>
@@ -65,10 +70,10 @@ const Login: React.FC = () => {
                     />
                     <input
                         type='password'
-                        id='password'
-                        name='password'
+                        id='contrasenia'
+                        name='contrasenia'
                         placeholder='contraseña'
-                        value={loginForm.password}
+                        value={loginForm.contrasenia}
                         onChange={handleInputChange}
                         className='w-30 rounded-md m-1 px-2 shadow-inner shadow-slate-900'
                         required
