@@ -20,6 +20,7 @@ import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
