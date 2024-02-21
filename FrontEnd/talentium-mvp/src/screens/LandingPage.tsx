@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";import DashboardCliente from "./DashboardCliente";
-import Footer from "./Footer";
+import DashboardCliente from "./DashboardCliente";import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
 import Article from "../components/Article";
+import { useAuth } from "../context/AuthContext";
 
 import { LoginForm } from "../interfaces/LoginForm";
 
 const LandingPage: React.FC<LoginForm> = () => {
-    const [email, setEmail] = useState();
-
-    useEffect(() => {
-        const storageEmail = localStorage.getItem("user");
-        if (storageEmail) {
-            setEmail(JSON.parse(storageEmail));
-        }
-    }, []);
+    const { user } = useAuth();
 
     return (
         <div
@@ -23,8 +16,8 @@ const LandingPage: React.FC<LoginForm> = () => {
         >
             <Header />
             <main className='flex-grow'>
-                {!email ? (
-                    <section className='body-font flex-grow'>
+                {!user?.email ? (
+                    <section className='flex-grow'>
                         <Hero />
                         <Article />
                     </section>
