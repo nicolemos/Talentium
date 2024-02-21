@@ -19,7 +19,7 @@ public class UserSeviceImpl implements UserService {
 
     @Override
     public User saveUser(RegistroUsuarioDTO registroUsuarioDTO) {
-       return userRepository.save(  new User(null,registroUsuarioDTO.email(),EncryptData.encryptPassword(registroUsuarioDTO.contrasenia() ),registroUsuarioDTO.avatar()));
+       return userRepository.save(  new User(null,registroUsuarioDTO.mail(),EncryptData.encryptPassword(registroUsuarioDTO.password() ),registroUsuarioDTO.avatar()));
     }
 
     @Override

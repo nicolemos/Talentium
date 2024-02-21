@@ -16,16 +16,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "email",nullable = false, unique = true )
+    @Column(name = "mail",nullable = false, unique = true )
     private String email;
-    @Column(name = "contrasenia", nullable = false)
+    @Column(name = "password", nullable = false)
     private String contrasenia;
     @Column(name = "avatar")
     private String avatar;
 
     public User(RegistroUsuarioDTO registroUsuarioDTO) {
-        this.email = registroUsuarioDTO.email();
-        this.contrasenia = registroUsuarioDTO.contrasenia();
+        this.email = registroUsuarioDTO.mail();
+        this.contrasenia = registroUsuarioDTO.password();
         this.avatar = registroUsuarioDTO.avatar();
     }
 }

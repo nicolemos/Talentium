@@ -20,6 +20,7 @@ import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
@@ -41,7 +42,7 @@ public class UserController {
         return ResponseEntity.created(URI.create("/usuarios/"+new RegistroUsuarioDTO(userCreated).id())).body(RegistroUsuarioDTO.builder()
                 .avatar(userCreated
                         .getAvatar())
-                .email(userCreated.getEmail())
+                .mail(userCreated.getEmail())
                 .id(userCreated.getId()).build());
     }
 
@@ -62,7 +63,7 @@ public class UserController {
                 .body(RegistroUsuarioDTO.builder()
                 .avatar(userCreated
                         .getAvatar())
-                .email(userCreated.getEmail())
+                .mail(userCreated.getEmail())
                 .id(userCreated.getId()).build());
     }
 }
