@@ -23,7 +23,7 @@ const LandingPage = () => {
         {!email ? (
           <section className=" body-font flex-grow">
             <Hero />
-            <Article/>
+            <Article />
           </section>
         ) : (
           <>
