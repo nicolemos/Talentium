@@ -1,0 +1,21 @@
+{
+    "nombre": "obligatorio",
+    "apellido": "obligatorio",
+    "dni": "obligatorio",
+    "imagen": "opcional",
+    "usuario": [
+        {
+            "email": "",
+            "contrasenia": "",
+            "avantar": ""
+        }
+    ],
+    "direccion": [
+        {
+            "calle": "obligatorio",
+            "numero": "obligatorio",
+            "provincia": "obligatorio",
+            "localidad": "obligatorio"
+        }
+    ]
+}

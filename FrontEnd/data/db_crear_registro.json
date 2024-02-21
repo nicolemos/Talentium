@@ -1,0 +1,5 @@
+{
+    "email": "obligatorio",
+    "contrasenia": "obligatorio",
+    "avatar": "String opcional"   
+}
