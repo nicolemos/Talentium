@@ -1,21 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const Footer = () => {
+const Footer: React.FC = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState('');
+  
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
-  useEffect(() => {
-    const storageEmail = localStorage.getItem('mail');
-    if (storageEmail) {
-      setEmail(JSON.parse(storageEmail));
-    }
-  }, []);
-
-
-  const handleSubmit = () => {
-    setEmail('');
-  }
 
   return (
     <footer className="bg-white/45 text-gray-800 p-4 mt-8">
@@ -28,7 +23,13 @@ const Footer = () => {
         <div>
           <h4 className="text-lg font-bold mb-2">Links</h4>
           <ul>
-            {!email ? (
+            {user?.email ? (
+              <li>
+                <button type="button" onClick={handleLogout}>
+                  Cerrar sesión
+                </button>
+              </li>
+            ) : (
               <>
                 <li>
                   <Link to="/Login">Ingresar</Link>
@@ -37,13 +38,6 @@ const Footer = () => {
                   <Link to="/Register">Registrate</Link>
                 </li>
               </>
-            ) : (
-              <li>
-                  <button
-                    type="submit"
-                    onClick={ handleSubmit}
-                  >Cerrar sesión</button>
-              </li>
             )}
           </ul>
         </div>
