@@ -1,24 +1,21 @@
 {
-    "nombre": "",
-    "apellido": "",
+    "name": "",
+    "lastname": "",
     "cuit": "",
-    "imagen": "",
-    "usuario": [
+    "cbu": "",
+    "user":
         {
+            "id":"",
             "email": "",
-            "contrasenia": "",
-            "avantar": ""
-        }
-    ],
+            "password": "",
+            "avatar": ""
+        },
     "profesion": "ENUM(plomero, electricista,otros)(mayuscula)",
-    "direccion": [
+    "direction":
         {
-            "calle": "",
-            "numero": "",
-            "provincia": "",
-            "localidad": ""
+            "street": "",
+            "number": "",
+            "province": "",
+            "location": ""
         }
-    ],
-    "cbu": ""
-
 }
