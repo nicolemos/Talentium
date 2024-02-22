@@ -6,6 +6,7 @@ import LandingPage from '../screens/LandingPage';
 import BasicRegistrationForm from '../components/BasicRegistrationForm';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+//import DashboardCliente from '../screens/DashboardCliente';
 
 export const AppRouter: React.FC = () => {
   return (
