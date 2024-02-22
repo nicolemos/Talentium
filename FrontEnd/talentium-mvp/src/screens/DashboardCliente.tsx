@@ -4,6 +4,7 @@ import {
     RiProfileLine,
     RiWalletLine,
 } from 'react-icons/ri';
+import NoAvatar from '/NoAvatar.png?url';
 
 const DashboardCliente = () => {
     return (
@@ -18,7 +19,7 @@ const DashboardCliente = () => {
                 </div>
                 <div>
                     <img
-                        src="/NoAvatar.png"
+                        src={NoAvatar}
                         alt="Talentium"
                         className="w-20 h-20"
                     />
