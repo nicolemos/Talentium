@@ -1,0 +1,2 @@
+public class testqanc4 {
+}
