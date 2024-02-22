@@ -2,6 +2,7 @@
     "name": "obligatorio",
     "lastname": "obligatorio",
     "dni": "obligatorio",
+    "rating":"opcional",
     "user": 
         {
             "id":"",

@@ -1,6 +1,6 @@
-import React from "react";import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import NoAvatar from "../../public/NoAvatar.png?url";
+import React from 'react';import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import NoAvatar from '/NoAvatar.png?url';
 
 const Header: React.FC = () => {
     const auth = useAuth();
@@ -8,7 +8,7 @@ const Header: React.FC = () => {
 
     const handleLogout = () => {
         auth.logout();
-        navigate("/");
+        navigate('/');
     };
 
     return (
