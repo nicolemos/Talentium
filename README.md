@@ -79,18 +79,25 @@ Una vez que tu solicitud haya sido completada, puedes expresar tu satisfacción 
 <table>
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1f96a982f6c95d8241b6c4ce861b5667278f341ca2b888c5d9a55534d5833810/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353736362f496e74656772616e7465732f59616d696c615f676930736c322e6a7067"><img src="https://camo.githubusercontent.com/1f96a982f6c95d8241b6c4ce861b5667278f341ca2b888c5d9a55534d5833810/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353736362f496e74656772616e7465732f59616d696c615f676930736c322e6a7067" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465766/Integrantes/Yamila_gi0sl2.jpg" style="max-width: 100%;"></a></th>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/08a86c4be79e76d7572a893a190423bb07a81900f65cbb1255cf5af878854358/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353538312f496e74656772616e7465732f4e6f72615f6b6d746c61722e6a7067"><img src="https://camo.githubusercontent.com/08a86c4be79e76d7572a893a190423bb07a81900f65cbb1255cf5af878854358/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353538312f496e74656772616e7465732f4e6f72615f6b6d746c61722e6a7067" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;"></a></th>
+
+<th align="center"><img src="https://avatars.githubusercontent.com/u/96779784?v=4" width="50" style="max-width: 100%;">
+</th>
+<th align="center"><img src="https://camo.githubusercontent.com/08a86c4be79e76d7572a893a190423bb07a81900f65cbb1255cf5af878854358/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353538312f496e74656772616e7465732f4e6f72615f6b6d746c61722e6a7067" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+</th>
+<th align="center"><img src="https://camo.githubusercontent.com/08a86c4be79e76d7572a893a190423bb07a81900f65cbb1255cf5af878854358/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353538312f496e74656772616e7465732f4e6f72615f6b6d746c61722e6a7067" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><strong>Yamila Paez</strong></td>
+<td align="center"><strong>Mariela Ramirez  </strong></td>
+<td align="center"><strong>Nora Saucedo</strong></td>
 <td align="center"><strong>Nora Saucedo</strong></td>
 </tr>
 <tr>
-<td align="center"><a href="https://github.com/Bellantra"><img src="https://camo.githubusercontent.com/9d1badd5620519a3119940f5ad3735f00558035be40aff156ee6e57b7ad05567/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d2532333132313031312e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/github-%23121011.svg?&amp;style=for-the-badge&amp;logo=github&amp;logoColor=white" style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/yamila-paez-70b7587b/" rel="nofollow"><img src="https://camo.githubusercontent.com/9833c926f520162536400463b6808babd99fd311de7ce609aa365ea0aab87366/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c696e6b6564696e2532302d2532333030373742352e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&amp;style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" style="max-width: 100%;"></a></td>
-<td align="center"><a href="https://github.com/NorSAUCE"><img src="https://camo.githubusercontent.com/9d1badd5620519a3119940f5ad3735f00558035be40aff156ee6e57b7ad05567/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d2532333132313031312e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/github-%23121011.svg?&amp;style=for-the-badge&amp;logo=github&amp;logoColor=white" style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nora-patricia-saucedo-6b3746225" rel="nofollow"><img src="https://camo.githubusercontent.com/9833c926f520162536400463b6808babd99fd311de7ce609aa365ea0aab87366/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c696e6b6564696e2532302d2532333030373742352e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&amp;style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/Magaerv"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/mariela-ramirez-valle/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/NorSAUCE"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nora-patricia-saucedo-6b3746225" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/NorSAUCE"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nora-patricia-saucedo-6b3746225" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
