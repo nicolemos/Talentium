@@ -94,13 +94,13 @@ public class ClientServiceImpl implements ClientService {
     private static Client getClient(Client client,
                                                 Optional<Client> clientOptional) {
         Client clientUpdate = clientOptional.get();
-        clientUpdate.setName(clientUpdate.getName());
+        clientUpdate.setName(client.getName());
         clientUpdate.setLastname(client.getLastname());
         clientUpdate.setDni(client.getDni());
-        clientUpdate.setClassification(client.getClassification());
-        clientUpdate.setUrlImage(client.getUrlImage());
+        clientUpdate.setRating(client.getRating());
         clientUpdate.setActive(client.getActive());
+        clientUpdate.setDirection(client.getDirection());
+        clientUpdate.setUser(client.getUser());
         return clientUpdate;
     }
-
 }

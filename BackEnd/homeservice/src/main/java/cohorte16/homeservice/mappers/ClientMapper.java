@@ -18,8 +18,7 @@ public class ClientMapper {
                 clientDTO.name(),
                 clientDTO.lastname(),
                 clientDTO.dni(),
-                clientDTO.urlImage(),
-                clientDTO.classification(),
+                clientDTO.rating(),
                 clientDTO.user(),
                 clientDTO.direction(),
                 clientDTO.order()*/
