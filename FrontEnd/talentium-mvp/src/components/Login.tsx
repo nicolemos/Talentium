@@ -1,7 +1,8 @@
-import { useState } from "react";import { useNavigate } from "react-router-dom";
-import { LoginForm } from "../interfaces/LoginForm";
-import { useAuth } from "../context/AuthContext";
-import NoAvatar from "../../public/NoAvatar.png?url";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { LoginForm } from '../interfaces/LoginForm';
+import { useAuth } from '../context/AuthContext';
+import NoAvatar from '/NoAvatar.png?url';
 
 const Login: React.FC = () => {
     const auth = useAuth();
@@ -9,13 +10,13 @@ const Login: React.FC = () => {
     const navigate = useNavigate();
 
     const [loginForm, setLoginForm] = useState<LoginForm>({
-        name: "",
-        email: "",
-        photoUrl: "",
-        password: "",
+        name: '',
+        email: '',
+        photoUrl: '',
+        password: '',
     });
 
-    const [error, setError] = useState<string>("");
+    const [error, setError] = useState<string>('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
@@ -30,11 +31,11 @@ const Login: React.FC = () => {
         });
 
         if (!loginForm.email || !loginForm.password) {
-            setError("Todos los campos son obligatorios");
+            setError('Todos los campos son obligatorios');
             return;
         }
-        console.log("formulario enviado", loginForm);
-        navigate("/");
+        console.log('formulario enviado', loginForm);
+        navigate('/');
     };
 
     return (
