@@ -3,22 +3,21 @@
     "apellido": "",
     "cuit": "",
     "imagen": "",
-    "usuario": [
+    "cbu": "",
+    "usuario":
         {
+            "id":"",
             "email": "",
             "contrasenia": "",
             "avantar": ""
         }
-    ],
+    ,
     "profesion": "ENUM(plomero, electricista,otros)(mayuscula)",
-    "direccion": [
+    "direccion":
         {
             "calle": "",
             "numero": "",
             "provincia": "",
             "localidad": ""
         }
-    ],
-    "cbu": ""
-
 }
