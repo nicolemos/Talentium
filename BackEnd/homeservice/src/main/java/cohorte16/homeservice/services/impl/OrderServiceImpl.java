@@ -59,7 +59,10 @@ public class OrderServiceImpl implements OrderService {
                 throw new EntityNotSavedException("Order not found");
             }
             Order existingOrder = orderOptional.get();
-            existingOrder.setDescription(updateOrderDTO.description());
+            if(updateOrderDTO.description() != null)existingOrder.setDescription(updateOrderDTO.description());
+            if(updateOrderDTO.professional() != null)existingOrder.setProfessional(updateOrderDTO.professional());
+            if(updateOrderDTO.price() != null)existingOrder.setPrice(updateOrderDTO.price());
+            if(updateOrderDTO.orderstatus() != null)existingOrder.setOrderstatus(updateOrderDTO.orderstatus());
             return orderRepository.save(existingOrder);
 
         }catch (Exception e) {
