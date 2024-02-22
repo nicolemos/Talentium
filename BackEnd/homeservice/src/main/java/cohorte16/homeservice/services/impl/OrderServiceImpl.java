@@ -1,6 +1,7 @@
 package cohorte16.homeservice.services.impl;
 
 import cohorte16.homeservice.dtos.OrderDTO;
+import cohorte16.homeservice.dtos.UpdateOrderDTO;
 import cohorte16.homeservice.enums.Orderstatus;
 import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.models.Client;
@@ -35,10 +36,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order CreatedOrder(OrderDTO order) throws Exception {
         try{
-        // var ordenes = orderRepository.getReferenceById(order.id());
-         //ordenes.setDescription(order.orders());
-           // return orderRepository.save(ordenes);
-         //   return orderRepository.save(new Order(order));
+
             Order  odenDb = Order.builder()
                     .description(order.description())
                     .client(Client.builder().id(order.cliente_id()).build()  )
@@ -54,14 +52,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order updateOrder(Long id, String description) throws Exception {
+    public Order updateOrder(UpdateOrderDTO updateOrderDTO) throws Exception {
         try{
-            Optional<Order> orderOptional = orderRepository.findById(id);
+            Optional<Order> orderOptional = orderRepository.findById(updateOrderDTO.cliente_id());
             if(orderOptional.isEmpty()){
                 throw new EntityNotSavedException("Order not found");
             }
             Order existingOrder = orderOptional.get();
-            existingOrder.setDescription(description);
+            existingOrder.setDescription(updateOrderDTO.description());
             return orderRepository.save(existingOrder);
 
         }catch (Exception e) {

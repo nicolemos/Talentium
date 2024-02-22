@@ -24,7 +24,6 @@ public class Order {
     private Long id;
 
     @Column(name = "descripcion")
-    @NotBlank
     private String description;
 
     @ManyToOne
