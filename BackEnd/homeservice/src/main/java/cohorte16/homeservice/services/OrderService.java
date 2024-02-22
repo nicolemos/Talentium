@@ -2,6 +2,7 @@ package cohorte16.homeservice.services;
 
 import cohorte16.homeservice.dtos.OrderDTO;
 import cohorte16.homeservice.models.Order;
+import cohorte16.homeservice.models.User;
 
 import java.util.List;
 
