@@ -1,6 +1,7 @@
 package cohorte16.homeservice.services;
 
 import cohorte16.homeservice.dtos.OrderDTO;
+import cohorte16.homeservice.dtos.UpdateOrderDTO;
 import cohorte16.homeservice.models.Order;
 import cohorte16.homeservice.models.User;
 
@@ -11,7 +12,7 @@ public interface OrderService {
 
     public Order CreatedOrder(OrderDTO orderDTO) throws Exception;
 
-    public Order updateOrder(Long id, String description) throws Exception;
+    public Order updateOrder(UpdateOrderDTO updateOrderDTO) throws Exception;
 
     public boolean deleteOrder(Long id) throws  Exception;
 }

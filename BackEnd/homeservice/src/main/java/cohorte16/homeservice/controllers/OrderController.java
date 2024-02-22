@@ -2,8 +2,10 @@ package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.OrderDTO;
 import cohorte16.homeservice.dtos.ProfessionalDTO;
+import cohorte16.homeservice.dtos.UpdateOrderDTO;
 import cohorte16.homeservice.models.Order;
 import cohorte16.homeservice.services.impl.OrderServiceImpl;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +33,7 @@ public class OrderController {
 
 
     @PostMapping(consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> createOrder( @RequestBody OrderDTO orderDTO) {
+    public ResponseEntity<?> createOrder( @RequestBody @Valid OrderDTO orderDTO) {
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(orderService.CreatedOrder(orderDTO));
         } catch (Exception e) {
@@ -39,10 +41,13 @@ public class OrderController {
         }
     }
 
-    @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> updateOrder(@Valid @PathVariable Long id, @RequestParam String description){
+
+    @PutMapping
+    public ResponseEntity<?> updateOrder(@RequestBody  UpdateOrderDTO updateOrderDTO){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrder(id, description));
+           var nuevoOrdenDto = orderService.updateOrder(updateOrderDTO);
+            return ResponseEntity.status(HttpStatus.OK).body(new UpdateOrderDTO( nuevoOrdenDto.getId(),nuevoOrdenDto.getDescription(),
+                    nuevoOrdenDto.getProfessional(),nuevoOrdenDto.getPrice(),nuevoOrdenDto.getOrderstatus()) );
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }

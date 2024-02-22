@@ -24,7 +24,6 @@ public class Order {
     private Long id;
 
     @Column(name = "descripcion")
-    @NotBlank
     private String description;
 
     @ManyToOne
@@ -37,7 +36,6 @@ public class Order {
 
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
-    @NotNull
     private Date date =  new Date();
 
     @Column(name = "ESTADO")
