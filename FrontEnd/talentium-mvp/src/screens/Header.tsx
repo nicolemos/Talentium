@@ -1,6 +1,7 @@
-import React from 'react';import { Link, NavLink, useNavigate } from 'react-router-dom';
+import React from 'react';import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import NoAvatar from '/NoAvatar.png?url';
+import CustomLink from '../components/CustomLink';
 
 const Header: React.FC = () => {
     const auth = useAuth();
@@ -21,18 +22,8 @@ const Header: React.FC = () => {
 
             <div className=''>
                 <nav className=''>
-                    <Link
-                        to=''
-                        className='px-2 hover:bg-gradient-to-t from-royal-blue-800 rounded-md'
-                    >
-                        Cliente
-                    </Link>
-                    <Link
-                        to=''
-                        className='px-2 hover:bg-gradient-to-t from-royal-blue-800 rounded-md'
-                    >
-                        Profesional
-                    </Link>
+                    <CustomLink to='' content='Cliente'/>
+                    <CustomLink to='' content='Profesional'/>
                 </nav>
             </div>
 
@@ -55,18 +46,8 @@ const Header: React.FC = () => {
                     </>
                 ) : (
                     <>
-                        <NavLink
-                            to='/Login'
-                            className='py-1 px-3 focus:outline-none hover:bg-gradient-to-t from-royal-blue-800 rounded-md'
-                        >
-                            Ingresar
-                        </NavLink>
-                        <NavLink
-                            to='/Register'
-                            className='py-1 px-3 focus:outline-none hover:bg-gradient-to-t from-royal-blue-800 rounded-md'
-                        >
-                            Registrate
-                        </NavLink>
+                    <CustomLink to='/Login' content='Ingresar'/>
+                    <CustomLink to='/Register' content='Registrate'/>
                     </>
                 )}
             </div>
