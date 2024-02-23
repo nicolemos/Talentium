@@ -8,20 +8,20 @@ export interface UserProps {
 }
 
 export interface BasicRegistrationFormProps {
-    name?: string;
-    lastname?: string;
     email?: string;
     password?: string;
     avatar?: string | null;
-    speciality?: Speciality;
-    userType?: UserType;
 }
 
 export interface RegistrationFormProps extends BasicRegistrationFormProps {
+    name?: string;
+    lastname?: string;
     dni?: string;
     cuit?: string;
     cbu?: string;
     user: UserProps;
+    userType?: UserType;
+    speciality?: Speciality;
     direction?: AddressProps;
 }
 
