@@ -1,5 +1,4 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Login from '../components/Login';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';import Login from '../components/Login';
 import PageNotFound from '../screens/PageNotFound';
 import LandingPage from '../screens/LandingPage';
 //import LoadingPage from "../screens/LoadingPage";
@@ -21,12 +20,7 @@ export const AppRouter: React.FC = () => {
                         <div className='flex bg-gradient-to-b from-royal-blue-500 to-white h-screen justify-center items-center p-4'>
                             <ToastContainer />
 
-                            <BasicRegistrationForm
-                                name=''
-                                surname=''
-                                mail=''
-                                password=''
-                            />
+                            <BasicRegistrationForm email='' password='' />
                         </div>
                     }
                 />
