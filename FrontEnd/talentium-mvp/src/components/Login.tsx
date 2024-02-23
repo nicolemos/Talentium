@@ -4,6 +4,7 @@ import { LoginForm } from '../interfaces/LoginForm';
 import useUserServices from '../hooks/useUserServices';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
+import Button from './Button';
 
 const Login: React.FC = () => {
     const { loginUser } = useUserServices();
@@ -50,14 +51,13 @@ const Login: React.FC = () => {
 
     return (
         <div className='bg-gradient-to-b from-royal-blue-500 to-white h-screen flex flex-col items-center justify-center p-4 gap-3'>
-            <button
-                type='button'
+            <Button
                 onClick={handleback}
-                className='absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'
+                customClass={'absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'}
             >
                 <FaArrowLeft className='w-10 h-10 p-2' />
                 atrás
-            </button>
+            </Button>
             <form
                 action=''
                 className='mx-auto w-60 h-72 bg-royal-blue-500 flex flex-col items-center rounded-lg shadow-slate-900 shadow-lg'

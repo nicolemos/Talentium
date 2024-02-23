@@ -12,8 +12,8 @@ const Header: React.FC = () => {
                 </Link>
             </div>
 
-            <div className="">
-                <nav className="">
+            <div>
+                <nav className="flex flex-row">
                     <CustomLink to="" content="Cliente" />
                     <CustomLink to="" content="Profesional" />
                 </nav>

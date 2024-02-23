@@ -6,6 +6,7 @@ import { BasicRegistrationFormProps } from '../interfaces/RegistrationFormTypes'
 import { toast } from 'react-toastify';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
+import Button from './Button';
 
 import useUserServices from '../hooks/useUserServices';
 
@@ -85,14 +86,13 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
 
     return (
         <>
-            <button
-                type='button'
+            <Button
                 onClick={handleback}
-                className='absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'
+                customClass={'absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'}
             >
                 <FaArrowLeft className='w-10 h-10 p-2' />
                 atrás
-            </button>
+            </Button>
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -178,7 +178,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                             },
                         })}
                         placeholder='Ingrese su contraseña'
-                        className='text-base w-full rounded-sm outline-none px-2 py-1 mt-1 bg-white/80 font-normal'
+                        className='text-base w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
                         type='password'
                         id='password-input'
                     />
@@ -189,7 +189,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 >
                     Avatar (opcional):
                     <input
-                        type='text'
+                        type='file'
                         {...register('avatar')}
                         accept='image/*'
                         onChange={handleAvatarChange}

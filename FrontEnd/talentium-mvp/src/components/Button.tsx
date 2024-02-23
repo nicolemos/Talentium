@@ -1,12 +1,15 @@
-interface ButtonProps {    children: string;
+import React, { ReactNode } from 'react';
+
+interface ButtonProps {    children?: ReactNode;
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    customClass?: string;
 }
 
-const CustomButton: React.FC<ButtonProps> = ({ children, onClick }) => {
+const CustomButton: React.FC<ButtonProps> = ({ children, onClick, customClass }) => {
     return (
         <button
             type='submit'
-            className='transition duration-200 ease-in-out cursor-pointer bg-gradient-to-b from-white/60 to-white/50 hover:shadow-lg hover:bg-white p-[0.3rem] rounded-xl text-sm border border-solid '
+            className={`flex items-center gap-1 py-1 px-2 hover:bg-royal-blue-700 rounded-md transition-colors ${customClass}`}
             onClick={onClick}
         >
             {children}
