@@ -22,7 +22,13 @@ Regístrate para explorar nuestra plataforma y descubrir todas las posibilidades
 Una vez que tu solicitud haya sido completada, puedes expresar tu satisfacción calificando el desempeño del profesional. Todas las transacciones se manejan de forma segura a través de nuestra plataforma de pagos, brindándote la tranquilidad que mereces en cada paso del proceso.</p>
 
 <a href="">
-    <img src="proyecto/login.png"alt="imagen de la pagina web" class="centrada">
+    <img src="proyecto/login.jpeg"alt="imagen de la pagina web" class="centrada">
+</a>
+
+#
+
+<a href="">
+    <img src="proyecto/registro.jpeg"alt="imagen de la pagina web" class="centrada">
 </a>
 
 #
