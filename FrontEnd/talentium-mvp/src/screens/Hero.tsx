@@ -22,11 +22,11 @@ const Hero: React.FC = () => {
           </p>
         </div>
 
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+        <div className="w-full md:w-1/2 h-full">
           <img
-            className="object-cover object-center rounded"
+            className="object-cover object-center -skew-x-6 rounded-lg"
             alt="hero"
-            src="/Banner.png"
+            src="/Banner.jpg"
           />
         </div>
 
