@@ -69,7 +69,7 @@ const Login: React.FC = () => {
                         placeholder="email"
                         value={loginForm.email}
                         onChange={handleInputChange}
-                        className="w-30 rounded-md m-2 px-3 shadow-inner shadow-slate-900"
+                        className="w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900"
                         required
                     />
                     <input
@@ -79,12 +79,12 @@ const Login: React.FC = () => {
                         placeholder="contraseña"
                         value={loginForm.password}
                         onChange={handleInputChange}
-                        className="w-30 rounded-md m-2 px-3 shadow-inner shadow-slate-900"
+                        className="w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900"
                         required
                     />
                     <button
                         type="submit"
-                        className="text-white p-1 m-3 focus:outline-none hover:bg-gradient-to-t from-royal-blue-800 rounded-md"
+                        className="bg-royal-blue-500 text-white hover:bg-gradient-to-t from-royal-blue-800 rounded-md shadow-md p-2 rounded-md w-full mt-8 col-span-2 sm:w-2/4 sm:mx-auto"
                     >
                         Entrar
                     </button>
