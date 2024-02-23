@@ -2,6 +2,7 @@ package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.LoginDTO;
 import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
+import cohorte16.homeservice.dtos.clientUserDTO;
 import cohorte16.homeservice.models.Client;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ClientRepository;
@@ -65,10 +66,9 @@ public class UserController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
         }
+
         if(client != null) {
-            return new ResponseEntity<>(client, jwtToken, HttpStatus.OK);
-            
-             
+            return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
         }
 
         return ResponseEntity.created(create("/usuarios/login/"+new RegistroUsuarioDTO(userCreated).id())).headers(jwtToken)
