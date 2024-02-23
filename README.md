@@ -82,26 +82,91 @@ Una vez que tu solicitud haya sido completada, puedes expresar tu satisfacción 
 
 <th align="center"><img src="https://avatars.githubusercontent.com/u/96779784?v=4" width="50" style="max-width: 100%;">
 </th>
-<th align="center"><img src="https://camo.githubusercontent.com/08a86c4be79e76d7572a893a190423bb07a81900f65cbb1255cf5af878854358/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353538312f496e74656772616e7465732f4e6f72615f6b6d746c61722e6a7067" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+<th align="center"><img src="./proyecto/brian.jpg" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
 </th>
-<th align="center"><img src="https://camo.githubusercontent.com/08a86c4be79e76d7572a893a190423bb07a81900f65cbb1255cf5af878854358/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6469796b34746f31312f696d6167652f75706c6f61642f76313636343436353538312f496e74656772616e7465732f4e6f72615f6b6d746c61722e6a7067" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+<th align="center"><img src="./proyecto/angel.jpg" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center"><strong>Mariela Ramirez  </strong></td>
-<td align="center"><strong>Nora Saucedo</strong></td>
-<td align="center"><strong>Nora Saucedo</strong></td>
+<td align="center"><strong>Brian Lagranda</strong></td>
+<td align="center"><strong>Angel Alvarez</strong></td>
 </tr>
 <tr>
 <td align="center"><a href="https://github.com/Magaerv"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/mariela-ramirez-valle/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
-<td align="center"><a href="https://github.com/NorSAUCE"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nora-patricia-saucedo-6b3746225" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
-<td align="center"><a href="https://github.com/NorSAUCE"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nora-patricia-saucedo-6b3746225" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/brianlagranda"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/brianlagranda/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/AngelAlvarezC"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/angel-alvarez-b4b652195" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
+<table>
+<thead>
+<tr>
 
+<th align="center"><img src="./proyecto/Federico.jpg" width="50" style="max-width: 100%;">
+</th>
+<th align="center"><img src="./proyecto/franco.jpg" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+</th>
+<th align="center"><img src="./proyecto/Nicolas.jpg" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Federico Bazán </strong></td>
+<td align="center"><strong>Franco Tallei</strong></td>
+<td align="center"><strong>Nicolás Lemos</strong></td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/FedeBazan"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/julio-bazan-6ba406212/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/FTwork"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/ftallei/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/nicordz"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nicolas-lemos/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+
+<th align="center"><img src="./proyecto/marcos.jpg" width="50" style="max-width: 100%;">
+</th>
+<th align="center"><img src="./proyecto/lionel.jpg" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+</th>
+<th align="center"><img src="./proyecto/mario.png" width="50" data-canonical-src="https://res.cloudinary.com/diyk4to11/image/upload/v1664465581/Integrantes/Nora_kmtlar.jpg" style="max-width: 100%;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Marcos Apodaca </strong></td>
+<td align="center"><strong>Lionel Staricoff </strong></td>
+<td align="center"><strong>Mario Calderón</strong></td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/MarcosApodaca"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/marcos-apodaca/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/LionelStaricoff"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/lionel-staricoff" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/ariocal"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/mario-calderon-76a099b5" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="./proyecto/johana.jpg" width="50" style="max-width: 100%;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Johana Baccei </strong></td>
+</tr>
+<tr>
+<td align="center"><strong> TEAM LEADER </strong></td>
+</tr>
+</tbody>
+</table>
 
 
 </div>
