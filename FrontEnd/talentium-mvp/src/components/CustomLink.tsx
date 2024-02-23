@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 interface MyLinkProps {
-  to: string;
-  content: string;
+    to: string;
+    content: string;
+    children?: ReactNode;
 }
 
-const componenteLink: React.FC<MyLinkProps>  = ({ to, content }) => {
-  return (
-    <Link
-      to={to}
-      className="px-2 mx-2 hover:bg-white transition duration-[400ms] ease-in-out hover:text-royal-blue-500 rounded-md"
-    >
-      {content}
-    </Link>
-  );
+const CustomLink: React.FC<MyLinkProps> = ({ to, content, children }) => {
+    return (
+        <Link
+            to={to}
+            className={`flex items-center gap-4 py-1 px-2 hover:bg-royal-blue-700 rounded-md transition-colors`}
+        >
+            {children}
+            {content}
+        </Link>
+    );
 };
 
-export default componenteLink;
+export default CustomLink;
