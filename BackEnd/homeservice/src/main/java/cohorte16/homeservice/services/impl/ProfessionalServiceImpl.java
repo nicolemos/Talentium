@@ -4,7 +4,9 @@ import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.mappers.ProfessionalMapper;
 import cohorte16.homeservice.models.Professional;
+import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ProfessionalRepository;
+import cohorte16.homeservice.repositories.UserRepository;
 import cohorte16.homeservice.services.ProfessionalService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -22,8 +24,13 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     private final ProfessionalRepository professionalRepository;
     private final ProfessionalMapper professionalMapper;
 
-    public ProfessionalServiceImpl(ProfessionalRepository professionalRepository, ProfessionalMapper professionalMapper){
+    private final UserRepository userRepository;
+
+    public ProfessionalServiceImpl(ProfessionalRepository professionalRepository,
+                                   UserRepository userRepository,
+                                   ProfessionalMapper professionalMapper){
         this.professionalRepository = professionalRepository;
+        this.userRepository = userRepository;
         this.professionalMapper = professionalMapper;
     }
 
@@ -53,9 +60,12 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public ProfessionalDTO save(ProfessionalDTO professional) throws Exception {
-        try{
-            Professional professionalEntity = professionalMapper.professionalDTOToProfessional(professional);
+    public ProfessionalDTO save(ProfessionalDTO professionalDTO) throws Exception {
+        try {
+            User userEntity = userRepository.findById(professionalDTO.user().getId())
+                    .orElseThrow(() -> new EntityNotFoundException("User not found"));
+            Professional professionalEntity = professionalMapper.professionalDTOToProfessional(professionalDTO);
+            professionalEntity.setUser(userEntity);
             Professional professionalSaved = professionalRepository.save(professionalEntity);
             return professionalMapper.professionalToProfessionalDTO(professionalSaved);
         }catch (Exception e){
@@ -96,13 +106,12 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     private static Professional getProfessional(Professional professional,
                                          Optional<Professional> professionalOptional) {
         Professional professionalUpdated = professionalOptional.get();
-        professionalUpdated.setName(professionalUpdated.getName());
+        professionalUpdated.setName(professional.getName());
         professionalUpdated.setLastname(professional.getLastname());
         professionalUpdated.setCbu(professional.getCbu());
         professionalUpdated.setCuit(professional.getCuit());
         professionalUpdated.setProfession(professional.getProfession());
-        professionalUpdated.setClassification(professional.getClassification());
-        professionalUpdated.setUrlImage(professional.getUrlImage());
+        professionalUpdated.setRating(professional.getRating());
         professionalUpdated.setActive(professional.isActive());
         return professionalUpdated;
     }

@@ -3,7 +3,7 @@ package cohorte16.homeservice.controllers;
 import cohorte16.homeservice.dtos.LoginDTO;
 import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
 import cohorte16.homeservice.models.User;
-import cohorte16.homeservice.services.impl.UserSeviceImpl;
+import cohorte16.homeservice.services.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatterBuilder;
-
-import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -24,14 +20,14 @@ import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 public class UserController {
 
     @Autowired
-    private UserSeviceImpl userSeviceImpl;
+    private UserServiceImpl userServiceImpl;
 
     @PostMapping
     public ResponseEntity<?> RegistrarUsuario(@RequestBody @Valid RegistroUsuarioDTO registroUsuarioDTO){
 
         User userCreated;
         try {
-          userCreated =  userSeviceImpl.saveUser(registroUsuarioDTO);
+          userCreated =  userServiceImpl.saveUser(registroUsuarioDTO);
 
         }catch (Exception ex){
 
@@ -42,7 +38,7 @@ public class UserController {
         return ResponseEntity.created(URI.create("/usuarios/"+new RegistroUsuarioDTO(userCreated).id())).body(RegistroUsuarioDTO.builder()
                 .avatar(userCreated
                         .getAvatar())
-                .mail(userCreated.getEmail())
+                .email(userCreated.getEmail())
                 .id(userCreated.getId()).build());
     }
 
@@ -55,7 +51,7 @@ public class UserController {
         jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
 
         try {
-            userCreated = userSeviceImpl.validateLogin(datosLogin);
+            userCreated = userServiceImpl.validateLogin(datosLogin);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
         }
@@ -63,7 +59,7 @@ public class UserController {
                 .body(RegistroUsuarioDTO.builder()
                 .avatar(userCreated
                         .getAvatar())
-                .mail(userCreated.getEmail())
+                .email(userCreated.getEmail())
                 .id(userCreated.getId()).build());
     }
 }

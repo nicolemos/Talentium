@@ -4,6 +4,8 @@ import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.models.Professional;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 @Service
 public class ProfessionalMapper {
 
@@ -13,12 +15,10 @@ public class ProfessionalMapper {
                 professional.getLastname(),
                 professional.getCuit(),
                 professional.getProfession(),
-                professional.getClassification(),
-                professional.getUrlImage(),
+                professional.getRating(),
                 professional.getCbu(),
-                professional.getUserApp(),
-                professional.getDirection(),
-                professional.getOrderList()
+                professional.getUser(),
+                professional.getDirection()
         );
     }
 
@@ -28,15 +28,13 @@ public class ProfessionalMapper {
                 professionalDTO.name(),
                 professionalDTO.lastname(),
                 professionalDTO.cuit(),
-                professionalDTO.profession(),
                 professionalDTO.cbu(),
-                professionalDTO.classification(),
-                professionalDTO.urlImage(),
-                Boolean.TRUE,
+                professionalDTO.rating(),
+                professionalDTO.profession(),
                 professionalDTO.direction(),
-                professionalDTO.userApp(),
-                professionalDTO.orderList()
+                professionalDTO.user(),
+                Collections.emptyList(),
+                Boolean.TRUE
         );
     }
-
 }

@@ -7,9 +7,15 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 
 @Builder
-public record RegistroUsuarioDTO(Long id, @NotBlank String mail, @NotBlank String password, String avatar) {
+public record RegistroUsuarioDTO(Long id,
+                                 @NotBlank String email,
+                                 @NotBlank String password,
+                                 String avatar) {
     public RegistroUsuarioDTO(User userCreated) {
-        this(userCreated.getId(),userCreated.getEmail(),userCreated.getContrasenia(),userCreated.getAvatar());
+        this    (userCreated.getId(),
+                userCreated.getEmail(),
+                userCreated.getPassword(),
+                userCreated.getAvatar());
     }
 
 }

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -33,32 +34,28 @@ public class Professional {
     @NotBlank
     private String cuit;
 
-    @Column(name = "PROFESION")
-    @Enumerated(value = EnumType.STRING)
-    private Profession profession;
-
     @Column(name = "cbu")
     private String cbu;
 
     @Column(name = "clasificacion")
     @NotNull
-    private Integer classification;
+    private Integer rating;
 
-    @Column(name = "imagen")
-    private String urlImage;
-
-    @Column(name = "activo")
-    private boolean active = Boolean.TRUE;
+    @Column(name = "PROFESION")
+    @Enumerated(value = EnumType.STRING)
+    private Profession profession;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profesional_direccion_id", referencedColumnName = "id")
+    @JoinColumn(name = "profesional_direccion_id")
     private Direction direction;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profesional_usuario_id", referencedColumnName = "id")
-    private User userApp;
+    @JoinColumn(name = "profesional_usuario_id")
+    private User user;
 
     @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
-    private List<Order> orderList;
+    private List<Order> orderList = Collections.emptyList();
 
+    @Column(name = "activo")
+    private boolean active = Boolean.TRUE;
 }

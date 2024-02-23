@@ -12,20 +12,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class UserSeviceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public User saveUser(RegistroUsuarioDTO registroUsuarioDTO) {
-       return userRepository.save(  new User(null,registroUsuarioDTO.mail(),EncryptData.encryptPassword(registroUsuarioDTO.password() ),registroUsuarioDTO.avatar()));
+       return userRepository.save(
+               new User(null,
+                       registroUsuarioDTO.email(),
+                       EncryptData.encryptPassword(registroUsuarioDTO.password()),
+                       registroUsuarioDTO.avatar()
+               )
+       );
     }
 
     @Override
     public User validateLogin(LoginDTO datosLogin) {
-        return userRepository.findByEmailAndContrasenia(datosLogin.email(), EncryptData.encryptPassword(datosLogin.contrasenia())  );
+        return userRepository.findByEmailAndContrasenia(datosLogin.email(),
+                EncryptData.encryptPassword(datosLogin.password())
+        );
 
     }
-    }
+}
 

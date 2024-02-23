@@ -19,7 +19,7 @@ public class ClientMapper {
                 clientDTO.lastname(),
                 clientDTO.dni(),
                 clientDTO.urlImage(),
-                clientDTO.classification(),
+                clientDTO.rating(),
                 clientDTO.user(),
                 clientDTO.direction(),
                 clientDTO.order()*/
