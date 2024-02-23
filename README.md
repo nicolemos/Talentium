@@ -27,6 +27,18 @@ Una vez que tu solicitud haya sido completada, puedes expresar tu satisfacción 
 
 #
 
+<a href="">
+    <img src="proyecto/front1.jpeg"alt="imagen de la pagina web" class="centrada">
+</a>
+
+#
+
+<a href="">
+    <img src="proyecto/front2.jpeg"alt="imagen de la pagina web" class="centrada">
+</a>
+
+#
+
 <h3>Tecnologías:</h3>
 
 <h3>Skills</h3>
