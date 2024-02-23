@@ -1,8 +1,7 @@
-import React from 'react';
-import {
+import React from 'react';import {
     UserTypeSelectorProps,
     UserType,
-} from '../interfaces/RegisterFormTypes';
+} from '../interfaces/RegistrationFormTypes';
 
 const UserTypeSelector: React.FC<UserTypeSelectorProps> = ({
     onSelectedUserType,
@@ -12,7 +11,7 @@ const UserTypeSelector: React.FC<UserTypeSelectorProps> = ({
             <div className='flex flex-row items-center gap-8'>
                 <div
                     className='cursor-pointer bg-white/45 p-4 rounded-lg shadow-md hover:bg-white/80'
-                    onClick={() => onSelectedUserType(UserType.Customer)}
+                    onClick={() => onSelectedUserType(UserType.Client)}
                 >
                     <h3 className='text-lg font-bold'>Cliente</h3>
                     <p>Registrarse como cliente</p>
