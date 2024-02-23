@@ -32,9 +32,6 @@ public class Client {
     @NotBlank
     private String dni;
 
-    @Column(name = "imagen")
-    private String urlImage;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_usuario_id")
     private User user;
@@ -44,15 +41,14 @@ public class Client {
     private Direction direction;
 
     @Column(name = "clasificacion")
-    private Integer classification;
-
+    private Integer rating;
 
 /*
     @Column(name = "compra_id")
     private Compras purchaseId;*/
 
     @Column(name = "activo")
-    private Boolean active;
+    private Boolean active = true;
 
 
     public Client(ClientDTO clientDTO) {
@@ -60,10 +56,9 @@ public class Client {
         this.name = clientDTO.name();
         this.lastname = clientDTO.lastname();
         this.dni = clientDTO.dni();
-        this.urlImage = clientDTO.urlImage();
         this.user = clientDTO.user();
         this.direction = clientDTO.direction();
-        this.classification = clientDTO.classification();
+        this.rating = clientDTO.rating();
 
     }
 }

@@ -9,8 +9,7 @@ public record ClientDTO(
         String name,
         String lastname,
         String dni,
-        String urlImage,
-        Integer classification,
+        Integer rating,
         User user,
         Direction direction
 
@@ -20,7 +19,7 @@ public record ClientDTO(
 
     public ClientDTO(Client client) {
         this(client.getName(),client.getLastname(),client.getDni(),
-                client.getUrlImage(), client.getClassification(),
+               client.getRating(),
                 client.getUser(),client.getDirection());
 
 
