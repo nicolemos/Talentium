@@ -1,4 +1,5 @@
-import { UserProps } from '../interfaces/RegisterFormTypes';import { useAuth } from '../context/AuthContext';
+import { UserProps } from '../interfaces/RegistrationFormTypes';
+import { useAuth } from '../context/AuthContext';
 
 const useCreateUser = () => {
     const auth = useAuth();
@@ -63,7 +64,7 @@ const useCreateUser = () => {
 
         try {
             const response = await fetch(url, {
-                method: 'PUT',
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                 },
