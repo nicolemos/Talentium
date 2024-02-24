@@ -12,7 +12,7 @@ export const AppRouter: React.FC = () => {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<LandingPage />} />
-                <Route path='/' element={<DashboardRouter />} />
+                <Route path='/DashboardCliente' element={<DashboardRouter />} />
                 <Route path='/Login' element={<Login />} />
                 <Route
                     path='/Register'

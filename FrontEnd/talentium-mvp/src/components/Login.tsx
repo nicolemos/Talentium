@@ -35,7 +35,7 @@ const Login: React.FC = () => {
             if (isLoginSuccessful) {
                 console.log('Login successful');
 
-                navigate('/');
+                navigate('/DashboardCliente');
             } else {
                 setError('Login failed. Please check your credentials.');
             }
@@ -92,12 +92,12 @@ const Login: React.FC = () => {
                         className='w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900'
                         required
                     />
-                    <button
-                        type='submit'
-                        className='bg-royal-blue-500 text-white hover:bg-gradient-to-t from-royal-blue-800 rounded-md shadow-md p-2 w-full mt-8 col-span-2 sm:w-2/4 sm:mx-auto'
+                    <Button
+                        onClick={handleSubmit}
+                        customClass='bg-royal-blue-500 rounded-md shadow-md p-8 m-4'
                     >
-                        Entrar
-                    </button>
+                        Ingresar
+                    </Button>
                 </label>
             </form>
             {error && (

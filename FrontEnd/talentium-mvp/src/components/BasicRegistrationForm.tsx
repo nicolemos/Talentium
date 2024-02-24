@@ -96,7 +96,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className={`bg-royal-blue-500 w-full p-4 py-8 rounded-lg shadow-slate-900 shadow-lg justify-between grid grid-cols-2 grid-rows-4 sm:max-w-md gap-4`}
+                className={`bg-royal-blue-500 w-2/4 p-4 py-8 rounded-lg shadow-slate-900 shadow-lg flex flex-col items-center justify-center`}
                 style={{ gridTemplateRows: 'auto auto auto auto' }}
             >
                 <h2 className='text-white text-xl font-bold col-span-2 text-center my-auto w-full'>
@@ -178,7 +178,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                             },
                         })}
                         placeholder='Ingrese su contraseña'
-                        className='text-base w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        className='text-base text-black w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
                         type='password'
                         id='password-input'
                     />
@@ -198,12 +198,12 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                     />
                 </label>
 
-                <button
-                    type='submit'
-                    className={`bg-royal-blue-500 text-white hover:bg-gradient-to-t from-royal-blue-800 rounded-md shadow-md p-2 w-full mt-8 col-span-2 sm:w-2/4 sm:mx-auto`}
+                <Button
+                    onClick={handleSubmit(onSubmit)}
+                    customClass='bg-royal-blue-500 flex items-center rounded-md shadow-md p-4 m-8'
                 >
                     Registrarse
-                </button>
+                </Button>
             </form>
         </>
     );
