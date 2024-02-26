@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `ordenes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(250) NOT NULL,
   `profesional_id` int DEFAULT NULL,
+  `descripcion_profesional` varchar(250) NOT NULL,
   `precio` decimal(18,2) DEFAULT NULL,
   `fecha` date NOT NULL,
   `ESTADO` enum('Inicial','Pendiente','Aprobada') NOT NULL DEFAULT 'Inicial',
