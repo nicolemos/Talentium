@@ -26,10 +26,6 @@ public class Order {
     @Column(name = "descripcion")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "profesional_id", referencedColumnName = "id")
-    private Professional professional;
-
     @Column(name = "precio")
     @DecimalMin(value = "0.01")
     private BigDecimal price;
@@ -42,7 +38,9 @@ public class Order {
     @Enumerated(value = EnumType.STRING)
     private Orderstatus orderstatus;
 
-
+    @ManyToOne
+    @JoinColumn(name = "profesional_id", referencedColumnName = "id")
+    private Professional professional;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")

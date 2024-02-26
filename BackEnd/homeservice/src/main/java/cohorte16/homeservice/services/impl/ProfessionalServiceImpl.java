@@ -23,7 +23,6 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
     private final ProfessionalRepository professionalRepository;
     private final ProfessionalMapper professionalMapper;
-
     private final UserRepository userRepository;
 
     public ProfessionalServiceImpl(ProfessionalRepository professionalRepository,
