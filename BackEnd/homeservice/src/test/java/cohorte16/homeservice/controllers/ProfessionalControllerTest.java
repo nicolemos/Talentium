@@ -27,7 +27,8 @@ class ProfessionalControllerTest {
 
     @MockBean
     private ProfessionalServiceImpl professionalService;
-/*
+
+    /*
     @Test
     void testGetAllProfessional() throws Exception {
         List<ProfessionalDTO> professionalDTOList = new ArrayList<>();
