@@ -1,5 +1,4 @@
-import NoAvatar from "../../public/NoAvatar.png";
-
+import NoAvatar from '/NoAvatar.png';
 const OrderCard = () => {
     return (
         <div className='bg-white/45 w-2/4 max-w-4xl rounded-lg h-full flex shadow-xl'>

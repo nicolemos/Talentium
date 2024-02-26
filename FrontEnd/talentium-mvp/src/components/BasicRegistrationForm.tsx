@@ -1,15 +1,17 @@
-import { useState } from "react";import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { IoCloseOutline } from "react-icons/io5";
-import { RegistrationFormProps } from "../interfaces/RegisterFormTypes";
-import { toast } from "react-toastify";
-import NoAvatar from "/NoAvatar.png?url";
+import { useState } from 'react';import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { IoCloseOutline } from 'react-icons/io5';
+import { BasicRegistrationFormProps } from '../interfaces/RegistrationFormTypes';
+import { toast } from 'react-toastify';
+import NoAvatar from '/NoAvatar.png?url';
+import { FaArrowLeft } from 'react-icons/fa';
+import Button from './Button';
 
-import useCreateUser from "../hooks/useCreateUser";
+import useUserServices from '../hooks/useUserServices';
 
 const MAX_FILE_SIZE_BYTES = 102400; // 100KB
 
-const RegisterForm: React.FC<RegistrationFormProps> = () => {
+const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
     const [showCloseIcon, setShowCloseIcon] = useState(false);
     const navigate = useNavigate();
@@ -18,30 +20,28 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
         register,
         formState: { errors },
         handleSubmit,
-    } = useForm<RegistrationFormProps>();
+    } = useForm<BasicRegistrationFormProps>();
 
-    const { createUser } = useCreateUser();
+    const { createUser } = useUserServices();
 
-    const onSubmit: SubmitHandler<RegistrationFormProps> = async (data) => {
+    const onSubmit: SubmitHandler<BasicRegistrationFormProps> = async (
+        data
+    ) => {
         try {
-            console.log(data);
-
-            // localstorage y el navigate no van acá, debería ir luego del await createUser(data). Lo coloqué simplemente para probar que redirija bien al dashboard ya que falta la conexion a DB para hacer el POST-
-            localStorage.setItem("email", JSON.stringify(data.email));
-            navigate("/");
-            ///////////////////////////////////////
             const userCreated = await createUser(data);
 
             if (userCreated) {
-                toast.success("Te has registrado exitosamente!");
+                toast.success('Te has registrado exitosamente!');
+                localStorage.setItem('email', JSON.stringify(data.email));
+                navigate('/');
             } else {
                 toast.error(
-                    "Hubo un error con el registro, vuelve a intentarlo"
+                    'Hubo un error con el registro, vuelve a intentarlo'
                 );
             }
         } catch (error) {
-            console.error("Error during form submission:", error);
-            toast.error("Ha ocurrido un error inesperado");
+            console.error('Error during form submission:', error);
+            toast.error('Ha ocurrido un error inesperado');
         }
     };
 
@@ -53,7 +53,7 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
                 alert(
                     `El archivo excede el máximo peso permitido. Máximo peso permitido: 100KB.`
                 );
-                e.target.value = "";
+                e.target.value = '';
                 return;
             }
 
@@ -72,123 +72,142 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
     const clearAvatar = () => {
         setAvatarPreview(null);
         const fileInput = document.getElementById(
-            "avatar-input"
+            'avatar-input'
         ) as HTMLInputElement;
         if (fileInput) {
-            fileInput.value = "";
+            fileInput.value = '';
         }
     };
 
+    const handleback = () => {
+        navigate('/');
+    };
+
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            className={`bg-white/45 w-full p-4 py-8 rounded-lg shadow-lg justify-between grid grid-cols-2 grid-rows-4 sm:max-w-md gap-4`}
-            style={{ gridTemplateRows: "auto auto auto auto" }}
-        >
-            <h2 className='text-xl font-bold col-span-2 text-center my-auto w-full'>
-                Registro Talentium
-            </h2>
-
-            <div
-                className='flex col-span-2 justify-center w-full h-full'
-                onMouseEnter={() => setShowCloseIcon(true)}
-                onMouseLeave={() => setShowCloseIcon(false)}
+        <>
+            <Button
+                onClick={handleback}
+                customClass={
+                    'absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'
+                }
             >
-                <img
-                    src={avatarPreview ? avatarPreview : NoAvatar}
-                    alt='Avatar Preview'
-                    style={{
-                        width: "100px",
-                        height: "100px",
-                        cursor: "pointer",
-                    }}
-                    className='rounded-full object-fill'
-                />
-                {showCloseIcon && avatarPreview && (
-                    <IoCloseOutline
-                        className='absolute cursor-pointer ml-28 text-red-500 text-xl bg-black/20 rounded-full'
-                        title='Borrar Avatar'
-                        onClick={clearAvatar}
+                <FaArrowLeft className='w-10 h-10 p-2' />
+                atrás
+            </Button>
+
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className={`bg-royal-blue-500 w-2/4 p-4 py-8 rounded-lg shadow-slate-900 shadow-lg flex flex-col items-center justify-center`}
+                style={{ gridTemplateRows: 'auto auto auto auto' }}
+            >
+                <h2 className='text-white text-xl font-bold col-span-2 text-center my-auto w-full'>
+                    Registro Talentium
+                </h2>
+
+                <div
+                    className='flex col-span-2 justify-center w-full h-full'
+                    onMouseEnter={() => setShowCloseIcon(true)}
+                    onMouseLeave={() => setShowCloseIcon(false)}
+                >
+                    <img
+                        src={avatarPreview ? avatarPreview : NoAvatar}
+                        alt='Avatar Preview'
+                        style={{
+                            width: '100px',
+                            height: '100px',
+                            cursor: 'pointer',
+                        }}
+                        className='rounded-full object-fill'
                     />
-                )}
-            </div>
+                    {showCloseIcon && avatarPreview && (
+                        <IoCloseOutline
+                            className='absolute cursor-pointer ml-28 text-red-500 text-xl bg-black/20 rounded-full'
+                            title='Borrar Avatar'
+                            onClick={clearAvatar}
+                        />
+                    )}
+                </div>
 
-            <label
-                className={`text-xs w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
-            >
-                {errors.email?.type === "required" && (
-                    <p role='alert' className='text-center text-red-500 mb-1'>
-                        {errors.email.message}
-                    </p>
-                )}
-                email*
-                <input
-                    {...register("email", {
-                        required: "Debes ingresar tu email",
-                    })}
-                    aria-invalid={errors.email ? "true" : "false"}
-                    placeholder='ejemplo@email.com'
-                    className='text-base w-full rounded-sm outline-none px-2 py-1 mt-1 bg-white/80 font-normal'
-                    type='email'
-                    id='email-input'
-                />
-            </label>
+                <label
+                    className={`text-white text-sm w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
+                >
+                    {errors.email?.type === 'required' && (
+                        <p
+                            role='alert'
+                            className='text-center text-red-500 mb-1'
+                        >
+                            {errors.email.message}
+                        </p>
+                    )}
+                    Email*
+                    <input
+                        {...register('email', {
+                            required: 'Debes ingresar tu Email',
+                        })}
+                        aria-invalid={errors.email ? 'true' : 'false'}
+                        placeholder='ejemplo@mail.com'
+                        className='text-base w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        type='email'
+                        id='email-input'
+                    />
+                </label>
 
-            <label
-                className={`text-xs w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
-            >
-                {errors.contrasenia?.message && (
-                    <p
-                        role='alert'
-                        className='text-red-500 mb-1 text-center md:w-96 flex'
-                    >
-                        {errors.contrasenia.message}
-                    </p>
-                )}
-                Contraseña*
-                <input
-                    {...register("contrasenia", {
-                        required: "Debes ingresar una contraseña",
-                        minLength: {
-                            value: 8,
-                            message:
-                                "La contraseña debe tener al menos 8 caracteres",
-                        },
-                        pattern: {
-                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
-                            message:
-                                "La contraseña no cumple con los requisitos de seguridad",
-                        },
-                    })}
-                    placeholder='Ingrese su contraseña'
-                    className='text-base w-full rounded-sm outline-none px-2 py-1 mt-1 bg-white/80 font-normal'
-                    type='password'
-                    id='password-input'
-                />
-            </label>
+                <label
+                    className={`text-white text-sm w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
+                >
+                    {errors.password?.message && (
+                        <p
+                            role='alert'
+                            className='text-red-500 mb-1 text-center md:w-96 flex'
+                        >
+                            {errors.password.message}
+                        </p>
+                    )}
+                    Contraseña*
+                    <input
+                        {...register('password', {
+                            required: 'Debes ingresar una contraseña',
+                            minLength: {
+                                value: 8,
+                                message:
+                                    'La contraseña debe tener al menos 8 caracteres',
+                            },
+                            pattern: {
+                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
+                                message:
+                                    'La contraseña no cumple con los requisitos de seguridad',
+                            },
+                        })}
+                        placeholder='Ingrese su contraseña'
+                        className='text-base text-black w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        type='password'
+                        id='password-input'
+                    />
+                </label>
 
-            <label
-                className={`text-md w-full sm:col-1 font-bold col-span-2 text-center md:w-3/5 md:mx-auto`}
-            >
-                Avatar (opcional):
-                <input
-                    type='text'
-                    {...register("avatar")}
-                    accept='image/*'
-                    onChange={handleAvatarChange}
-                    className='text-xs'
-                    id='avatar-input'
-                />
-            </label>
+                <label
+                    className={`text-white text-md w-full sm:col-1 font-bold col-span-2 text-center md:w-3/5 md:mx-auto`}
+                >
+                    Avatar (opcional):
+                    <input
+                        type='file'
+                        {...register('avatar')}
+                        accept='image/*'
+                        onChange={handleAvatarChange}
+                        className='text-xs'
+                        id='avatar-input'
+                    />
+                </label>
 
-            <button
-                type='submit'
-                className={`bg-royal-blue-500 text-white hover:text-black hover:bg-royal-blue-500/70 shadow-md p-2 rounded-md w-full mt-8 col-span-2 sm:w-2/4 sm:mx-auto`}
-            >
-                Registrarse
-            </button>
-        </form>
+                <Button
+                    onClick={handleSubmit(onSubmit)}
+                    customClass='bg-royal-blue-500 flex items-center rounded-md shadow-md p-4 m-8'
+                >
+                    Registrarse
+                </Button>
+            </form>
+        </>
     );
 };
 
-export default RegisterForm;
+export default BasicRegistrationForm;

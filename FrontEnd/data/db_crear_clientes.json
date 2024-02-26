@@ -1,21 +1,21 @@
 {
-    "nombre": "obligatorio",
-    "apellido": "obligatorio",
+    "name": "obligatorio",
+    "lastname": "obligatorio",
     "dni": "obligatorio",
-    "imagen": "opcional",
-    "usuario": [
+    "rating":"opcional",
+    "user": 
         {
+            "id":"",
             "email": "",
-            "contrasenia": "",
-            "avantar": ""
+            "password": "",
+            "avatar": ""
         }
-    ],
-    "direccion": [
+    ,
+    "direction":
         {
-            "calle": "obligatorio",
-            "numero": "obligatorio",
-            "provincia": "obligatorio",
-            "localidad": "obligatorio"
+            "street": "obligatorio",
+            "number": "obligatorio",
+            "province": "obligatorio",
+            "location": "obligatorio"
         }
-    ]
 }
