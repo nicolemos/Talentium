@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   CONSTRAINT `cliente_direccion_id` FOREIGN KEY (`cliente_direccion_id`) REFERENCES `direcciones` (`id`),
   CONSTRAINT `cliente_usuario_id` FOREIGN KEY (`cliente_usuario_id`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `compra_id` FOREIGN KEY (`compra_id`) REFERENCES `compras` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `direcciones` (
   `provincia` varchar(45) NOT NULL,
   `localidad` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -123,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `profesionales` (
   `clasificacion` int DEFAULT NULL,
   `profesional_orden_id` int DEFAULT NULL,
   `activo` tinyint NOT NULL DEFAULT '1',
+  `billetera` decimal(18,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cuit` (`cuit`),
   KEY `profesional_usuario_id_idx` (`profesional_usuario_id`),
@@ -156,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `avatar` varchar(250) DEFAULT 'url',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3;
 
 -- La exportación de datos fue deseleccionada.
 
