@@ -1,4 +1,5 @@
-import { useState } from 'react';import { useForm, SubmitHandler } from 'react-hook-form';
+import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { IoCloseOutline } from 'react-icons/io5';
 import { BasicRegistrationFormProps } from '../interfaces/RegistrationFormTypes';
@@ -155,17 +156,17 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 <label
                     className={`text-white text-sm w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
                 >
-                    {errors.password?.message && (
+                    {errors.contrasenia?.message && (
                         <p
                             role='alert'
                             className='text-red-500 mb-1 text-center md:w-96 flex'
                         >
-                            {errors.password.message}
+                            {errors.contrasenia.message}
                         </p>
                     )}
                     Contraseña*
                     <input
-                        {...register('password', {
+                        {...register('contrasenia', {
                             required: 'Debes ingresar una contraseña',
                             minLength: {
                                 value: 8,

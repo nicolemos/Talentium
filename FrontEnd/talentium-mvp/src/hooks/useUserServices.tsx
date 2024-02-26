@@ -1,5 +1,4 @@
-import { UserProps } from '../interfaces/RegistrationFormTypes';
-import { useAuth } from '../context/AuthContext';
+import { UserProps } from '../interfaces/RegistrationFormTypes';import { useAuth } from '../context/AuthContext';
 
 const useCreateUser = () => {
     const auth = useAuth();
@@ -29,7 +28,7 @@ const useCreateUser = () => {
 
     const loginUser = async (credentials: {
         email: string;
-        password: string;
+        contrasenia: string;
     }): Promise<boolean> => {
         const loginUrl = 'http://localhost:8080/login';
 

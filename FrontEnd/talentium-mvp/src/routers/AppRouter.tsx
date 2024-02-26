@@ -20,7 +20,7 @@ export const AppRouter: React.FC = () => {
                         <div className='flex bg-gradient-to-b from-royal-blue-500 to-white h-screen justify-center items-center p-4'>
                             <ToastContainer />
 
-                            <BasicRegistrationForm email='' password='' />
+                            <BasicRegistrationForm />
                         </div>
                     }
                 />

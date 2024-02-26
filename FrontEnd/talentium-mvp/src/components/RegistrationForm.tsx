@@ -1,5 +1,4 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { RegistrationFormProps } from '../interfaces/RegistrationFormTypes';
+import { useForm, SubmitHandler } from 'react-hook-form';import { RegistrationFormProps } from '../interfaces/RegistrationFormTypes';
 import { toast } from 'react-toastify';
 
 import useUserServices from '../hooks/useUserServices';
@@ -199,7 +198,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     <label className='text-xs w-full font-bold'>
                         Contraseña
                         <input
-                            {...register('password', {
+                            {...register('contrasenia', {
                                 minLength: {
                                     value: 8,
                                     message:
@@ -215,12 +214,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                             className='text-base w-full rounded-sm outline-none px-2 py-1 mt-1 bg-white/80 font-normal'
                             type='password'
                         />
-                        {errors.password?.message && (
+                        {errors.contrasenia?.message && (
                             <p
                                 role='alert'
                                 className='text-red-500 mb-1 text-center md:w-96 flex'
                             >
-                                {errors.password.message}
+                                {errors.contrasenia.message}
                             </p>
                         )}
                     </label>

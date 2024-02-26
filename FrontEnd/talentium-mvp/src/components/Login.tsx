@@ -1,4 +1,5 @@
-import { useState } from 'react';import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../interfaces/LoginForm';
 import useUserServices from '../hooks/useUserServices';
 import NoAvatar from '/NoAvatar.png?url';
@@ -11,7 +12,7 @@ const Login: React.FC = () => {
 
     const [loginForm, setLoginForm] = useState<LoginForm>({
         email: '',
-        password: '',
+        contrasenia: '',
     });
 
     const [error, setError] = useState<string>('');
@@ -23,7 +24,7 @@ const Login: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!loginForm.email || !loginForm.password) {
+        if (!loginForm.email || !loginForm.contrasenia) {
             setError('Todos los campos son obligatorios');
             return;
         }
@@ -84,11 +85,11 @@ const Login: React.FC = () => {
                         required
                     />
                     <input
-                        type='password'
+                        type='contrasenia'
                         id='contrasenia'
                         name='contrasenia'
                         placeholder='contraseña'
-                        value={loginForm.password}
+                        value={loginForm.contrasenia}
                         onChange={handleInputChange}
                         className='w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900'
                         required
