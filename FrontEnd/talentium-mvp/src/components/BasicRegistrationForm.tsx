@@ -190,7 +190,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 >
                     Avatar (opcional):
                     <input
-                        type='file'
+                        type='text'
                         {...register('avatar')}
                         accept='image/*'
                         onChange={handleAvatarChange}
