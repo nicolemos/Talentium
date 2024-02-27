@@ -30,10 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User validateLogin(LoginDTO datosLogin) {
-        return userRepository.findByEmailAndContrasenia(datosLogin.email(),
+       return userRepository.findByEmailAndContrasenia(datosLogin.email(),
                 EncryptData.encryptPassword(datosLogin.password())
         );
-
     }
 }
 

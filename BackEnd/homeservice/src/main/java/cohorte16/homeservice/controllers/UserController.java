@@ -44,7 +44,7 @@ public class UserController {
         User userCreated;
         try {
           userCreated =  userServiceImpl.saveUser(registroUsuarioDTO);
-
+            System.out.println(userCreated);
         }catch (Exception ex){
 
             return  ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya existe");
@@ -66,31 +66,23 @@ public class UserController {
         LocalDate hora = LocalDate.now();
         jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
         Client client;
+        Professional professional;
 
         try {
             userCreated = userServiceImpl.validateLogin(datosLogin);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Credenciales incorrectas");
-        }
-
-        if(userCreated != null) {
-
-            try {
-            client = clientRepository.findClienteByUser(userCreated);
-            return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
-            } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
-            }
-        }
-
-        if(userCreated != null) {
-            try {
-            Professional professional= professionalRepository.findProfesionalByUser(userCreated);
-            return new ResponseEntity<>(new ProfessionalDTO(professional), jwtToken, HttpStatus.OK);
-        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
         }
+
+        if(userCreated != null) {
+            client = clientRepository.findClienteByUser(userCreated);
+            if(client != null) return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
+        }
+
+        if(userCreated != null) {
+             professional= professionalRepository.findProfesionalByUser(userCreated);
+            if(professional != null)  return new ResponseEntity<>(new ProfessionalDTO(professional), jwtToken, HttpStatus.OK);
         }
 
         return ResponseEntity.created(create("/usuarios/login/"+new RegistroUsuarioDTO(userCreated).id())).headers(jwtToken)
