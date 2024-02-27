@@ -1,7 +1,7 @@
 package cohorte16.homeservice.enums;
 
 public enum Profession {
-    Otros("Otros");
+    OTHERS("OTHERS");
 
     private final String description;
 

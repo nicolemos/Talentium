@@ -1,16 +1,20 @@
 package cohorte16.homeservice.services.impl;
 
 import cohorte16.homeservice.dtos.OrderDTO;
+import cohorte16.homeservice.dtos.OrderProfessionalDTO;
 import cohorte16.homeservice.dtos.UpdateOrderDTO;
 import cohorte16.homeservice.enums.Orderstatus;
 import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.models.Client;
 import cohorte16.homeservice.models.Order;
+import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.repositories.OrderRepository;
+import cohorte16.homeservice.repositories.ProfessionalRepository;
 import cohorte16.homeservice.services.OrderService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.Date;
 import java.util.List;
@@ -22,11 +26,31 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     public OrderRepository orderRepository;
+    @Autowired
+    public ProfessionalRepository professionalRepository;
 
     @Override
     public List<Order> getAllInitialOrders() throws Exception {
         try{
             return orderRepository.findByOrderstatus(Orderstatus.Inicial);
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Order> getAllPendingOrders() throws Exception {
+        try{
+            return orderRepository.findByOrderstatus(Orderstatus.Pendiente);
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Order> getAllApprovedOrders() throws Exception {
+        try{
+            return orderRepository.findByOrderstatus(Orderstatus.Aprobada);
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -49,6 +73,32 @@ public class OrderServiceImpl implements OrderService {
             throw new Exception(e.getMessage());
         }
 
+    }
+
+    @Override
+    public Order takeOrderProfessional(Long id, OrderProfessionalDTO orderProfessionalDTO) throws Exception {
+        try {
+            Optional<Order> orderOptional = orderRepository.findById(id);
+            if (orderOptional.isEmpty()) {
+                throw new EntityNotSavedException("Order not found");
+            }
+            Order existingOrder = orderOptional.get();
+
+            if (orderProfessionalDTO.professional_Id() != null) {
+                Optional<Order> professionalOptional = orderRepository.findById(orderProfessionalDTO.professional_Id());
+                if (professionalOptional.isPresent()) {
+                    existingOrder.setProfessional(professionalOptional.get().getProfessional());
+                }
+            }
+
+            existingOrder.setDescription_professional(orderProfessionalDTO.description_Professional());
+            existingOrder.setPrice(orderProfessionalDTO.price());
+            existingOrder.setOrderstatus(Orderstatus.valueOf("Pendiente"));
+            return orderRepository.save(existingOrder);
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override

@@ -3,7 +3,7 @@ package cohorte16.homeservice.enums;
 public enum Orderstatus {
     Inicial("Inicial"),
     Pendiente("Pendiente"),
-    Aprobado("Aprobada");
+    Aprobada("Aprobada");
 
     private final String descripcion;
 
