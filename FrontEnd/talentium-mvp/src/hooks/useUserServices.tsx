@@ -30,7 +30,7 @@ const useCreateUser = () => {
         email: string;
         contrasenia: string;
     }): Promise<boolean> => {
-        const loginUrl = 'http://localhost:8080/login';
+        const loginUrl = 'http://localhost:8080/usuarios/login';
 
         try {
             const response = await fetch(loginUrl, {
