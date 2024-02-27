@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { IoCloseOutline } from 'react-icons/io5';
 import { BasicRegistrationFormProps } from '../interfaces/RegistrationFormTypes';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
 import Button from './Button';
@@ -85,10 +85,12 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     };
 
     return (
-        <>
+        <div className='bg-royal-blue-500 w-full h-screen flex flex-col items-center justify-center gap-8 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4 lg:gap-3'>
             <Button
                 onClick={handleback}
-                customClass={'absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'}
+                customClass={
+                    'w-28 h-16 absolute bottom-5 right-5 text-white text-xl font-bold lg:top-5 lg:left-5 cursor-pointer '
+                }
             >
                 <FaArrowLeft className='w-10 h-10 p-2' />
                 atrás
@@ -96,10 +98,10 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className={`bg-royal-blue-500 w-2/4 p-4 py-8 rounded-lg shadow-slate-900 shadow-lg flex flex-col items-center justify-center`}
+                className='w-72 h-auto md:w-2/4 xl:w-4/12 bg-royal-blue-500 flex flex-col items-center justify-center gap-4 lg:rounded-lg lg:shadow-slate-900 lg:shadow-lg'
                 style={{ gridTemplateRows: 'auto auto auto auto' }}
             >
-                <h2 className='text-white text-xl font-bold col-span-2 text-center my-auto w-full'>
+                <h2 className='text-white text-xl font-bold col-span-2 text-center my-auto w-full py-4'>
                     Registro Talentium
                 </h2>
 
@@ -145,7 +147,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                         })}
                         aria-invalid={errors.email ? 'true' : 'false'}
                         placeholder='ejemplo@mail.com'
-                        className='text-base w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        className='text-base text-black w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
                         type='email'
                         id='email-input'
                     />
@@ -204,8 +206,9 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 >
                     Registrarse
                 </Button>
+                <ToastContainer />
             </form>
-        </>
+        </div>
     );
 };
 

@@ -50,25 +50,27 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className='bg-gradient-to-b from-royal-blue-500 to-white h-screen flex flex-col items-center justify-center p-4 gap-3'>
+        <div className='relative bg-royal-blue-500 w-full h-screen flex flex-col items-center justify-center gap-8 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4 lg:gap-3 lg:relative'>
             <Button
                 onClick={handleback}
-                customClass={'absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'}
+                customClass={
+                    'w-28 h-16 absolute bottom-5 right-5 lg:top-5 lg:left-5 text-white text-xl font-bold cursor-pointer '
+                }
             >
                 <FaArrowLeft className='w-10 h-10 p-2' />
                 atrás
             </Button>
             <form
                 action=''
-                className='mx-auto w-60 h-72 bg-royal-blue-500 flex flex-col items-center rounded-lg shadow-slate-900 shadow-lg'
+                className='w-72 h-96 lg:w-76 bg-royal-blue-500 flex flex-col items-center justify-center lg:flex lg:flex-col lg:items-center lg:rounded-lg lg:shadow-slate-900 lg:shadow-lg '
                 onSubmit={handleSubmit}
             >
-                <label className='flex flex-col items-center justify-center m-3 p-4'>
+                <label className='w-screen h-screen flex flex-col items-center justify-center gap-4 lg:flex lg:flex-col lg:items-center lg:justify-center lg:m-3 lg:p-4'>
                     <div className='rounded-full mb-2 flex items-center justify-center'>
                         <img
                             src={NoAvatar}
                             alt=''
-                            className='w-20 h-20 rounded-full'
+                            className='w-28 lg:w-20 h-28 lg:h-20 rounded-full'
                         />
                     </div>
 
@@ -79,7 +81,7 @@ const Login: React.FC = () => {
                         placeholder='email'
                         value={loginForm.email}
                         onChange={handleInputChange}
-                        className='w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900'
+                        className='text-base text-black rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
                         required
                     />
                     <input
@@ -89,22 +91,24 @@ const Login: React.FC = () => {
                         placeholder='contraseña'
                         value={loginForm.password}
                         onChange={handleInputChange}
-                        className='w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900'
+                        className='text-base text-black rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
                         required
                     />
                     <Button
                         onClick={handleSubmit}
-                        customClass='bg-royal-blue-500 rounded-md shadow-md p-8 m-4'
+                        customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md p-2'
                     >
                         Ingresar
                     </Button>
                 </label>
             </form>
-            {error && (
-                <p className='text-red-600 font-medium'>
-                    Todos los campos son obligatorios
-                </p>
-            )}
+            <div className='flex flex-col items-center justify-center '>
+                {error && (
+                    <p className='text-red-600 font-medium '>
+                        Todos los campos son obligatorios
+                    </p>
+                )}
+            </div>
         </div>
     );
 };
