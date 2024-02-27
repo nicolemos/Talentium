@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum Profession {
+
     OTHERS("OTHERS"),
     PLUMBER("PLUMBER"),
     ELECTRICIAN("ELECTRICIAN"),

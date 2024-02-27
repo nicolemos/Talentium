@@ -11,6 +11,7 @@ public class ProfessionalMapper {
 
     public ProfessionalDTO professionalToProfessionalDTO(Professional professional){
         return new ProfessionalDTO(
+                professional.getId(),
                 professional.getName(),
                 professional.getLastname(),
                 professional.getCuit(),
