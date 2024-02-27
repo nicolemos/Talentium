@@ -26,7 +26,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     const { createUser } = useUserServices();
 
     const onSubmit: SubmitHandler<BasicRegistrationFormProps> = async (
-        data
+        data,
     ) => {
         try {
             const userCreated = await createUser(data);
@@ -37,7 +37,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 navigate('/');
             } else {
                 toast.error(
-                    'Hubo un error con el registro, vuelve a intentarlo'
+                    'Hubo un error con el registro, vuelve a intentarlo',
                 );
             }
         } catch (error) {
@@ -52,7 +52,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
         if (file) {
             if (file.size > MAX_FILE_SIZE_BYTES) {
                 alert(
-                    `El archivo excede el máximo peso permitido. Máximo peso permitido: 100KB.`
+                    `El archivo excede el máximo peso permitido. Máximo peso permitido: 100KB.`,
                 );
                 e.target.value = '';
                 return;
@@ -73,7 +73,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     const clearAvatar = () => {
         setAvatarPreview(null);
         const fileInput = document.getElementById(
-            'avatar-input'
+            'avatar-input',
         ) as HTMLInputElement;
         if (fileInput) {
             fileInput.value = '';
@@ -85,28 +85,28 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     };
 
     return (
-        <div className='bg-royal-blue-500 w-full h-screen flex flex-col items-center justify-center gap-8 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4 lg:gap-3'>
+        <div className='flex h-screen w-full flex-col items-center justify-center gap-8 bg-royal-blue-500 lg:gap-3 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4'>
             <Button
                 onClick={handleback}
                 customClass={
                     'w-28 h-16 absolute bottom-5 right-5 text-white text-xl font-bold lg:top-5 lg:left-5 cursor-pointer '
                 }
             >
-                <FaArrowLeft className='w-10 h-10 p-2' />
+                <FaArrowLeft className='h-10 w-10 p-2' />
                 atrás
             </Button>
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className='w-72 h-auto md:w-2/4 xl:w-4/12 bg-royal-blue-500 flex flex-col items-center justify-center gap-4 lg:rounded-lg lg:shadow-slate-900 lg:shadow-lg'
+                className='flex h-auto w-72 flex-col items-center justify-center gap-4 bg-royal-blue-500 md:w-2/4 lg:rounded-lg lg:shadow-lg lg:shadow-slate-900 xl:w-4/12'
                 style={{ gridTemplateRows: 'auto auto auto auto' }}
             >
-                <h2 className='text-white text-xl font-bold col-span-2 text-center my-auto w-full py-4'>
+                <h2 className='col-span-2 my-auto w-full py-4 text-center text-xl font-bold text-white'>
                     Registro Talentium
                 </h2>
 
                 <div
-                    className='flex col-span-2 justify-center w-full h-full'
+                    className='col-span-2 flex h-full w-full justify-center'
                     onMouseEnter={() => setShowCloseIcon(true)}
                     onMouseLeave={() => setShowCloseIcon(false)}
                 >
@@ -122,7 +122,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                     />
                     {showCloseIcon && avatarPreview && (
                         <IoCloseOutline
-                            className='absolute cursor-pointer ml-28 text-red-500 text-xl bg-black/20 rounded-full'
+                            className='absolute ml-28 cursor-pointer rounded-full bg-black/20 text-xl text-red-500'
                             title='Borrar Avatar'
                             onClick={clearAvatar}
                         />
@@ -130,12 +130,12 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 </div>
 
                 <label
-                    className={`text-white text-sm w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
+                    className={`sm:col-1 col-span-2 w-full text-sm font-bold text-white md:mx-auto md:w-3/5`}
                 >
                     {errors.email?.type === 'required' && (
                         <p
                             role='alert'
-                            className='text-center text-red-500 mb-1'
+                            className='mb-1 text-center text-red-500'
                         >
                             {errors.email.message}
                         </p>
@@ -147,19 +147,19 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                         })}
                         aria-invalid={errors.email ? 'true' : 'false'}
                         placeholder='ejemplo@mail.com'
-                        className='text-base text-black w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
                         type='email'
                         id='email-input'
                     />
                 </label>
 
                 <label
-                    className={`text-white text-sm w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
+                    className={`sm:col-1 col-span-2 w-full text-sm font-bold text-white md:mx-auto md:w-3/5`}
                 >
                     {errors.password?.message && (
                         <p
                             role='alert'
-                            className='text-red-500 mb-1 text-center md:w-96 flex'
+                            className='mb-1 flex text-center text-red-500 md:w-96'
                         >
                             {errors.password.message}
                         </p>
@@ -180,14 +180,14 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                             },
                         })}
                         placeholder='Ingrese su contraseña'
-                        className='text-base text-black w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
                         type='password'
                         id='password-input'
                     />
                 </label>
 
                 <label
-                    className={`text-white text-md w-full sm:col-1 font-bold col-span-2 text-center md:w-3/5 md:mx-auto`}
+                    className={`text-md sm:col-1 col-span-2 w-full text-center font-bold text-white md:mx-auto md:w-3/5`}
                 >
                     Avatar (opcional):
                     <input

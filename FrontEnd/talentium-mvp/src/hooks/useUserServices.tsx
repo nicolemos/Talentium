@@ -58,7 +58,7 @@ const useCreateUser = () => {
     const updateUser = async (
         userId: string,
         userType: string,
-        updatedUserData: UserProps
+        updatedUserData: UserProps,
     ): Promise<boolean> => {
         const url = `http://localhost:8080/${userType}/${userId}`;
 

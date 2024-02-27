@@ -45,5 +45,5 @@ type Speciality = [
     'Plomero',
     'Ingeniero',
     'Jardinero',
-    'Electricista'
+    'Electricista',
 ];

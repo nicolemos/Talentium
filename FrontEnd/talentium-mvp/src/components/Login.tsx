@@ -50,27 +50,27 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className='relative bg-royal-blue-500 w-full h-screen flex flex-col items-center justify-center gap-8 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4 lg:gap-3 lg:relative'>
+        <div className='relative flex h-screen w-full flex-col items-center justify-center gap-8 bg-royal-blue-500 lg:relative lg:gap-3 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4'>
             <Button
                 onClick={handleback}
                 customClass={
                     'w-28 h-16 absolute bottom-5 right-5 lg:top-5 lg:left-5 text-white text-xl font-bold cursor-pointer '
                 }
             >
-                <FaArrowLeft className='w-10 h-10 p-2' />
+                <FaArrowLeft className='h-10 w-10 p-2' />
                 atrás
             </Button>
             <form
                 action=''
-                className='w-72 h-96 lg:w-76 bg-royal-blue-500 flex flex-col items-center justify-center lg:flex lg:flex-col lg:items-center lg:rounded-lg lg:shadow-slate-900 lg:shadow-lg '
+                className='lg:w-76 flex h-96 w-72 flex-col items-center justify-center bg-royal-blue-500 lg:flex lg:flex-col lg:items-center lg:rounded-lg lg:shadow-lg lg:shadow-slate-900 '
                 onSubmit={handleSubmit}
             >
-                <label className='w-screen h-screen flex flex-col items-center justify-center gap-4 lg:flex lg:flex-col lg:items-center lg:justify-center lg:m-3 lg:p-4'>
-                    <div className='rounded-full mb-2 flex items-center justify-center'>
+                <label className='flex h-screen w-screen flex-col items-center justify-center gap-4 lg:m-3 lg:flex lg:flex-col lg:items-center lg:justify-center lg:p-4'>
+                    <div className='mb-2 flex items-center justify-center rounded-full'>
                         <img
                             src={NoAvatar}
                             alt=''
-                            className='w-28 lg:w-20 h-28 lg:h-20 rounded-full'
+                            className='h-28 w-28 rounded-full lg:h-20 lg:w-20'
                         />
                     </div>
 
@@ -81,7 +81,7 @@ const Login: React.FC = () => {
                         placeholder='email'
                         value={loginForm.email}
                         onChange={handleInputChange}
-                        className='text-base text-black rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        className='mt-1 rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
                         required
                     />
                     <input
@@ -91,7 +91,7 @@ const Login: React.FC = () => {
                         placeholder='contraseña'
                         value={loginForm.password}
                         onChange={handleInputChange}
-                        className='text-base text-black rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
+                        className='mt-1 rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
                         required
                     />
                     <Button
@@ -104,7 +104,7 @@ const Login: React.FC = () => {
             </form>
             <div className='flex flex-col items-center justify-center '>
                 {error && (
-                    <p className='text-red-600 font-medium '>
+                    <p className='font-medium text-red-600 '>
                         Todos los campos son obligatorios
                     </p>
                 )}

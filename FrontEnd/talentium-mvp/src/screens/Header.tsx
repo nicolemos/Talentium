@@ -12,8 +12,8 @@ const Header: React.FC = () => {
 
     return (
         <header className='bg-transparent p-4 '>
-            <nav className='grid grid-cols-3 items-center justify-between text-white md:grid md:grid-cols-2 md:content-center md:items-center md:justify-items-end md:space-x-8 md:gap-4 md:p-4 lg:grid lg:grid-cols-3'>
-                <div className='col-span-2 h-auto w-60 md:w-44 md:col-span-1 md:grid md:justify-self-start'>
+            <nav className='grid grid-cols-3 items-center justify-between text-white md:grid md:grid-cols-2 md:content-center md:items-center md:justify-items-end md:gap-4 md:space-x-8 md:p-4 lg:grid lg:grid-cols-3'>
+                <div className='col-span-2 h-auto w-60 md:col-span-1 md:grid md:w-44 md:justify-self-start'>
                     <Link to='/'>
                         <img src='/Logo2.png' alt='Logo' className='' />
                     </Link>
@@ -24,9 +24,9 @@ const Header: React.FC = () => {
                     onClick={toggleMenu}
                 >
                     {isMenuOpen ? (
-                        <RiCloseLine className='w-12 h-auto m-2 p-2' />
+                        <RiCloseLine className='m-2 h-auto w-12 p-2' />
                     ) : (
-                        <RiMenuLine className='w-12 h-auto m-2 p-2' />
+                        <RiMenuLine className='m-2 h-auto w-12 p-2' />
                     )}
                 </div>
 
@@ -36,9 +36,9 @@ const Header: React.FC = () => {
                 </div>
 
                 <div
-                    className={`${isMenuOpen ? 'grid' : 'hidden'} grid-cols-2 col-span-3 justify-items-center lg:grid lg:col-span-1 lg:justify-items-center gap-4 p-4`}
+                    className={`${isMenuOpen ? 'grid' : 'hidden'} col-span-3 grid-cols-2 justify-items-center gap-4 p-4 lg:col-span-1 lg:grid lg:justify-items-center`}
                 >
-                    <div className='grid grid-cols-2 col-span-3 content-center justify-items-center '>
+                    <div className='col-span-3 grid grid-cols-2 content-center justify-items-center '>
                         <CustomLink to='/Login' content='Ingresar' />
                         <CustomLink to='/Register' content='Registrate' />
                     </div>

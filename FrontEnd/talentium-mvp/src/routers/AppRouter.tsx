@@ -1,4 +1,5 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';import Login from '../components/Login';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Login from '../components/Login';
 import PageNotFound from '../screens/PageNotFound';
 import LandingPage from '../screens/LandingPage';
 //import LoadingPage from "../screens/LoadingPage";

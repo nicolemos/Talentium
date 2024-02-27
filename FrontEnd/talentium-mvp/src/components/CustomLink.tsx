@@ -11,7 +11,7 @@ const CustomLink: React.FC<MyLinkProps> = ({ to, content, children }) => {
     return (
         <Link
             to={to}
-            className={`flex items-center gap-4 py-1 px-2 hover:bg-royal-blue-700 rounded-md transition-colors`}
+            className={`flex items-center gap-4 rounded-md px-2 py-1 transition-colors hover:bg-royal-blue-700`}
         >
             {children}
             {content}
