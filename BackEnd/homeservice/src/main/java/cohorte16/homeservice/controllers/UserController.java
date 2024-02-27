@@ -1,11 +1,14 @@
 package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.LoginDTO;
+import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
 import cohorte16.homeservice.dtos.clientUserDTO;
 import cohorte16.homeservice.models.Client;
+import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ClientRepository;
+import cohorte16.homeservice.repositories.ProfessionalRepository;
 import cohorte16.homeservice.services.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +34,17 @@ public class UserController {
     @Autowired
     private ClientRepository clientRepository;
 
+
+    @Autowired
+    private ProfessionalRepository professionalRepository;
+
     @PostMapping
     public ResponseEntity<?> RegistrarUsuario(@RequestBody @Valid RegistroUsuarioDTO registroUsuarioDTO){
 
         User userCreated;
         try {
           userCreated =  userServiceImpl.saveUser(registroUsuarioDTO);
-
+            System.out.println(userCreated);
         }catch (Exception ex){
 
             return  ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya existe");
@@ -59,16 +66,23 @@ public class UserController {
         LocalDate hora = LocalDate.now();
         jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
         Client client;
+        Professional professional;
 
         try {
             userCreated = userServiceImpl.validateLogin(datosLogin);
-            client = clientRepository.findClienteByUser(userCreated);
+
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
         }
 
-        if(client != null) {
-            return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
+        if(userCreated != null) {
+            client = clientRepository.findClienteByUser(userCreated);
+            if(client != null) return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
+        }
+
+        if(userCreated != null) {
+             professional= professionalRepository.findProfesionalByUser(userCreated);
+            if(professional != null)  return new ResponseEntity<>(new ProfessionalDTO(professional), jwtToken, HttpStatus.OK);
         }
 
         return ResponseEntity.created(create("/usuarios/login/"+new RegistroUsuarioDTO(userCreated).id())).headers(jwtToken)
