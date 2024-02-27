@@ -1,11 +1,14 @@
 package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.LoginDTO;
+import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
 import cohorte16.homeservice.dtos.clientUserDTO;
 import cohorte16.homeservice.models.Client;
+import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ClientRepository;
+import cohorte16.homeservice.repositories.ProfessionalRepository;
 import cohorte16.homeservice.services.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,10 @@ public class UserController {
 
     @Autowired
     private ClientRepository clientRepository;
+
+
+    @Autowired
+    private ProfessionalRepository professionalRepository;
 
     @PostMapping
     public ResponseEntity<?> RegistrarUsuario(@RequestBody @Valid RegistroUsuarioDTO registroUsuarioDTO){
@@ -62,13 +69,28 @@ public class UserController {
 
         try {
             userCreated = userServiceImpl.validateLogin(datosLogin);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Credenciales incorrectas");
+        }
+
+        if(userCreated != null) {
+
+            try {
             client = clientRepository.findClienteByUser(userCreated);
+            return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
+            }
+        }
+
+        if(userCreated != null) {
+            try {
+            Professional professional= professionalRepository.findProfesionalByUser(userCreated);
+            return new ResponseEntity<>(new ProfessionalDTO(professional), jwtToken, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
         }
-
-        if(client != null) {
-            return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
         }
 
         return ResponseEntity.created(create("/usuarios/login/"+new RegistroUsuarioDTO(userCreated).id())).headers(jwtToken)
