@@ -1,7 +1,20 @@
 package cohorte16.homeservice.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Profession {
-    Otros("Otros");
+    OTHERS("OTHERS"),
+    PLUMBER("PLUMBER"),
+    ELECTRICIAN("ELECTRICIAN"),
+    CONSTRUCTION_WORKER("CONSTRUCTION_WORKER"),
+    PAINTER("PAINTER"),
+    GARDENER("GARDENER"),
+    GASMAN("GASMAN"),
+    TEACHER("TEACHER"),
+    PROGRAMMER("PROGRAMMER"),
+    DESIGNER("DESIGNER"),
+    NANNY("NANNY");
 
     private final String description;
 
@@ -9,17 +22,12 @@ public enum Profession {
         this.description = description;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public static Profession fromString(String text) {
-        for (Profession profesion : Profession.values()) {
-            if (profesion.description.equalsIgnoreCase(text)) {
-                return profesion;
+        for (Profession profession : Profession.values()) {
+            if (profession.getDescription().equalsIgnoreCase(text)) {
+                return profession;
             }
         }
-        Profession p = null;
-        return p;
+        return null;
     }
 }

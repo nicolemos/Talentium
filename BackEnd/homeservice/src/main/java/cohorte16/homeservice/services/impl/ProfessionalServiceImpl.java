@@ -112,6 +112,9 @@ public class ProfessionalServiceImpl implements ProfessionalService {
         professionalUpdated.setProfession(professional.getProfession());
         professionalUpdated.setRating(professional.getRating());
         professionalUpdated.setActive(professional.isActive());
+        professionalUpdated.setDirection(professional.getDirection());
+        professionalUpdated.setUser(professional.getUser());
+        professionalUpdated.setOrderList(professional.getOrderList());
         return professionalUpdated;
     }
 
