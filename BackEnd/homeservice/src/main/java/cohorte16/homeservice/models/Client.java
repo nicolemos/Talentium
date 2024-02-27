@@ -32,6 +32,7 @@ public class Client {
     @NotBlank
     private String dni;
 
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_usuario_id")
     private User user;

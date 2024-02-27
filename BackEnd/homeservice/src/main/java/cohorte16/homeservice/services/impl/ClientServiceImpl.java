@@ -5,11 +5,14 @@ import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.mappers.ClientMapper;
 import cohorte16.homeservice.mappers.ProfessionalMapper;
 import cohorte16.homeservice.models.Client;
+import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ClientRepository;
 import cohorte16.homeservice.repositories.ProfessionalRepository;
+import cohorte16.homeservice.repositories.UserRepository;
 import cohorte16.homeservice.services.ClientService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +25,9 @@ public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
 
+    @Autowired
+    UserRepository userRepository;
+
     public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper){
         this.clientRepository = clientRepository;
         this.clientMapper = clientMapper;
@@ -30,7 +36,11 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientDTO save(ClientDTO clientDTO) throws Exception {
         try {
+         User userEntity = userRepository.findById(clientDTO.user().getId())
+                    .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
             Client clientEntity = clientMapper.clientDTOToClient(clientDTO);
+            clientEntity.setUser(userEntity);
             Client clientSaved = clientRepository.save(clientEntity);
             return clientMapper.clientToClientDTO(clientSaved);
         } catch (Exception e) {
