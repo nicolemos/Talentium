@@ -12,17 +12,17 @@ public class ClientMapper {
     }
 
     public Client clientDTOToClient(ClientDTO clientDTO){
-        return  new Client(clientDTO);
+        return  new Client(
 
-            /*    null,
+               null,
                 clientDTO.name(),
                 clientDTO.lastname(),
                 clientDTO.dni(),
-                clientDTO.urlImage(),
-                clientDTO.rating(),
                 clientDTO.user(),
                 clientDTO.direction(),
-                clientDTO.order()*/
+                clientDTO.rating(),
+                true
+               );
 
     }
 }
