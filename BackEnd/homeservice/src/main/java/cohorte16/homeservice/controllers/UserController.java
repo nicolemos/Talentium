@@ -9,12 +9,16 @@ import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ClientRepository;
 import cohorte16.homeservice.repositories.ProfessionalRepository;
+import cohorte16.homeservice.security.TokenService;
 import cohorte16.homeservice.services.impl.UserServiceImpl;
 import jakarta.validation.Valid;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -36,6 +40,12 @@ public class UserController {
 
     @Autowired
     private ProfessionalRepository professionalRepository;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity<?> RegistrarUsuario(@RequestBody @Valid RegistroUsuarioDTO registroUsuarioDTO){
@@ -60,10 +70,17 @@ public class UserController {
 
     @PostMapping( value = "/login")
     public ResponseEntity <?> login(@RequestBody @Valid LoginDTO datosLogin) {;
+
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(datosLogin.email(),datosLogin.password());
+        var usuarioAutenticado = authenticationManager.authenticate(authToken);
+        var JWTtoken = tokenService.generarToken((User) usuarioAutenticado.getPrincipal());
+       // return ResponseEntity.ok(new DatosJWTToken(JWTtoken));
+
         User userCreated;
         HttpHeaders jwtToken = new HttpHeaders();
         LocalDate hora = LocalDate.now();
-        jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
+       // jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
+        jwtToken.set("Authorization",JWTtoken);
         Client client;
         Professional professional;
 
