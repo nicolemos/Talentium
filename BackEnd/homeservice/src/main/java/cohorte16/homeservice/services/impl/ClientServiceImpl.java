@@ -1,6 +1,7 @@
 package cohorte16.homeservice.services.impl;
 
 import cohorte16.homeservice.dtos.ClientDTO;
+import cohorte16.homeservice.dtos.ClientResponseDTO;
 import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.mappers.ClientMapper;
 import cohorte16.homeservice.mappers.ProfessionalMapper;
@@ -34,7 +35,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDTO save(ClientDTO clientDTO) throws Exception {
+    public ClientResponseDTO save(ClientDTO clientDTO) throws Exception {
         try {
          User userEntity = userRepository.findById(clientDTO.user().getId())
                     .orElseThrow(() -> new EntityNotFoundException("User not found"));
@@ -42,38 +43,38 @@ public class ClientServiceImpl implements ClientService {
             Client clientEntity = clientMapper.clientDTOToClient(clientDTO);
             clientEntity.setUser(userEntity);
             Client clientSaved = clientRepository.save(clientEntity);
-            return clientMapper.clientToClientDTO(clientSaved);
+            return clientMapper.clientToClientResponseDTO(clientSaved);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    public ClientDTO findById(Long id) throws Exception {
+    public ClientResponseDTO findById(Long id) throws Exception {
         try {
             Optional<Client> clientOptional = clientRepository.findById(id);
             if (clientOptional.isEmpty()) {
                 throw new EntityNotFoundException("Client not found");
             }
             Client client = clientOptional.get();
-            return clientMapper.clientToClientDTO(client);
+            return clientMapper.clientToClientResponseDTO(client);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    public List<ClientDTO> findAll() throws Exception {
+    public List<ClientResponseDTO> findAll() throws Exception {
         try {
             List<Client> clientList = clientRepository.findAll();
-            return clientList.stream().map(clientMapper::clientToClientDTO).toList();
+            return clientList.stream().map(clientMapper::clientToClientResponseDTO).toList();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    public ClientDTO update(Long id, ClientDTO clientDTO) throws Exception {
+    public ClientResponseDTO update(Long id, ClientDTO clientDTO) throws Exception {
         try {
             Optional<Client> clientOptional = clientRepository.findById(id);
             if(clientOptional.isEmpty()){
@@ -81,7 +82,7 @@ public class ClientServiceImpl implements ClientService {
             }
             Client clientEntity = clientMapper.clientDTOToClient(clientDTO);
             Client clientUpdate = getClient(clientEntity,clientOptional);
-            return clientMapper.clientToClientDTO(clientUpdate);
+            return clientMapper.clientToClientResponseDTO(clientUpdate);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -110,7 +111,7 @@ public class ClientServiceImpl implements ClientService {
         clientUpdate.setRating(client.getRating());
         clientUpdate.setActive(client.getActive());
         clientUpdate.setDirection(client.getDirection());
-        clientUpdate.setUser(client.getUser());
+        clientUpdate.setUser(new User(client.getUser().getId(), client.getUser().getEmail(), client.getUser().getPassword(), client.getUser().getAvatar()));
         return clientUpdate;
     }
 }

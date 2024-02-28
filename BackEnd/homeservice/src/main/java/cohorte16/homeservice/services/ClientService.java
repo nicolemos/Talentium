@@ -1,12 +1,14 @@
 package cohorte16.homeservice.services;
 
 import cohorte16.homeservice.dtos.ClientDTO;
+import cohorte16.homeservice.dtos.ClientResponseDTO;
+
 import java.util.List;
 
 public interface ClientService {
-    ClientDTO save(ClientDTO clientDTO) throws Exception;
-    ClientDTO findById(Long id) throws Exception;
-    List<ClientDTO> findAll() throws  Exception;
-    ClientDTO update(Long id,ClientDTO clientDTO) throws Exception;
+    ClientResponseDTO save(ClientDTO clientDTO) throws Exception;
+    ClientResponseDTO findById(Long id) throws Exception;
+    List<ClientResponseDTO> findAll() throws  Exception;
+    ClientResponseDTO update(Long id,ClientDTO clientDTO) throws Exception;
     boolean delete(Long id) throws Exception;
 }
