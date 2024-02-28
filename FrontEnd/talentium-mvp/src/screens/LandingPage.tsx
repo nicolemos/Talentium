@@ -6,7 +6,7 @@ import Article from './Article';
 const LandingPage: React.FC = () => {
     return (
         <>
-            <div className='min-h-screen w-full bg-gradient-to-b from-royal-blue-500 to-royal-blue-100 '>
+            <div className='w-full min-h-screen bg-gradient-to-b from-royal-blue-500 to-royal-blue-100 '>
                 <Header />
                 <main>
                     <Hero />
