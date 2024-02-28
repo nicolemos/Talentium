@@ -6,7 +6,7 @@ import { BasicRegistrationFormProps } from '../interfaces/RegistrationFormTypes'
 import { ToastContainer, toast } from 'react-toastify';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
-import Button from './Button';
+import CustomButton from './CustomButton';
 
 import useUserServices from '../hooks/useUserServices';
 
@@ -86,7 +86,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
 
     return (
         <div className='flex h-screen w-full flex-col items-center justify-center gap-8 bg-royal-blue-500 lg:gap-3 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4'>
-            <Button
+            <CustomButton
                 onClick={handleback}
                 customClass={
                     'w-28 h-16 absolute bottom-5 right-5 text-white text-xl font-bold lg:top-5 lg:left-5 cursor-pointer '
@@ -94,7 +94,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
             >
                 <FaArrowLeft className='h-10 w-10 p-2' />
                 atrás
-            </Button>
+            </CustomButton>
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -200,12 +200,12 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                     />
                 </label>
 
-                <Button
+                <CustomButton
                     onClick={handleSubmit(onSubmit)}
                     customClass='bg-royal-blue-500 flex items-center rounded-md shadow-md p-4 m-8'
                 >
                     Registrarse
-                </Button>
+                </CustomButton>
                 <ToastContainer />
             </form>
         </div>

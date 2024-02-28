@@ -1,10 +1,5 @@
-import React, { ReactNode } from 'react';
-
-interface ButtonProps {
-    children?: ReactNode;
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    customClass?: string;
-}
+import React from 'react';
+import { ButtonProps } from '../interfaces/ButtonProps';
 
 const CustomButton: React.FC<ButtonProps> = ({
     children,

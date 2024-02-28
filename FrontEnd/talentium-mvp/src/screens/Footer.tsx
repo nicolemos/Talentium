@@ -16,11 +16,7 @@ const Footer: React.FC = () => {
             <div className='my-9 grid grid-cols-3 items-center gap-4 p-4 md:grid md:grid-cols-2 md:content-center md:items-center lg:grid lg:grid-cols-4 '>
                 <div className='col-span-2 md:col-span-1 md:grid  '>
                     <Link to='/'>
-                        <img
-                            src='/Logo3.png'
-                            alt=''
-                            className='h-auto w-64 bg-royal-blue-500'
-                        />
+                        <img src='/Logo3.png' alt='' className='h-auto w-64 ' />
                     </Link>
                 </div>
 

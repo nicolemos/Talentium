@@ -4,7 +4,7 @@ import { LoginForm } from '../interfaces/LoginForm';
 import useUserServices from '../hooks/useUserServices';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
-import Button from './Button';
+import CustomButton from './CustomButton';
 
 const Login: React.FC = () => {
     const { loginUser } = useUserServices();
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
 
     return (
         <div className='relative flex h-screen w-full flex-col items-center justify-center gap-8 bg-royal-blue-500 lg:relative lg:gap-3 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4'>
-            <Button
+            <CustomButton
                 onClick={handleback}
                 customClass={
                     'w-28 h-16 absolute bottom-5 right-5 lg:top-5 lg:left-5 text-white text-xl font-bold cursor-pointer '
@@ -59,7 +59,7 @@ const Login: React.FC = () => {
             >
                 <FaArrowLeft className='h-10 w-10 p-2' />
                 atrás
-            </Button>
+            </CustomButton>
             <form
                 action=''
                 className='lg:w-76 flex h-96 w-72 flex-col items-center justify-center bg-royal-blue-500 lg:flex lg:flex-col lg:items-center lg:rounded-lg lg:shadow-lg lg:shadow-slate-900 '
@@ -94,12 +94,12 @@ const Login: React.FC = () => {
                         className='mt-1 rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
                         required
                     />
-                    <Button
+                    <CustomButton
                         onClick={handleSubmit}
                         customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md p-2'
                     >
                         Ingresar
-                    </Button>
+                    </CustomButton>
                 </label>
             </form>
             <div className='flex flex-col items-center justify-center '>
