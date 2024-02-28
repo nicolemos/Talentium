@@ -1,6 +1,7 @@
 package cohorte16.homeservice.services.impl;
 
 import cohorte16.homeservice.dtos.ProfessionalDTO;
+import cohorte16.homeservice.dtos.ProfessionalResponseDTO;
 import cohorte16.homeservice.mappers.ProfessionalMapper;
 import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
@@ -31,12 +32,12 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public List<ProfessionalDTO> findAll() {
-        List<ProfessionalDTO> professionalDTOs;
+    public List<ProfessionalResponseDTO> findAll() {
+        List<ProfessionalResponseDTO> professionalDTOs;
         try {
             List<Professional> professionalList = professionalRepository.findAll();
             professionalDTOs = professionalList.stream()
-                       .map(professionalMapper::professionalToProfessionalDTO)
+                       .map(professionalMapper::professionalToProfessionalResponseDTO)
                        .toList();
            }catch (Exception e){
                 throw new ServiceException("Error occurred while fetching all professionals", e);
@@ -45,11 +46,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public ProfessionalDTO findById(Long id) {
+    public ProfessionalResponseDTO findById(Long id) {
         try {
             Professional professional = professionalRepository.findById(id)
                     .orElseThrow(() -> new EntityNotFoundException("Professional not found with id: " + id));
-            return professionalMapper.professionalToProfessionalDTO(professional);
+            return professionalMapper.professionalToProfessionalResponseDTO(professional);
         } catch (EntityNotFoundException e) {
             throw e;
         } catch (Exception e) {
@@ -58,14 +59,14 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public ProfessionalDTO save(ProfessionalDTO professionalDTO) {
+    public ProfessionalResponseDTO save(ProfessionalDTO professionalDTO) {
         try {
             User userEntity = userRepository.findById(professionalDTO.user().getId())
                     .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + professionalDTO.user().getId()));
             Professional professionalEntity = professionalMapper.professionalDTOToProfessional(professionalDTO);
             professionalEntity.setUser(userEntity);
             Professional professionalSaved = professionalRepository.save(professionalEntity);
-            return professionalMapper.professionalToProfessionalDTO(professionalSaved);
+            return professionalMapper.professionalToProfessionalResponseDTO(professionalSaved);
         } catch (EntityNotFoundException e) {
             throw e;
         } catch (Exception e) {
@@ -74,13 +75,13 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public ProfessionalDTO update(Long id, ProfessionalDTO professionalDTO) {
+    public ProfessionalResponseDTO update(Long id, ProfessionalDTO professionalDTO) {
         try {
             Professional existingProfessional = professionalRepository.findById(id)
                     .orElseThrow(() -> new EntityNotFoundException("Professional not found with id: " + id));
             Professional updatedProfessional = updateProfessionalFromDTO(existingProfessional, professionalDTO);
             Professional savedProfessional = professionalRepository.save(updatedProfessional);
-            return professionalMapper.professionalToProfessionalDTO(savedProfessional);
+            return professionalMapper.professionalToProfessionalResponseDTO(savedProfessional);
         } catch (EntityNotFoundException e) {
             throw e;
         } catch (Exception e) {
