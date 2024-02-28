@@ -1,74 +1,44 @@
 //import Button from './Button';
 const Article: React.FC = () => {
     return (
-        <article className='body-font text-gray-600 '>
-            <div className='container mx-auto px-5 py-24'>
-                <h1 className='title-font mb-20 text-center text-2xl font-bold text-gray-800 sm:text-3xl'>
-                    ¿Cómo es el proceso?
-                </h1>
+        <article className='flex flex-col items-center justify-center p-4 my-4 md:flex md:flex-col md:items-center md:justify-center lg:m-8 lg:p-8 md:gap-6 '>
+            <h2 className='font-bold text-3xl text-gray-700 py-2 my-4 lg:text-5xl'>
+                ¿Cómo es el proceso?
+            </h2>
 
-                <div className='mx-4 mb-10 mt-4 flex flex-col gap-4 md:flex-1 md:flex-row '>
-                    <div className='flex rounded-md bg-royal-blue-300/50 p-4 shadow-md md:w-1/3'>
-                        <div className='flex-grow pl-6 '>
-                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-700 '>
-                                01
-                                <span className='flex justify-center gap-2'>
-                                    Registro
-                                </span>
-                            </h2>
-                            <p className='leading-relaxed text-gray-900'>
-                                Ingresa a la pestaña de Registro.
-                                <br />
-                                Ingresa tu correo electrónico.
-                                <br />
-                                Una contraseñe que recuerdes bien.
-                                <br />
-                                Y presiona Registrar.
-                                <br />
-                            </p>
-                        </div>
-                    </div>
-                    <div className='flex rounded-md bg-royal-blue-300/50 p-4 shadow-md md:w-1/3'>
-                        <div className='flex-grow pl-6 '>
-                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-700 '>
-                                02
-                                <span className='flex justify-center gap-2'>
-                                    Contacta
-                                </span>
-                            </h2>
-                            <p className='leading-relaxed text-gray-900'>
-                                Ingresa a tu perfil.
-                                <br />
-                                Completa los datos en tu perfil de Cliente o
-                                actualizalo a Profesional si es tu caso.
-                                <br />
-                                Crea órdenes o postúlate si eres un profesional.
-                                <br />
-                                Y conecta con profesionales y potenciales
-                                clientes.
-                                <br />
-                            </p>
-                        </div>
-                    </div>
-                    <div className='flex rounded-md bg-royal-blue-300/50 p-4 shadow-md md:w-1/3'>
-                        <div className='flex-grow pl-6 '>
-                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-700 '>
-                                03
-                                <span className='flex justify-center gap-2'>
-                                    Contrata
-                                </span>
-                            </h2>
-                            <p className='leading-relaxed text-gray-900'>
-                                Contáctate con el profesional o el cliente.
-                                <br />
-                                Coordina fechas y horarios para realizar el
-                                trabajo.
-                                <br />
-                                Al terminar el trabajo, notifica.
-                                <br />
-                            </p>
-                        </div>
-                    </div>
+            <div className='flex flex-col items-center justify-center gap-6 md:flex md:flex-col md:items-center md:justify-center md:p-16 lg:flex lg:flex-row lg:items-center lg:justify-around '>
+
+                <div className='flex flex-col items-center justify-center p-2 m-4 gap-2 md:flex md:flex-col md:gap-6 lg:flex lg:flex-col lg:gap-6 '>
+                    <h3 className='flex flex-col justify-center items-center font-semibold text-2xl text-gray-600 gap-2 md:flex md:flex-col md:gap-4 lg:text-4xl '>
+                        01<span className='flex flex-col gap-2'>Registro</span>
+                    </h3>
+                    <p className='text-center font-medium text-xl text-gray-800 md:p-4 lg:text-2xl lg:p-4 '>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Cumque eveniet porro nisi ex maiores enim voluptatum
+                        fuga voluptates saepe illum necessitatibus aliquid.
+                    </p>
+                </div>
+
+                <div className='flex flex-col items-center justify-center p-2 m-4 gap-2 md:flex md:flex-col md:gap-6 lg:flex lg:flex-col lg:gap-6 '>
+                    <h3 className='flex flex-col justify-center items-center font-semibold text-2xl text-gray-600 gap-2 md:flex md:flex-col md:gap-4 lg:text-4xl '>
+                        02<span>Contacta</span>
+                    </h3>
+                    <p className='text-center font-medium text-xl text-gray-800 md:p-4 lg:text-2xl lg:p-4 '>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Cumque eveniet porro nisi ex maiores enim voluptatum
+                        fuga voluptates saepe illum necessitatibus aliquid.
+                    </p>
+                </div>
+
+                <div className='flex flex-col items-center justify-center p-2 m-4 gap-2 md:flex md:flex-col md:gap-6 lg:flex lg:flex-col lg:gap-6 '>
+                    <h3 className='flex flex-col justify-center items-center font-semibold text-2xl text-gray-600 gap-2 md:flex md:flex-col md:gap-4 lg:text-4xl '>
+                        03<span>Contrata</span>
+                    </h3>
+                    <p className='text-center font-medium text-xl text-gray-800 md:p-4 lg:text-2xl lg:p-4 '>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Cumque eveniet porro nisi ex maiores enim voluptatum
+                        fuga voluptates saepe illum necessitatibus aliquid.
+                    </p>
                 </div>
             </div>
         </article>
