@@ -18,7 +18,7 @@ const Article: React.FC = () => {
                             <p className='leading-relaxed text-gray-900'>
                                 Ingresa a la pestaña de Registro.
                                 <br />
-                                Ingresa tu correo electrónico.
+                                Ingresa tu correo electrónico actualizad0.
                                 <br />
                                 Una contraseñe que recuerdes bien.
                                 <br />
