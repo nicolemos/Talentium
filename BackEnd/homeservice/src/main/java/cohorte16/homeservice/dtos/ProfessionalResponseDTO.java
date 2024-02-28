@@ -9,7 +9,7 @@ public record ProfessionalResponseDTO(
         String cbu,
         Integer rating,
         Profession profession,
-        DirectionDTO directionDTO,
-        UserDTO userDTO
+        DirectionDTO direction,
+        UserDTO user
 ) {
 }
