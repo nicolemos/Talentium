@@ -3,7 +3,7 @@ package cohorte16.homeservice.controllers;
 import cohorte16.homeservice.dtos.LoginDTO;
 import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
-import cohorte16.homeservice.dtos.clientUserDTO;
+import cohorte16.homeservice.dtos.ClientUserDTO;
 import cohorte16.homeservice.models.Client;
 import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
@@ -17,9 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.time.LocalDate;
-import java.util.function.Consumer;
+
 
 import static java.net.URI.*;
 
@@ -77,7 +76,7 @@ public class UserController {
 
         if(userCreated != null) {
             client = clientRepository.findClienteByUser(userCreated);
-            if(client != null) return new ResponseEntity<>(new clientUserDTO(client), jwtToken, HttpStatus.OK);
+            if(client != null) return new ResponseEntity<>(new ClientUserDTO(client), jwtToken, HttpStatus.OK);
         }
 
         if(userCreated != null) {

@@ -23,6 +23,7 @@ public enum Profession {
         this.description = description;
     }
 
+    /*
     public static Profession fromString(String text) {
         for (Profession profession : Profession.values()) {
             if (profession.getDescription().equalsIgnoreCase(text)) {
@@ -30,5 +31,5 @@ public enum Profession {
             }
         }
         return null;
-    }
+    }*/
 }
