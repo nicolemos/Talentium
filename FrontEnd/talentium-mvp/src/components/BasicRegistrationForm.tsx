@@ -3,10 +3,10 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { IoCloseOutline } from 'react-icons/io5';
 import { BasicRegistrationFormProps } from '../interfaces/RegistrationFormTypes';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
-import CustomButton from './CustomButton';
+import Button from './Button';
 
 import useUserServices from '../hooks/useUserServices';
 
@@ -26,7 +26,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     const { createUser } = useUserServices();
 
     const onSubmit: SubmitHandler<BasicRegistrationFormProps> = async (
-        data,
+        data
     ) => {
         try {
             const userCreated = await createUser(data);
@@ -37,7 +37,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 navigate('/');
             } else {
                 toast.error(
-                    'Hubo un error con el registro, vuelve a intentarlo',
+                    'Hubo un error con el registro, vuelve a intentarlo'
                 );
             }
         } catch (error) {
@@ -52,7 +52,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
         if (file) {
             if (file.size > MAX_FILE_SIZE_BYTES) {
                 alert(
-                    `El archivo excede el máximo peso permitido. Máximo peso permitido: 100KB.`,
+                    `El archivo excede el máximo peso permitido. Máximo peso permitido: 100KB.`
                 );
                 e.target.value = '';
                 return;
@@ -73,7 +73,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     const clearAvatar = () => {
         setAvatarPreview(null);
         const fileInput = document.getElementById(
-            'avatar-input',
+            'avatar-input'
         ) as HTMLInputElement;
         if (fileInput) {
             fileInput.value = '';
@@ -85,28 +85,28 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
     };
 
     return (
-        <div className='flex h-screen w-full flex-col items-center justify-center gap-8 bg-royal-blue-500 lg:gap-3 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4'>
-            <CustomButton
+        <>
+            <Button
                 onClick={handleback}
                 customClass={
-                    'w-28 h-16 absolute bottom-5 right-5 text-white text-xl font-bold lg:top-5 lg:left-5 cursor-pointer '
+                    'absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'
                 }
             >
-                <FaArrowLeft className='h-10 w-10 p-2' />
+                <FaArrowLeft className='w-10 h-10 p-2' />
                 atrás
-            </CustomButton>
+            </Button>
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className='flex h-auto w-72 flex-col items-center justify-center gap-4 bg-royal-blue-500 md:w-2/4 lg:rounded-lg lg:shadow-lg lg:shadow-slate-900 xl:w-4/12'
+                className={`bg-royal-blue-500 w-2/4 p-4 py-8 rounded-lg shadow-slate-900 shadow-lg flex flex-col items-center justify-center`}
                 style={{ gridTemplateRows: 'auto auto auto auto' }}
             >
-                <h2 className='col-span-2 my-auto w-full py-4 text-center text-xl font-bold text-white'>
+                <h2 className='text-white text-xl font-bold col-span-2 text-center my-auto w-full'>
                     Registro Talentium
                 </h2>
 
                 <div
-                    className='col-span-2 flex h-full w-full justify-center'
+                    className='flex col-span-2 justify-center w-full h-full'
                     onMouseEnter={() => setShowCloseIcon(true)}
                     onMouseLeave={() => setShowCloseIcon(false)}
                 >
@@ -122,7 +122,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                     />
                     {showCloseIcon && avatarPreview && (
                         <IoCloseOutline
-                            className='absolute ml-28 cursor-pointer rounded-full bg-black/20 text-xl text-red-500'
+                            className='absolute cursor-pointer ml-28 text-red-500 text-xl bg-black/20 rounded-full'
                             title='Borrar Avatar'
                             onClick={clearAvatar}
                         />
@@ -130,12 +130,12 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 </div>
 
                 <label
-                    className={`sm:col-1 col-span-2 w-full text-sm font-bold text-white md:mx-auto md:w-3/5`}
+                    className={`text-white text-sm w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
                 >
                     {errors.email?.type === 'required' && (
                         <p
                             role='alert'
-                            className='mb-1 text-center text-red-500'
+                            className='text-center text-red-500 mb-1'
                         >
                             {errors.email.message}
                         </p>
@@ -147,19 +147,19 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                         })}
                         aria-invalid={errors.email ? 'true' : 'false'}
                         placeholder='ejemplo@mail.com'
-                        className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
+                        className='text-base w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
                         type='email'
                         id='email-input'
                     />
                 </label>
 
                 <label
-                    className={`sm:col-1 col-span-2 w-full text-sm font-bold text-white md:mx-auto md:w-3/5`}
+                    className={`text-white text-sm w-full sm:col-1 font-bold col-span-2 md:w-3/5 md:mx-auto`}
                 >
                     {errors.contrasenia?.message && (
                         <p
                             role='alert'
-                            className='mb-1 flex text-center text-red-500 md:w-96'
+                            className='text-red-500 mb-1 text-center md:w-96 flex'
                         >
                             {errors.contrasenia.message}
                         </p>
@@ -180,14 +180,14 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                             },
                         })}
                         placeholder='Ingrese su contraseña'
-                        className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
+                        className='text-base text-black w-full rounded-md outline-none shadow-inner shadow-slate-900 px-2 py-1 mt-1 bg-white/80 font-normal'
                         type='password'
                         id='password-input'
                     />
                 </label>
 
                 <label
-                    className={`text-md sm:col-1 col-span-2 w-full text-center font-bold text-white md:mx-auto md:w-3/5`}
+                    className={`text-white text-md w-full sm:col-1 font-bold col-span-2 text-center md:w-3/5 md:mx-auto`}
                 >
                     Avatar (opcional):
                     <input
@@ -200,15 +200,14 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                     />
                 </label>
 
-                <CustomButton
+                <Button
                     onClick={handleSubmit(onSubmit)}
                     customClass='bg-royal-blue-500 flex items-center rounded-md shadow-md p-4 m-8'
                 >
                     Registrarse
-                </CustomButton>
-                <ToastContainer />
+                </Button>
             </form>
-        </div>
+        </>
     );
 };
 

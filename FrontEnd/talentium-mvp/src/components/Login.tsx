@@ -4,7 +4,7 @@ import { LoginForm } from '../interfaces/LoginForm';
 import useUserServices from '../hooks/useUserServices';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
-import CustomButton from './CustomButton';
+import Button from './Button';
 
 const Login: React.FC = () => {
     const { loginUser } = useUserServices();
@@ -50,27 +50,27 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className='relative flex h-screen w-full flex-col items-center justify-center gap-8 bg-royal-blue-500 lg:relative lg:gap-3 lg:bg-gradient-to-b lg:from-royal-blue-500 lg:to-white lg:p-4'>
-            <CustomButton
+        <div className='bg-gradient-to-b from-royal-blue-500 to-white h-screen flex flex-col items-center justify-center p-4 gap-3'>
+            <Button
                 onClick={handleback}
                 customClass={
-                    'w-28 h-16 absolute bottom-5 right-5 lg:top-5 lg:left-5 text-white text-xl font-bold cursor-pointer '
+                    'absolute flex items-center p-3 m-3 top-5 left-5 text-white text-xl font-bold cursor-pointer'
                 }
             >
-                <FaArrowLeft className='h-10 w-10 p-2' />
+                <FaArrowLeft className='w-10 h-10 p-2' />
                 atrás
-            </CustomButton>
+            </Button>
             <form
                 action=''
-                className='lg:w-76 flex h-96 w-72 flex-col items-center justify-center bg-royal-blue-500 lg:flex lg:flex-col lg:items-center lg:rounded-lg lg:shadow-lg lg:shadow-slate-900 '
+                className='mx-auto w-60 h-72 bg-royal-blue-500 flex flex-col items-center rounded-lg shadow-slate-900 shadow-lg'
                 onSubmit={handleSubmit}
             >
-                <label className='flex h-screen w-screen flex-col items-center justify-center gap-4 lg:m-3 lg:flex lg:flex-col lg:items-center lg:justify-center lg:p-4'>
-                    <div className='mb-2 flex items-center justify-center rounded-full'>
+                <label className='flex flex-col items-center justify-center m-3 p-4'>
+                    <div className='rounded-full mb-2 flex items-center justify-center'>
                         <img
                             src={NoAvatar}
                             alt=''
-                            className='h-28 w-28 rounded-full lg:h-20 lg:w-20'
+                            className='w-20 h-20 rounded-full'
                         />
                     </div>
 
@@ -81,7 +81,7 @@ const Login: React.FC = () => {
                         placeholder='email'
                         value={loginForm.email}
                         onChange={handleInputChange}
-                        className='mt-1 rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
+                        className='w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900'
                         required
                     />
                     <input
@@ -91,24 +91,22 @@ const Login: React.FC = () => {
                         placeholder='contraseña'
                         value={loginForm.contrasenia}
                         onChange={handleInputChange}
-                        className='mt-1 rounded-md bg-white/80 px-2 py-1 text-base font-normal text-black shadow-inner shadow-slate-900 outline-none'
+                        className='w-30 rounded-md m-2 px-3 outline-none shadow-inner shadow-slate-900'
                         required
                     />
-                    <CustomButton
+                    <Button
                         onClick={handleSubmit}
-                        customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md p-2'
+                        customClass='bg-royal-blue-500 rounded-md shadow-md p-8 m-4'
                     >
                         Ingresar
-                    </CustomButton>
+                    </Button>
                 </label>
             </form>
-            <div className='flex flex-col items-center justify-center '>
-                {error && (
-                    <p className='font-medium text-red-600 '>
-                        Todos los campos son obligatorios
-                    </p>
-                )}
-            </div>
+            {error && (
+                <p className='text-red-600 font-medium'>
+                    Todos los campos son obligatorios
+                </p>
+            )}
         </div>
     );
 };
