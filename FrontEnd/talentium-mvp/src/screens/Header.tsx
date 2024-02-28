@@ -15,8 +15,8 @@ const Header: React.FC = () => {
     const [isClientVisible, setIsClientVisible] = useState(false);
     const closeClient = () => setIsClientVisible(false);
 
-    const [isProfVisible, setIsProfVisible] = useState(false)
-    const closeModalProf = () => setIsProfVisible(false)
+    const [isProfVisible, setIsProfVisible] = useState(false);
+    const closeModalProf = () => setIsProfVisible(false);
 
     // Datos de ejemplo para el modal
     const InfoCardClientContent = {
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className='bg-transparent p-4 '>
+        <header className='bg-transparent p-2 '>
             <nav className='grid grid-cols-3 items-center justify-between text-white md:grid md:grid-cols-2 md:content-center md:items-center md:justify-items-end md:gap-4 md:space-x-8 md:p-4 lg:grid lg:grid-cols-3'>
                 <div className='col-span-2 h-auto w-60 md:col-span-1 md:grid md:w-44 md:justify-self-start'>
                     <Link to='/'>
