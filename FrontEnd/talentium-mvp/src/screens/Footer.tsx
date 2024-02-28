@@ -13,18 +13,14 @@ const Footer: React.FC = () => {
 
     return (
         <footer className='text-gray-900'>
-            <div className='grid grid-cols-3 gap-4 items-center p-4 my-9 md:grid md:grid-cols-2 md:content-center md:items-center lg:grid lg:grid-cols-4 '>
-                <div className='col-span-2 md:grid md:col-span-1  '>
+            <div className='my-9 grid grid-cols-3 items-center gap-4 p-4 md:grid md:grid-cols-2 md:content-center md:items-center lg:grid lg:grid-cols-4 '>
+                <div className='col-span-2 md:col-span-1 md:grid  '>
                     <Link to='/'>
-                        <img
-                            src='/Logo2.png'
-                            alt=''
-                            className='w-64 h-auto bg-royal-blue-500'
-                        />
+                        <img src='/Logo3.png' alt='' className='h-auto w-64 ' />
                     </Link>
                 </div>
 
-                <div className='col-span-1 md:grid md:col-span-1 md:text-md lg:text-lg  '>
+                <div className='md:text-md col-span-1 md:col-span-1 md:grid lg:text-lg  '>
                     <h4 className='text-md text-semibold text-gray-800 md:text-lg lg:text-xl'>
                         Links
                     </h4>
@@ -48,7 +44,7 @@ const Footer: React.FC = () => {
                     </ul>
                 </div>
 
-                <div className='col-span-3 md:grid md:col-span-1 md:text-md lg:text-lg '>
+                <div className='md:text-md col-span-3 md:col-span-1 md:grid lg:text-lg '>
                     <h4 className='text-md text-semibold text-gray-800 md:text-lg lg:text-xl '>
                         +Info
                     </h4>
@@ -69,7 +65,7 @@ const Footer: React.FC = () => {
                     </ul>
                 </div>
 
-                <div className='col-span-3 md:grid md:col-span-1 md:text-md lg:text-lg  '>
+                <div className='md:text-md col-span-3 md:col-span-1 md:grid lg:text-lg  '>
                     <h4 className='text-md text-semibold text-gray-800 md:text-lg lg:text-xl '>
                         Contacto
                     </h4>
