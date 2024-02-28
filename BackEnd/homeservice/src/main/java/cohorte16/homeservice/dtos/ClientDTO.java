@@ -14,9 +14,12 @@ public record ClientDTO(
 ) {
 
     public ClientDTO(Client client) {
-        this(client.getName(),client.getLastname(),client.getDni(),
+        this(client.getName(),
+                client.getLastname(),
+                client.getDni(),
                client.getRating(),
-                client.getUser(),client.getDirection()
+                client.getUser(),
+                client.getDirection()
         );
     }
 }

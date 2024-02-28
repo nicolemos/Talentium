@@ -11,6 +11,7 @@ import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.repositories.OrderRepository;
 import cohorte16.homeservice.repositories.ProfessionalRepository;
 import cohorte16.homeservice.services.OrderService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,23 +79,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order takeOrderProfessional(Long id, OrderProfessionalDTO orderProfessionalDTO) throws Exception {
         try {
-            Optional<Order> orderOptional = orderRepository.findById(id);
-            if (orderOptional.isEmpty()) {
-                throw new EntityNotSavedException("Order not found");
-            }
-            Order existingOrder = orderOptional.get();
+            Order order = orderRepository.findById(id).orElseThrow((() -> new EntityNotFoundException("Order Not Found")));
 
-            if (orderProfessionalDTO.professional_Id() != null) {
-                Optional<Order> professionalOptional = orderRepository.findById(orderProfessionalDTO.professional_Id());
-                if (professionalOptional.isPresent()) {
-                    existingOrder.setProfessional(professionalOptional.get().getProfessional());
-                }
-            }
-
-            existingOrder.setDescription_professional(orderProfessionalDTO.description_Professional());
-            existingOrder.setPrice(orderProfessionalDTO.price());
-            existingOrder.setOrderstatus(Orderstatus.valueOf("Pendiente"));
-            return orderRepository.save(existingOrder);
+            Professional professional = professionalRepository.findById(orderProfessionalDTO.id()).orElseThrow((() -> new EntityNotFoundException("Professional Not Found")));
+            order.setProfessional(professional);
+            order.setDescription_professional(orderProfessionalDTO.description_Professional());
+            order.setPrice(orderProfessionalDTO.price());
+            order.setOrderstatus(Orderstatus.valueOf("Pendiente"));
+            return orderRepository.save(order);
 
         } catch (Exception e) {
             throw new Exception(e.getMessage());

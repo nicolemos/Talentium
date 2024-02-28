@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClientMapper {
 
-    public ClientDTO clientToClientDTO(Client client) {
+    public ClientDTO clientToClientDTO(Client client)
+    {
         return new ClientDTO(client);
     }
 
@@ -35,8 +36,13 @@ public class ClientMapper {
                 client.getLastname(),
                 client.getDni(),
                 client.getRating(),
-                new UserDTO(client.getUser().getId(), client.getUser().getEmail(), client.getUser().getAvatar()),
-                new DirectionDTO(client.getDirection().getStreet(), client.getDirection().getNumber(), client.getDirection().getProvince(), client.getDirection().getLocation())
+                new UserDTO(client.getUser().getId(),
+                        client.getUser().getEmail(),
+                        client.getUser().getAvatar()),
+                new DirectionDTO(client.getDirection().getStreet(),
+                        client.getDirection().getNumber(),
+                        client.getDirection().getProvince(),
+                        client.getDirection().getLocation())
         );
     }
 }

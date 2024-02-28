@@ -53,12 +53,15 @@ public class Order {
         this.description = orderDTO.description();
     }
 
+    /*
     public Order(OrderProfessionalDTO orderProfessionalDTO){
         this.professional.setId(orderProfessionalDTO.professional_Id());
         this.price = orderProfessionalDTO.price();
         this.description_professional =  orderProfessionalDTO.description_Professional();
         this.orderstatus = orderProfessionalDTO.orderStatus();
     }
+
+     */
 
 
 }
