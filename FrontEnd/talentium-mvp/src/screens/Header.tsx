@@ -4,11 +4,49 @@ import CustomLink from '../components/CustomLink';
 import { RiMenuLine } from 'react-icons/ri';
 
 const Header: React.FC = () => {
-    return (
-        <header className='bg-transparent p-4 '>
-            <nav className='grid grid-cols-3 items-center justify-between text-white md:grid md:grid-cols-2 md:content-center md:items-center md:justify-items-end md:space-x-8 md:gap-4 md:p-4 lg:grid lg:grid-cols-3'>
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-                <div className='col-span-2 h-auto w-60 md:col-span-1 md:grid md:justify-self-start'>
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const [isClientVisible, setIsClientVisible] = useState(false);
+    const closeClient = () => setIsClientVisible(false);
+
+    const [isProfVisible, setIsProfVisible] = useState(false);
+    const closeModalProf = () => setIsProfVisible(false);
+
+    // Datos de ejemplo para el modal
+    const InfoCardClientContent = {
+        title: 'Como Cliente puedes...',
+        content:
+            'Contratar los servicios del profesional que necesites, tan fácil como:',
+        listItems: [
+            'Hacer la oferta de trabajo.',
+            'El profesional acepta la propuesta.',
+            'Coordinan la reunión.',
+            'Se realiza el trabajo.',
+            'Y listo...',
+        ],
+    };
+
+    const InfoCardProfContent = {
+        title: 'Como Profesional puedes...',
+        content:
+            'Además de contratar los servicios de un profesional que necesites, tambien puedes ofrecer los servicios en los que te especializas tan fácil como:',
+        listItems: [
+            'Actualizar tu perfil como Profesional.',
+            'Ver ordenes de trabajo, aceptarlas y  ofrecer tus servicios.',
+            'Coordinan la reunión.',
+            'Realizar el trabajo en el tiempo acordado.',
+            'Y listo...',
+        ],
+    };
+
+    return (
+        <header className='bg-transparent p-2 '>
+            <nav className='grid grid-cols-3 items-center justify-between text-white md:grid md:grid-cols-2 md:content-center md:items-center md:justify-items-end md:gap-4 md:space-x-8 md:p-4 lg:grid lg:grid-cols-3'>
+                <div className='col-span-2 h-auto w-60 md:col-span-1 md:grid md:w-44 md:justify-self-start'>
                     <Link to='/'>
                         <img src='/Logo2.png' alt='Logo' className='' />
                     </Link>
