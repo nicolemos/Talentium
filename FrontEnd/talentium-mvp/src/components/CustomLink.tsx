@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { LinkProps } from '../interfaces/LinkProps';
 
-const CustomLink: React.FC<LinkProps> = ({
-    to,
-    content,
-    children,
-    onClick,
-}) => {
+interface MyLinkProps {
+    to: string;
+    content: string;
+    children?: ReactNode;
+}
+
+const CustomLink: React.FC<MyLinkProps> = ({ to, content, children }) => {
     return (
         <Link
             to={to}
-            className={`flex items-center gap-4 rounded-md px-2 py-1 transition-colors hover:bg-royal-blue-700`}
-            onClick={onClick}
+            className={`flex items-center gap-4 py-1 px-2 hover:bg-royal-blue-700 rounded-md transition-colors`}
         >
             {children}
             {content}

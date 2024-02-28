@@ -4,9 +4,9 @@ import React, {
     useState,
     ReactNode,
     useCallback,
-} from 'react';
+} from "react";
 
-import { User } from '../interfaces/User';
+import { User } from "../interfaces/User";
 
 interface AuthContextType {
     user: User | null;
@@ -20,7 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const useAuth = () => {
     const context = useContext(AuthContext);
     if (context === undefined) {
-        throw new Error('useAuth must be used within a AuthProvider');
+        throw new Error("useAuth must be used within a AuthProvider");
     }
     return context;
 };
@@ -30,7 +30,7 @@ interface AuthProviderProps {
 }
 
 const getUserFromLocalStorage = (): User | null => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
 };
 
@@ -48,11 +48,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }, []);
 
     const saveUserToLocalStorage = (user: User) => {
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user));
     };
 
     const clearUserFromLocalStorage = () => {
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
     };
 
     return (

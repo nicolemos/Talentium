@@ -1,16 +1,16 @@
 import NoAvatar from '/NoAvatar.png';
 const OrderCard = () => {
     return (
-        <div className='flex h-full w-2/4 max-w-4xl rounded-lg bg-white/45 shadow-xl'>
-            <div className=' flex w-1/3 flex-col justify-center gap-4 rounded-md bg-royal-blue-500/75 p-4 text-center'>
+        <div className='bg-white/45 w-2/4 max-w-4xl rounded-lg h-full flex shadow-xl'>
+            <div className=' bg-royal-blue-500/75 p-4 rounded-md flex flex-col gap-4 justify-center text-center w-1/3'>
                 <img
                     src={NoAvatar}
                     alt='Avatar Preview'
-                    className='mx-auto h-20 w-20 rounded-full object-fill'
+                    className='rounded-full object-fill w-20 h-20 mx-auto'
                 />
                 <div className='text-sm font-semibold text-white'>
                     <p className='text-sm text-black'>Creado por</p>
-                    <p className='text-sm font-medium text-white'>Brian L.</p>
+                    <p className='text-sm text-white font-medium'>Brian L.</p>
                 </div>
                 <div className='text-sm font-semibold text-white'>
                     <p className='text-sm text-black'>Fecha de publicación</p>
@@ -25,8 +25,8 @@ const OrderCard = () => {
                     <p className='text-sm font-medium'>Muñiz, Buenos Aires</p>
                 </div>
             </div>
-            <div className='flex w-full flex-col justify-between gap-4 p-4'>
-                <h1 className='text-center text-xl font-bold'>
+            <div className='p-4 flex flex-col justify-between w-full gap-4'>
+                <h1 className='text-center font-bold text-xl'>
                     Reparación de cañería baño 20m2 aprox.
                 </h1>
                 <h2 className='text-left font-semibold'>
@@ -44,7 +44,7 @@ const OrderCard = () => {
                 </p>
                 <button
                     type='submit'
-                    className={`col-span-2 mt-8 w-full rounded-md bg-royal-blue-500 p-2 text-white shadow-md hover:bg-royal-blue-500/70 hover:text-black sm:mx-auto sm:w-2/4`}
+                    className={`bg-royal-blue-500 text-white hover:text-black hover:bg-royal-blue-500/70 shadow-md p-2 rounded-md w-full mt-8 col-span-2 sm:w-2/4 sm:mx-auto`}
                 >
                     Presupuestar
                 </button>
