@@ -1,15 +1,14 @@
-export interface UserProps {
-    id?: string;
+export interface UserProps {    id?: string;
     name?: string;
     lastname?: string;
     email?: string;
-    password?: string;
+    contrasenia?: string;
     speciality?: Speciality;
 }
 
 export interface BasicRegistrationFormProps {
     email?: string;
-    password?: string;
+    contrasenia?: string;
     avatar?: string | null;
 }
 

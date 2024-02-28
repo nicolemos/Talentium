@@ -156,17 +156,17 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 <label
                     className={`sm:col-1 col-span-2 w-full text-sm font-bold text-white md:mx-auto md:w-3/5`}
                 >
-                    {errors.password?.message && (
+                    {errors.contrasenia?.message && (
                         <p
                             role='alert'
                             className='mb-1 flex text-center text-red-500 md:w-96'
                         >
-                            {errors.password.message}
+                            {errors.contrasenia.message}
                         </p>
                     )}
                     Contraseña*
                     <input
-                        {...register('password', {
+                        {...register('contrasenia', {
                             required: 'Debes ingresar una contraseña',
                             minLength: {
                                 value: 8,
@@ -191,7 +191,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 >
                     Avatar (opcional):
                     <input
-                        type='file'
+                        type='text'
                         {...register('avatar')}
                         accept='image/*'
                         onChange={handleAvatarChange}

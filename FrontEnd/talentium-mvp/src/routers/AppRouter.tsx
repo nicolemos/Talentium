@@ -15,6 +15,7 @@ export const AppRouter: React.FC = () => {
                 <Route path='/DashboardCliente' element={<DashboardRouter />} />
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Register' element={<BasicRegistrationForm />} />
+
                 <Route path='/*' element={<PageNotFound />} />
                 <Route
                     path='/acerca-de'
