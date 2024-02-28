@@ -38,7 +38,6 @@ public class Professional {
     private String cbu;
 
     @Column(name = "clasificacion")
-    @NotNull
     private Integer rating;
 
     @Column(name = "PROFESION")
