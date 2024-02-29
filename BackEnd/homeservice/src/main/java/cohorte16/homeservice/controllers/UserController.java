@@ -41,7 +41,7 @@ public class UserController {
     @Autowired
     private ProfessionalRepository professionalRepository;
 
-    @Autowired
+    @org.springframework.beans.factory.annotation.Autowired(required=true)
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -80,7 +80,7 @@ public class UserController {
         HttpHeaders jwtToken = new HttpHeaders();
         LocalDate hora = LocalDate.now();
        // jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
-        jwtToken.set("Authorization",JWTtoken);
+        jwtToken.set("Authorization",JWTtoken.toString());
         Client client;
         Professional professional;
 

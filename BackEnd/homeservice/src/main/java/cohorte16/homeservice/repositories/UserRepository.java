@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository <User,Long> {
     @Query(value = "SELECT * FROM usuarios WHERE email = :email AND contrasenia = :password",nativeQuery = true)
     User findByEmailAndContrasenia(@Param("email") String email, @Param("password") String password);
 
-    User findByUsername(String username);
+    User findByEmail(String email);
 
-    User findByLogin(String nombreUsuario);
+  //  User findByLogin(String nombreUsuario);
 }

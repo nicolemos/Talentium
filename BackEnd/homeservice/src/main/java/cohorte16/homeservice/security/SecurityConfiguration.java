@@ -7,8 +7,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -21,15 +23,19 @@ public class SecurityConfiguration {
     @Autowired
     TokenService tokenService;
     @Bean
-    public HttpSecurity securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-       return   httpSecurity.csrf(csrf -> csrf.disable())
-               // .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthrizedHandler))
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/usuarios/login").permitAll()
-                        .anyRequest().authenticated())
-                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+       return   httpSecurity.csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/usuarios/**").permitAll()
+                               // .requestMatchers("/usuarios/login").permitAll()
+                       //.anyRequest().authenticated()
+                                .anyRequest().permitAll()
+                        )
+                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+               .build();
 
 
     }
+
 
     @Bean
     public AuthenticationManager AathenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
