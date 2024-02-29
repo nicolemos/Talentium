@@ -2,6 +2,7 @@ package cohorte16.homeservice.models;
 
 import cohorte16.homeservice.enums.Profession;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Fetch;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -35,6 +36,7 @@ public class Professional {
     private String cuit;
 
     @Column(name = "cbu")
+    @NotBlank
     private String cbu;
 
     @Column(name = "clasificacion")
@@ -48,7 +50,7 @@ public class Professional {
     @JoinColumn(name = "profesional_direccion_id")
     private Direction direction;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profesional_usuario_id")
     private User user;
 
