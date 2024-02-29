@@ -1,10 +1,11 @@
 export class Ordenes {
-    constructor(dato) {
+    constructor(dato, divPadre) {
         this.datos = dato;
         this.textarea;
+        this.divPadre = divPadre ?? '#front';
         this.orden = {
             "description": this.textarea ?? "nueva orden test",
-            "cliente_id": 15
+            "cliente_id": dato.clienteId ?? NaN
         }
     }
 
@@ -31,7 +32,7 @@ export class Ordenes {
         return div;
     }
     agregarAlFront() {
-        const main = document.querySelector('#front');
+        const main = document.querySelector(this.divPadre);
         main.appendChild(this.crearOrden());
     }
 }

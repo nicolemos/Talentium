@@ -9,3 +9,4 @@ const body = document.querySelector('body');
 
 const nuevaOrden = new Ordenes(datos.cliente());
 nuevaOrden.agregarAlFront();
+

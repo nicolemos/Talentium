@@ -2,7 +2,7 @@ export class datos {
 
     static cliente() {
         return {
-            "clienteId": "1",
+            "clienteId": 1,
             "name": "Juan40",
             "lastname": "perez",
             "dni": "77234567",
@@ -26,7 +26,7 @@ export class datos {
     p
     static profesional() {
         return {
-            "id": "10",
+            "id": 10,
             "name": "Puan",
             "lastname": "perez",
             "cuit": "20-77234567-0",
@@ -50,14 +50,14 @@ export class datos {
 
         }
     }
-    static orden(){
-        return{
-            "id":1,
-            "description":"nueva orden 5",
-           "profecional":1,
-           "precio":0.00,
-           "fecha":"",
-           "estado":"INICIAL",
+    static orden() {
+        return {
+            "id": 1,
+            "description": "nueva orden 5",
+            "profecional": 1,
+            "precio": 0.00,
+            "fecha": "",
+            "estado": "INICIAL",
             "cliente_id": 15
         }
     }
