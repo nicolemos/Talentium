@@ -58,8 +58,7 @@ public class OrderController {
     public ResponseEntity<?> updateOrder(@RequestBody  UpdateOrderDTO updateOrderDTO){
         try{
             var nuevoOrdenDto = orderService.updateOrder(updateOrderDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(new UpdateOrderDTO( nuevoOrdenDto.getId(),nuevoOrdenDto.getDescription(),
-                    nuevoOrdenDto.getProfessional(),nuevoOrdenDto.getPrice(),nuevoOrdenDto.getOrderstatus()) );
+            return ResponseEntity.status(HttpStatus.OK).body(new UpdateOrderDTO( nuevoOrdenDto.getId(),nuevoOrdenDto.getDescription()) );
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
@@ -75,6 +74,21 @@ public class OrderController {
         }
     }
 
+<<<<<<< HEAD
+=======
+    @PutMapping(value = "/cancelorder/{id}", consumes = "application/json",produces = "application/json")
+    public ResponseEntity<?> cancelOrderOfProfessional(@Valid @PathVariable Long id){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.cancelOrderOfProfessional(id));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
+        }
+    }
+
+
+
+
+>>>>>>> ab2bbe3ebe55158d19b7b89c3fb9f9c9cc578148
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteOrder(@PathVariable Long id){
         try {
