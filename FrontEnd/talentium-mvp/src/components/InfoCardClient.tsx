@@ -35,6 +35,7 @@ const InfoCardClient: React.FC<ModalProps & { onClose: () => void }> = ({
 
     return (
         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
+            <div></div>
             <div className='m-4 w-full max-w-md rounded-lg bg-royal-blue-300 p-4 text-gray-700 shadow-md '>
                 <Button
                     onClick={handleClose}
