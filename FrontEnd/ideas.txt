@@ -1,0 +1,7 @@
+jira:
+https://maridev.atlassian.net/jira/software/projects/FE/boards/2
+
+figma:
+https://www.figma.com/file/R9YnmHqSfPPOOGJwOAkKco/Untitled-(Copy)?type=design&node-id=0-1&mode=design&t=iNNQaWMrTDck76D0-0
+
+// probando github //
