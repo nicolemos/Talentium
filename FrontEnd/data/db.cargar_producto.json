@@ -1,0 +1,7 @@
+{
+    "nombre":"obligatorio",
+    "precio":1,
+    "descripcion": "obligatorio",
+    "cantidad": 1,
+    "foto":"opcional"
+}

@@ -1,0 +1,11 @@
+{
+    "productos":[
+        {
+"nombre":"obligatorio",
+"precio":1,
+"descripcion": "maximo 250 letras obligatorio"
+        }
+    ],
+    "cantidad": 1,
+    "foto": "direccion url opcional"
+}

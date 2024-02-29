@@ -33,7 +33,7 @@ public class Client {
     private String dni;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_usuario_id")
     private User user;
 
