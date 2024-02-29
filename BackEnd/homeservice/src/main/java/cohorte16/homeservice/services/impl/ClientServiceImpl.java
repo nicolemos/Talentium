@@ -1,15 +1,13 @@
 package cohorte16.homeservice.services.impl;
 
 import cohorte16.homeservice.dtos.ClientDTO;
+import cohorte16.homeservice.dtos.ClientPutDTO;
 import cohorte16.homeservice.dtos.ClientResponseDTO;
-import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.mappers.ClientMapper;
-import cohorte16.homeservice.mappers.ProfessionalMapper;
 import cohorte16.homeservice.models.Client;
 import cohorte16.homeservice.models.Direction;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ClientRepository;
-import cohorte16.homeservice.repositories.ProfessionalRepository;
 import cohorte16.homeservice.repositories.UserRepository;
 import cohorte16.homeservice.services.ClientService;
 import jakarta.persistence.EntityNotFoundException;
@@ -76,7 +74,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientResponseDTO update(Long id, ClientDTO clientDTO) {
+    public ClientResponseDTO update(Long id, ClientPutDTO clientDTO) {
         try {
             Client clientExisting = clientRepository.findById(id)
                     .orElseThrow(()-> new EntityNotFoundException("User not found with id: " + id));
@@ -106,13 +104,27 @@ public class ClientServiceImpl implements ClientService {
     }
 
     private static Client updateClientFromClientDTO(Client clientExisting,
-                                                ClientDTO clientDTO) {
+                                                    ClientPutDTO clientDTO) {
         clientExisting.setName(clientDTO.name());
         clientExisting.setLastname(clientDTO.lastname());
         clientExisting.setDni(clientDTO.dni());
         clientExisting.setRating(clientDTO.rating());
-        clientExisting.setUser(clientDTO.user());
-        clientExisting.setDirection(clientDTO.direction());
+        clientExisting.setUser(
+                new User(
+                        clientDTO.user().id(),
+                        clientDTO.user().email(),
+                        clientExisting.getUser().getPassword(),
+                        clientDTO.user().avatar()
+                )
+                );
+        clientExisting.setDirection(
+                new Direction(
+                        null,
+                        clientDTO.direction().number(),
+                        clientDTO.direction().street(),
+                        clientDTO.direction().province(),
+                        clientDTO.direction().location())
+        );
         return clientExisting;
     }
 }

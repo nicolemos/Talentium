@@ -32,6 +32,7 @@ public class ClientMapper {
 
     public ClientResponseDTO clientToClientResponseDTO(Client client){
         return new ClientResponseDTO(
+                client.getId(),
                 client.getName(),
                 client.getLastname(),
                 client.getDni(),

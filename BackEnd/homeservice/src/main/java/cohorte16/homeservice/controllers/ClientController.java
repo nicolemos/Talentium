@@ -1,6 +1,7 @@
 package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.ClientDTO;
+import cohorte16.homeservice.dtos.ClientPutDTO;
 import cohorte16.homeservice.models.Client;
 import cohorte16.homeservice.services.impl.ClientServiceImpl;
 import jakarta.validation.Valid;
@@ -47,7 +48,7 @@ public class ClientController {
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody ClientDTO clientDTO){
+    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody ClientPutDTO clientDTO){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(clientService.update(id,clientDTO));
         }catch (Exception e){
