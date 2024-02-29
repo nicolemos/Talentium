@@ -65,38 +65,30 @@ public class OrderController {
     public ResponseEntity<?> updateOrder(@RequestBody  UpdateOrderDTO updateOrderDTO){
         try{
             var nuevoOrdenDto = orderService.updateOrder(updateOrderDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(new UpdateOrderDTO( nuevoOrdenDto.getId(),nuevoOrdenDto.getDescription(),
-                    nuevoOrdenDto.getProfessional(),nuevoOrdenDto.getPrice(),nuevoOrdenDto.getOrderstatus()) );
+            return ResponseEntity.status(HttpStatus.OK).body(new UpdateOrderDTO( nuevoOrdenDto.getId(),nuevoOrdenDto.getDescription()) );
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
     }
-
-    /*
-    @PutMapping("/{orderId}")
-    public ResponseEntity<?> takeOrderProfessional(@PathVariable Long orderId, @RequestBody OrderProfessionalDTO orderProfessionalDTO) {
-        try {
-
-            Order updatedOrder = orderService.takeOrderProfessional(orderProfessionalDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(updatedOrder);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error! Something went wrong");
-        }
-    }
-*/
 
 
     @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> takeOrderProfessional(@Valid @PathVariable Long id, @RequestBody OrderProfessionalDTO orderProfessionalDTO){
         try{
-           var orderProfesional = orderService.takeOrderProfessional(id, orderProfessionalDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(new OrderProfessionalDTO( orderProfesional.getId(), orderProfesional.getDescription_professional(),
-                    orderProfesional.getPrice(), orderProfesional.getOrderstatus()) );
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.takeOrderProfessional(id, orderProfessionalDTO));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
     }
 
+    @PutMapping(value = "/cancelorder/{id}", consumes = "application/json",produces = "application/json")
+    public ResponseEntity<?> cancelOrderOfProfessional(@Valid @PathVariable Long id){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.cancelOrderOfProfessional(id));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
+        }
+    }
 
 
 

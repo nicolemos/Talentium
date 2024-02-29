@@ -42,7 +42,7 @@ public class ProfessionalController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
     }
-    @PatchMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
+    @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody ProfessionalDTO professionalDTO){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(professionalService.update(id,professionalDTO));
