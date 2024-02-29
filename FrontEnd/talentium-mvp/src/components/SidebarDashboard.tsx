@@ -1,4 +1,5 @@
-import {    RiListUnordered,
+import {
+    RiListUnordered,
     RiMessage3Line,
     RiProfileLine,
     RiWalletLine,
@@ -21,21 +22,21 @@ const SidebarDashboard: React.FC = () => {
 
     return (
         <aside className='h-full overflow-hidden'>
-            <div className='h-full grid-col-span-1 bg-royal-blue-500 flex flex-col items-center justify-center'>
-                <div className='flex flex-col items-center p-2 gap-2'>
+            <div className='grid-col-span-1 flex h-full flex-col items-center justify-center bg-royal-blue-500'>
+                <div className='flex flex-col items-center gap-2 p-2'>
                     <img
                         src='/Logo1.png'
                         alt='Talentium'
-                        className='w-48 h-auto'
+                        className='h-auto w-48'
                     />
-                    <img src={NoAvatar} alt='Talentium' className='w-20 h-20' />
-                    <h2 className='text-white text-sm font-bold p-1 bg-royal-blue-700 rounded-full'>
+                    <img src={NoAvatar} alt='Talentium' className='h-20 w-20' />
+                    <h2 className='rounded-full bg-royal-blue-700 p-1 text-sm font-bold text-white'>
                         Cliente
                     </h2>
                 </div>
 
-                <div className='col-span-1 bg-royal-blue-800 flex flex-col justify-between w-full rounded-tr-[100px] h-[70vh]'>
-                    <NavLink to='' className='text-white p-8'>
+                <div className='col-span-1 flex h-[70vh] w-full flex-col justify-between rounded-tr-[100px] bg-royal-blue-800'>
+                    <NavLink to='' className='p-8 text-white'>
                         <CustomLink
                             to='/'
                             content='Inicio'
@@ -62,11 +63,11 @@ const SidebarDashboard: React.FC = () => {
                             children={<RiMessage3Line />}
                         />
                     </NavLink>
-                    <div className='bg-royal-blue-950/50 w-52 h-10 m-2 mb-4 flex items-center rounded-xl'>
+                    <div className='m-2 mb-4 flex h-10 w-52 items-center rounded-xl bg-royal-blue-950/50'>
                         <Link
                             to='/'
                             onClick={handleLogout}
-                            className='text-white p-10 flex items-center gap-2'
+                            className='flex items-center gap-2 p-10 text-white'
                         >
                             <FaArrowRightFromBracket />
                             Cerrar sesión

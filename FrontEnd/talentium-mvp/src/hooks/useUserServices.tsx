@@ -1,4 +1,5 @@
-import { UserProps } from '../interfaces/RegistrationFormTypes';import { useAuth } from '../context/AuthContext';
+import { UserProps } from '../interfaces/RegistrationFormTypes';
+import { useAuth } from '../context/AuthContext';
 
 const useCreateUser = () => {
     const auth = useAuth();
@@ -28,9 +29,9 @@ const useCreateUser = () => {
 
     const loginUser = async (credentials: {
         email: string;
-        contrasenia: string;
+        password: string;
     }): Promise<boolean> => {
-        const loginUrl = 'http://localhost:8080/usuarios/login';
+        const loginUrl = 'http://localhost:8080/login';
 
         try {
             const response = await fetch(loginUrl, {
@@ -57,7 +58,7 @@ const useCreateUser = () => {
     const updateUser = async (
         userId: string,
         userType: string,
-        updatedUserData: UserProps
+        updatedUserData: UserProps,
     ): Promise<boolean> => {
         const url = `http://localhost:8080/${userType}/${userId}`;
 
