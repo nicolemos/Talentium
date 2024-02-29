@@ -80,7 +80,7 @@ public class UserController {
         }
 
         if(userCreated != null) {
-             professional= professionalRepository.findProfesionalByUser(userCreated);
+             professional= professionalRepository.findProfessionalByUser(userCreated);
             if(professional != null)  return new ResponseEntity<>(new ProfessionalDTO(professional), jwtToken, HttpStatus.OK);
         }
 

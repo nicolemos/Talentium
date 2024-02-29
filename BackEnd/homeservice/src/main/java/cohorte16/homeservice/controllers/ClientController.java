@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/client")
 @CrossOrigin("*")
 public class ClientController {
+    private final ClientServiceImpl clientService;
 
-    @Autowired
-    private ClientServiceImpl clientService;
+    public ClientController(ClientServiceImpl clientService){
+        this.clientService = clientService;
+    }
 
     @PostMapping(consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> save(@Valid @RequestBody ClientDTO clientDTO){
@@ -49,7 +51,7 @@ public class ClientController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(clientService.update(id,clientDTO));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error! Something went wrong");
         }
     }
     @DeleteMapping(value = "/{id}")

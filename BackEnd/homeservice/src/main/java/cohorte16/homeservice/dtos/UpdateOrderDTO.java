@@ -10,7 +10,6 @@ public record UpdateOrderDTO(Long cliente_id,
                              Professional professional,
                              BigDecimal price,
                              Orderstatus orderstatus
-
                              ) {
 
 }

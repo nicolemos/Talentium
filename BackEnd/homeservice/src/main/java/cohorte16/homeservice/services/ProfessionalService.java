@@ -10,6 +10,7 @@ import java.util.List;
 public interface ProfessionalService {
     List<ProfessionalResponseDTO> findAll() throws ServiceException;
     ProfessionalResponseDTO findById(Long id) throws Exception;
+    ProfessionalResponseDTO findByUser(Long id);
     ProfessionalResponseDTO save(ProfessionalDTO professionalDTO) throws Exception;
     ProfessionalResponseDTO update(Long id, ProfessionalDTO professionalDTO) throws Exception;
     boolean delete(Long id) throws Exception;

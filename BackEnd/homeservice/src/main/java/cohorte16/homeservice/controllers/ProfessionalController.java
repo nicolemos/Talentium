@@ -34,6 +34,16 @@ public class ProfessionalController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
         }
     }
+
+    @GetMapping(value = "/user/{id}", produces = "application/json")
+    public ResponseEntity<?> getProfessionalByUserId(@PathVariable Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(professionalService.findByUser(id));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
+        }
+    }
+
     @PostMapping(consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> save(@Valid @RequestBody ProfessionalDTO professionalDTO){
         try {

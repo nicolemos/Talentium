@@ -59,6 +59,20 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
+    public ProfessionalResponseDTO findByUser(Long id) {
+        try{
+            User user = userRepository.findById(id)
+                    .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+            Professional professional = professionalRepository.findProfessionalByUser(user);
+            return professionalMapper.professionalToProfessionalResponseDTO(professional);
+        }catch (EntityNotFoundException e){
+            throw e;
+        }catch (Exception e){
+            throw new ServiceException("Error ocurred while finding professional with id " + id,e);
+        }
+    }
+
+    @Override
     public ProfessionalResponseDTO save(ProfessionalDTO professionalDTO) {
         try {
             User userEntity = userRepository.findById(professionalDTO.user().getId())
@@ -77,8 +91,9 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     @Override
     public ProfessionalResponseDTO update(Long id, ProfessionalDTO professionalDTO) {
         try {
-            Professional existingProfessional = professionalRepository.findById(id)
+            User existingUser = userRepository.findById(id)
                     .orElseThrow(() -> new EntityNotFoundException("Professional not found with id: " + id));
+            Professional existingProfessional = professionalRepository.findProfessionalByUser(existingUser);
             Professional updatedProfessional = updateProfessionalFromDTO(existingProfessional, professionalDTO);
             Professional savedProfessional = professionalRepository.save(updatedProfessional);
             return professionalMapper.professionalToProfessionalResponseDTO(savedProfessional);

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public record OrderProfessionalDTO(
         @NotNull
-        Long id,
+        Long id, //Id del professional
         String description_Professional,
         BigDecimal price,
         Orderstatus orderStatus

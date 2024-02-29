@@ -6,6 +6,7 @@ import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.mappers.ClientMapper;
 import cohorte16.homeservice.mappers.ProfessionalMapper;
 import cohorte16.homeservice.models.Client;
+import cohorte16.homeservice.models.Direction;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ClientRepository;
 import cohorte16.homeservice.repositories.ProfessionalRepository;
@@ -13,6 +14,7 @@ import cohorte16.homeservice.repositories.UserRepository;
 import cohorte16.homeservice.services.ClientService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,17 +76,17 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientResponseDTO update(Long id, ClientDTO clientDTO) throws Exception {
+    public ClientResponseDTO update(Long id, ClientDTO clientDTO) {
         try {
-            Optional<Client> clientOptional = clientRepository.findById(id);
-            if(clientOptional.isEmpty()){
-                throw new EntityNotSavedException("Client not found");
-            }
-            Client clientEntity = clientMapper.clientDTOToClient(clientDTO);
-            Client clientUpdate = getClient(clientEntity,clientOptional);
-            return clientMapper.clientToClientResponseDTO(clientUpdate);
+            Client clientExisting = clientRepository.findById(id)
+                    .orElseThrow(()-> new EntityNotFoundException("User not found with id: " + id));
+            Client clientEntity = updateClientFromClientDTO(clientExisting,clientDTO);
+            Client savedClient = clientRepository.save(clientEntity);
+            return clientMapper.clientToClientResponseDTO(savedClient);
+        }catch (EntityNotFoundException e){
+            throw e;
         }catch (Exception e){
-            throw new Exception(e.getMessage());
+            throw new ServiceException("Error ocurred while updating client with id " + id, e);
         }
     }
 
@@ -102,16 +104,15 @@ public class ClientServiceImpl implements ClientService {
             throw new Exception(e.getMessage());
         }
     }
-    private static Client getClient(Client client,
-                                                Optional<Client> clientOptional) {
-        Client clientUpdate = clientOptional.get();
-        clientUpdate.setName(client.getName());
-        clientUpdate.setLastname(client.getLastname());
-        clientUpdate.setDni(client.getDni());
-        clientUpdate.setRating(client.getRating());
-        clientUpdate.setActive(client.getActive());
-        clientUpdate.setDirection(client.getDirection());
-        clientUpdate.setUser(new User(client.getUser().getId(), client.getUser().getEmail(), client.getUser().getPassword(), client.getUser().getAvatar()));
-        return clientUpdate;
+
+    private static Client updateClientFromClientDTO(Client clientExisting,
+                                                ClientDTO clientDTO) {
+        clientExisting.setName(clientDTO.name());
+        clientExisting.setLastname(clientDTO.lastname());
+        clientExisting.setDni(clientDTO.dni());
+        clientExisting.setRating(clientDTO.rating());
+        clientExisting.setUser(clientDTO.user());
+        clientExisting.setDirection(clientDTO.direction());
+        return clientExisting;
     }
 }

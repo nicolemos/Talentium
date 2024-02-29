@@ -2,18 +2,13 @@ package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.OrderDTO;
 import cohorte16.homeservice.dtos.OrderProfessionalDTO;
-import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.dtos.UpdateOrderDTO;
-import cohorte16.homeservice.models.Order;
 import cohorte16.homeservice.services.impl.OrderServiceImpl;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/order")
@@ -50,7 +45,6 @@ public class OrderController {
         }
     }
 
-
     @PostMapping(consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> createOrder( @RequestBody @Valid OrderDTO orderDTO) {
         try {
@@ -59,7 +53,6 @@ public class OrderController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
     }
-
 
     @PutMapping
     public ResponseEntity<?> updateOrder(@RequestBody  UpdateOrderDTO updateOrderDTO){
@@ -72,19 +65,15 @@ public class OrderController {
         }
     }
 
-
     @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> takeOrderProfessional(@Valid @PathVariable Long id, @RequestBody OrderProfessionalDTO orderProfessionalDTO){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(orderService.takeOrderProfessional(id, orderProfessionalDTO));
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    orderService.takeOrderProfessional(id, orderProfessionalDTO));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
     }
-
-
-
-
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteOrder(@PathVariable Long id){
