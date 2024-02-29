@@ -60,10 +60,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     @Override
     public ProfessionalDTO save(ProfessionalDTO professionalDTO) {
         try {
-            User userEntity = userRepository.findById(professionalDTO.user().getId())
-                    .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + professionalDTO.user().getId()));
             Professional professionalEntity = professionalMapper.professionalDTOToProfessional(professionalDTO);
-            professionalEntity.setUser(userEntity);
             Professional professionalSaved = professionalRepository.save(professionalEntity);
             return professionalMapper.professionalToProfessionalDTO(professionalSaved);
         } catch (EntityNotFoundException e) {

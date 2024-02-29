@@ -36,11 +36,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientDTO save(ClientDTO clientDTO) throws Exception {
         try {
-         User userEntity = userRepository.findById(clientDTO.user().getId())
-                    .orElseThrow(() -> new EntityNotFoundException("User not found"));
-
             Client clientEntity = clientMapper.clientDTOToClient(clientDTO);
-            clientEntity.setUser(userEntity);
             Client clientSaved = clientRepository.save(clientEntity);
             return clientMapper.clientToClientDTO(clientSaved);
         } catch (Exception e) {
