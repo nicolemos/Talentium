@@ -80,7 +80,6 @@ public class OrderServiceImpl implements OrderService {
     public Order takeOrderProfessional(Long id, OrderProfessionalDTO orderProfessionalDTO) throws Exception {
         try {
             Order order = orderRepository.findById(id).orElseThrow((() -> new EntityNotFoundException("Order Not Found")));
-
             Professional professional = professionalRepository.findById(orderProfessionalDTO.id()).orElseThrow((() -> new EntityNotFoundException("Professional Not Found")));
             order.setProfessional(professional);
             order.setDescription_professional(orderProfessionalDTO.description_Professional());
@@ -93,21 +92,28 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+
     @Override
     public Order updateOrder(UpdateOrderDTO updateOrderDTO) throws Exception {
         try{
-            Optional<Order> orderOptional = orderRepository.findById(updateOrderDTO.cliente_id());
-            if(orderOptional.isEmpty()){
-                throw new EntityNotSavedException("Order not found");
-            }
-            Order existingOrder = orderOptional.get();
+            Order existingOrder = orderRepository.findById(updateOrderDTO.order_id()).orElseThrow(()-> new EntityNotFoundException("Order not found"));
             if(updateOrderDTO.description() != null)existingOrder.setDescription(updateOrderDTO.description());
-            if(updateOrderDTO.professional() != null)existingOrder.setProfessional(updateOrderDTO.professional());
-            if(updateOrderDTO.price() != null)existingOrder.setPrice(updateOrderDTO.price());
-            if(updateOrderDTO.orderstatus() != null)existingOrder.setOrderstatus(updateOrderDTO.orderstatus());
             return orderRepository.save(existingOrder);
-
         }catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Order cancelOrderOfProfessional(Long id) throws Exception {
+        try{
+            Order order = orderRepository.findById(id).orElseThrow((() -> new EntityNotFoundException("Order Not Found")));
+            order.setProfessional(null);
+            order.setDescription_professional(null);
+            order.setPrice(null);
+            order.setOrderstatus(Orderstatus.valueOf("Inicial"));
+            return orderRepository.save(order);
+        }catch(Exception e){
             throw new Exception(e.getMessage());
         }
     }

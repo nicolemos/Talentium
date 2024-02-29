@@ -17,6 +17,7 @@ public interface OrderService {
     public Order takeOrderProfessional(Long id, OrderProfessionalDTO orderProfessionalDTO) throws Exception;
 
     public Order updateOrder(UpdateOrderDTO updateOrderDTO) throws Exception;
+    public Order cancelOrderOfProfessional(Long id) throws Exception;
 
     public boolean deleteOrder(Long id) throws  Exception;
 }
