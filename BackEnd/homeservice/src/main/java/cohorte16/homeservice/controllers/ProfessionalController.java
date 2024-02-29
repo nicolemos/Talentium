@@ -2,6 +2,7 @@ package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.dtos.ProfessionalPutDTO;
+import cohorte16.homeservice.enums.Profession;
 import cohorte16.homeservice.services.impl.ProfessionalServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class ProfessionalController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(professionalService.findById(id));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Professional not found");
         }
     }
 
@@ -41,7 +42,16 @@ public class ProfessionalController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(professionalService.findByUser(id));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Professional not found");
+        }
+    }
+
+    @GetMapping(value = "/users/{profession}", produces = "application/json")
+    public ResponseEntity<?> getProfessionalsByProfession(@PathVariable Profession profession){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(professionalService.findByProfession(profession));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Professional not found");
         }
     }
 
@@ -66,7 +76,7 @@ public class ProfessionalController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(professionalService.delete(id));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Error! Professional not found");
         }
     }
 

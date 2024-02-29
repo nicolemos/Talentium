@@ -3,6 +3,7 @@ package cohorte16.homeservice.services.impl;
 import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.dtos.ProfessionalPutDTO;
 import cohorte16.homeservice.dtos.ProfessionalResponseDTO;
+import cohorte16.homeservice.enums.Profession;
 import cohorte16.homeservice.mappers.ProfessionalMapper;
 import cohorte16.homeservice.models.Direction;
 import cohorte16.homeservice.models.Professional;
@@ -72,6 +73,20 @@ public class ProfessionalServiceImpl implements ProfessionalService {
         }catch (Exception e){
             throw new ServiceException("Error ocurred while finding professional with id " + id,e);
         }
+    }
+
+    @Override
+    public List<ProfessionalResponseDTO> findByProfession(Profession profession) {
+        List<ProfessionalResponseDTO> professionalDTOs;
+        try {
+            List<Professional> professionalList = professionalRepository.findProfessionalByProfession(profession);
+            professionalDTOs = professionalList.stream()
+                    .map(professionalMapper::professionalToProfessionalResponseDTO)
+                    .toList();
+        }catch (Exception e){
+            throw new ServiceException("Error occurred while fetching all professionals", e);
+        }
+        return professionalDTOs;
     }
 
     @Override
