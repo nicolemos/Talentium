@@ -1,8 +1,10 @@
 package cohorte16.homeservice.services.impl;
 
 import cohorte16.homeservice.dtos.ProfessionalDTO;
+import cohorte16.homeservice.dtos.ProfessionalPutDTO;
 import cohorte16.homeservice.dtos.ProfessionalResponseDTO;
 import cohorte16.homeservice.mappers.ProfessionalMapper;
+import cohorte16.homeservice.models.Direction;
 import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.ProfessionalRepository;
@@ -76,6 +78,9 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     public ProfessionalResponseDTO save(ProfessionalDTO professionalDTO) {
         try {
             Professional professionalEntity = professionalMapper.professionalDTOToProfessional(professionalDTO);
+            User userProfessional = userRepository.findById(professionalDTO.user().getId())
+                    .orElseThrow(()-> new EntityNotFoundException("User not found"));
+            professionalEntity.setUser(userProfessional);
             Professional professionalSaved = professionalRepository.save(professionalEntity);
             return professionalMapper.professionalToProfessionalResponseDTO(professionalSaved);
         } catch (EntityNotFoundException e) {
@@ -86,11 +91,10 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public ProfessionalResponseDTO update(Long id, ProfessionalDTO professionalDTO) {
+    public ProfessionalResponseDTO update(Long id, ProfessionalPutDTO professionalDTO) {
         try {
-            User existingUser = userRepository.findById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Professional not found with id: " + id));
-            Professional existingProfessional = professionalRepository.findProfessionalByUser(existingUser);
+            Professional existingProfessional = professionalRepository.findById(id)
+                    .orElseThrow(()-> new EntityNotFoundException("Professional not found"));
             Professional updatedProfessional = updateProfessionalFromDTO(existingProfessional, professionalDTO);
             Professional savedProfessional = professionalRepository.save(updatedProfessional);
             return professionalMapper.professionalToProfessionalResponseDTO(savedProfessional);
@@ -117,16 +121,26 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     public Professional updateProfessionalFromDTO(Professional existingProfessional,
-                                                  ProfessionalDTO professionalDTO) {
-        existingProfessional.setId(professionalDTO.id());
+                                                  ProfessionalPutDTO professionalDTO) {
         existingProfessional.setName(professionalDTO.name());
         existingProfessional.setLastname(professionalDTO.lastname());
         existingProfessional.setCuit(professionalDTO.cuit());
         existingProfessional.setCbu(professionalDTO.cbu());
         existingProfessional.setRating(professionalDTO.rating());
         existingProfessional.setProfession(professionalDTO.profession());
-        existingProfessional.setDirection(professionalDTO.direction());
-        existingProfessional.setUser(professionalDTO.user());
+        existingProfessional.setDirection(new Direction(
+                existingProfessional.getDirection().getId(),
+                professionalDTO.direction().street(),
+                professionalDTO.direction().number(),
+                professionalDTO.direction().province(),
+                professionalDTO.direction().location()
+        ));
+        existingProfessional.setUser(new User(
+                existingProfessional.getUser().getId(),
+                professionalDTO.user().email(),
+                existingProfessional.getUser().getPassword(),
+                professionalDTO.user().avatar()
+        ));
         return existingProfessional;
     }
 }

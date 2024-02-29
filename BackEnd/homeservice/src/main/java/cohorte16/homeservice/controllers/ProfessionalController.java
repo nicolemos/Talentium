@@ -1,6 +1,7 @@
 package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.ProfessionalDTO;
+import cohorte16.homeservice.dtos.ProfessionalPutDTO;
 import cohorte16.homeservice.services.impl.ProfessionalServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -53,7 +54,7 @@ public class ProfessionalController {
         }
     }
     @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody ProfessionalDTO professionalDTO){
+    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody ProfessionalPutDTO professionalDTO){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(professionalService.update(id,professionalDTO));
         }catch (Exception e){

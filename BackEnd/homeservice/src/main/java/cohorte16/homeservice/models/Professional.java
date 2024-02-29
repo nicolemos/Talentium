@@ -36,6 +36,7 @@ public class Professional {
     private String cuit;
 
     @Column(name = "cbu")
+    @NotBlank
     private String cbu;
 
     @Column(name = "clasificacion")
