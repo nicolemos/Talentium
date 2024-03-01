@@ -1,23 +1,18 @@
-//import React, { useState } from "react";
-import Footer from "./screens/Footer";
-import { AppRouter } from "./routers/AppRouter";
-import Header from "./screens/Header";
+import { Suspense } from 'react';
+import { AppRouter } from './routers/AppRouter';
+import LoadingPage from './screens/LoadingPage';
+import { AuthProvider } from './context/AuthContext';
 
 const App: React.FC = () => {
-  
-  return (
-    <>
-      <AppRouter />
-
-      <div>
-        <Header />
-      </div>
-      
-      <div>
-        <Footer />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <AuthProvider>
+                <Suspense fallback={<LoadingPage />}>
+                    <AppRouter />
+                </Suspense>
+            </AuthProvider>
+        </>
+    );
 };
 
 export default App;
