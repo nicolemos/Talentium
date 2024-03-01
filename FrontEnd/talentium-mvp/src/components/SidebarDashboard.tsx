@@ -9,7 +9,7 @@ import {
 import { AiOutlineSchedule } from 'react-icons/ai';
 import { FaArrowRightFromBracket } from 'react-icons/fa6';
 import NoAvatar from '/NoAvatar.png?url';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import CustomLink from './CustomLink';
 import { useState } from 'react';
@@ -47,7 +47,7 @@ const SidebarDashboard: React.FC = () => {
                 </div>
 
                 <div className='flex h-[60vh] w-full flex-col justify-between gap-2 rounded-tr-[70px] bg-royal-blue-800 p-6'>
-                    <NavLink to='' className='flex flex-col gap-4 text-white'>
+                    <nav className='flex flex-col gap-4 text-white'>
                         <CustomLink
                             to='/'
                             content='Inicio'
@@ -73,7 +73,7 @@ const SidebarDashboard: React.FC = () => {
                             content='Soporte'
                             children={<RiMessage3Line />}
                         />
-                    </NavLink>
+                    </nav>
                     <div className='-p-4 flex items-center justify-center '>
                         <CustomLink
                             to='/'

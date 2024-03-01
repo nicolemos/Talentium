@@ -5,14 +5,14 @@ import LandingPage from '../screens/LandingPage';
 //import LoadingPage from "../screens/LoadingPage";
 import BasicRegistrationForm from '../components/BasicRegistrationForm';
 import 'react-toastify/dist/ReactToastify.css';
-import DashboardRouter from '../routers/DashboardRouter';
+import DashboardCliente from '../screens/DashboardCliente';
 
 export const AppRouter: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<LandingPage />} />
-                <Route path='/DashboardCliente' element={<DashboardRouter />} />
+                <Route path='/DashboardCliente' element={<DashboardCliente />} />
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Register' element={<BasicRegistrationForm />} />
                 <Route path='/*' element={<PageNotFound />} />
