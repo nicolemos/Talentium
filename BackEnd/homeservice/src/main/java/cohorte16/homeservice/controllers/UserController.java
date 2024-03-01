@@ -84,6 +84,7 @@ PasswordEncoder passwordEncoder;
         Authentication usuarioAutenticado;
         User userCreated;
         User user = null;
+        String JWToken;
         HttpHeaders jwtToken = new HttpHeaders();
 
        // jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
@@ -96,11 +97,11 @@ PasswordEncoder passwordEncoder;
 
            authToken = new UsernamePasswordAuthenticationToken(datosLogin.email(), passwordEncoder.encode(datosLogin.password() ));
               // usuarioAutenticado = authenticationManager.authenticate(authToken);
-         if(authToken.isAuthenticated()) {
+       //  if(authToken.isAuthenticated()) {
               user = new User(userCreated.getId(),userCreated.getEmail(),userCreated.getPassword(),null);
-             var JWTtoken = tokenService.generarToken(user);
-             jwtToken.set("Authorization",JWTtoken);
-         }
+              JWToken = tokenService.generarToken(user);
+             jwtToken.set("Authorization",JWToken);
+        // }
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
@@ -117,12 +118,12 @@ PasswordEncoder passwordEncoder;
         }
 
         return ResponseEntity.created(create("/usuarios/login/"+new RegistroUsuarioDTO(userCreated).id())).headers(jwtToken)
-                .body(/*RegistroUsuarioDTO.builder()
+                .body(RegistroUsuarioDTO.builder()
                 .avatar(userCreated
                         .getAvatar())
                 .email(userCreated.getEmail())
-                .id(userCreated.getId()).build()*/
-                        user    );
+                .id(userCreated.getId()).build()
+                            );
 
     }
 }
