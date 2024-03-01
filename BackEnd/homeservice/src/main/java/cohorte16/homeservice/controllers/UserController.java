@@ -58,17 +58,32 @@ PasswordEncoder passwordEncoder;
     @PostMapping
     public ResponseEntity<?> RegistrarUsuario(@RequestBody @Valid RegistroUsuarioDTO registroUsuarioDTO){
 
+        Authentication authToken;
+        Authentication usuarioAutenticado;
         User userCreated;
+        User user = null;
+        String JWToken;
+        HttpHeaders jwtToken = new HttpHeaders();
+
+
+        Client client;
+        Professional professional;
+
         try {
           userCreated =  userServiceImpl.saveUser(registroUsuarioDTO);
-            System.out.println(userCreated);
+            authToken = new UsernamePasswordAuthenticationToken(registroUsuarioDTO.email(), passwordEncoder.encode(registroUsuarioDTO.password() ));
+            user = new User(userCreated.getId(),userCreated.getEmail(),userCreated.getPassword(),null);
+            JWToken = tokenService.generarToken(user);
+            jwtToken.set("Authorization",JWToken);
+
         }catch (Exception ex){
 
             return  ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya existe");
         }
 
         //devulve por convencion la url con los datos del usuario crado
-        return ResponseEntity.created(create("/usuarios/"+new RegistroUsuarioDTO(userCreated).id())).body(RegistroUsuarioDTO.builder()
+        return ResponseEntity.created(create("/usuarios/"+new RegistroUsuarioDTO(userCreated).id())).headers(jwtToken)
+                .body(RegistroUsuarioDTO.builder()
                 .avatar(userCreated
                         .getAvatar())
                 .email(userCreated.getEmail())
@@ -80,14 +95,12 @@ PasswordEncoder passwordEncoder;
     public ResponseEntity <?> login(@RequestBody @Valid LoginDTO datosLogin) {;
 
         Authentication authToken;
-       // return ResponseEntity.ok(new DatosJWTToken(JWTtoken));
         Authentication usuarioAutenticado;
         User userCreated;
         User user = null;
         String JWToken;
         HttpHeaders jwtToken = new HttpHeaders();
 
-       // jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
 
         Client client;
         Professional professional;
@@ -96,12 +109,10 @@ PasswordEncoder passwordEncoder;
             userCreated = userServiceImpl.validateLogin(datosLogin);
 
            authToken = new UsernamePasswordAuthenticationToken(datosLogin.email(), passwordEncoder.encode(datosLogin.password() ));
-              // usuarioAutenticado = authenticationManager.authenticate(authToken);
-       //  if(authToken.isAuthenticated()) {
               user = new User(userCreated.getId(),userCreated.getEmail(),userCreated.getPassword(),null);
               JWToken = tokenService.generarToken(user);
              jwtToken.set("Authorization",JWToken);
-        // }
+
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
