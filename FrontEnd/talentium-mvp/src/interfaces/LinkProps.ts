@@ -5,4 +5,5 @@ export interface LinkProps {
     content?: string;
     children?: ReactNode;
     onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+    customClass?: string;
 }
