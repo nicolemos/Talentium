@@ -2,8 +2,7 @@ package cohorte16.homeservice.dtos;
 
 import cohorte16.homeservice.enums.Profession;
 
-public record ProfessionalResponseDTO(
-        Long id,
+public record ProfessionalPutDTO(
         String name,
         String lastname,
         String cuit,

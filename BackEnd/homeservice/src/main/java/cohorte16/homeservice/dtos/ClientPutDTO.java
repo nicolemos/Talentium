@@ -1,11 +1,6 @@
 package cohorte16.homeservice.dtos;
 
-import cohorte16.homeservice.models.Direction;
-import cohorte16.homeservice.models.User;
-
-public record ClientResponseDTO(
-
-        Long clientId,
+public record ClientPutDTO(
         String name,
         String lastname,
         String dni,
@@ -13,5 +8,4 @@ public record ClientResponseDTO(
         UserDTO user,
         DirectionDTO direction
 ) {
-
 }

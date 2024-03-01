@@ -79,8 +79,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order takeOrderProfessional(Long id, OrderProfessionalDTO orderProfessionalDTO) throws Exception {
         try {
-            Order order = orderRepository.findById(id).orElseThrow((() -> new EntityNotFoundException("Order Not Found")));
-            Professional professional = professionalRepository.findById(orderProfessionalDTO.id()).orElseThrow((() -> new EntityNotFoundException("Professional Not Found")));
+            Order order = orderRepository.findById(id).orElseThrow(
+                    () -> new EntityNotFoundException("Order Not Found")
+            );
+            Professional professional = professionalRepository.findById(
+                    orderProfessionalDTO.id()).orElseThrow(
+                            () -> new EntityNotFoundException("Professional Not Found")
+            );
             order.setProfessional(professional);
             order.setDescription_professional(orderProfessionalDTO.description_Professional());
             order.setPrice(orderProfessionalDTO.price());

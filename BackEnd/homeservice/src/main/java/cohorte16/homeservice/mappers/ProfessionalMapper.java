@@ -44,6 +44,7 @@ public class ProfessionalMapper {
 
     public ProfessionalResponseDTO professionalToProfessionalResponseDTO(Professional professional){
         return new ProfessionalResponseDTO(
+                professional.getId(),
                 professional.getName(),
                 professional.getLastname(),
                 professional.getCbu(),
