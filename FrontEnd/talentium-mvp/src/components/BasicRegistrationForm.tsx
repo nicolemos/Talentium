@@ -29,12 +29,13 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
         data,
     ) => {
         try {
+          localStorage.setItem('user', JSON.stringify({ id: 2, email: data.email }));
+          navigate('/dashboardcliente/inicio')
             const userCreated = await createUser(data);
 
             if (userCreated) {
                 toast.success('Te has registrado exitosamente!');
-                localStorage.setItem('email', JSON.stringify(data.email));
-                navigate('/');
+                navigate('/dashboardcliente/inicio');
             } else {
                 toast.error(
                     'Hubo un error con el registro, vuelve a intentarlo',

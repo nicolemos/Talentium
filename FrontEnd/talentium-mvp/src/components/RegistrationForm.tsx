@@ -1,13 +1,11 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import {
     RegistrationFormProps,
-    UserType,
 } from '../interfaces/RegistrationFormTypes';
 import { toast } from 'react-toastify';
-
+import { useUserType } from '../context/UserTypeContext';
 import useUserServices from '../hooks/useUserServices';
-import UserTypeSelector from './UserTypeSelector';
-import { useState } from 'react';
+
 
 const Specialities = [
     'Plumber',
@@ -29,7 +27,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
         handleSubmit,
     } = useForm<RegistrationFormProps>();
 
-    const { updateUser } = useUserServices();
+  const { updateUser } = useUserServices();
+  const { userType } = useUserType();
 
     const filterEmptyFields = (data) => {
         const filteredData = {};
@@ -52,7 +51,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
         try {
             const filteredData = filterEmptyFields(updatedUserData);
 
-            console.log('Submitting form for userType:', userType);
             console.log('Updated user data:', filteredData);
 
             if (user.id && userType) {
@@ -84,23 +82,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
         }
     };
 
-    /// maneja el selector de cliente / profesional
-    const [userType, setUserType] = useState<UserType>();
-
-    const handleUserTypeSelection = (selectedUserType: UserType) => {
-        console.log('selectedUserType', selectedUserType);
-        setUserType(selectedUserType);
-        const saveUserToLocalStorage = (userType: UserType) => {
-            localStorage.setItem('userType', JSON.stringify(userType));
-        };
-        saveUserToLocalStorage(selectedUserType);
-    };
-
     return (
         <div>
-            {' '}
-            <UserTypeSelector onSelectedUserType={handleUserTypeSelection} />
-            <div className='flex w-full items-center justify-center p-8'>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className={`grid h-full w-full grid-cols-2 rounded-lg bg-white/45 p-8 shadow-lg xl:w-3/4 2xl:w-3/5`}
@@ -389,8 +372,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                     </button>
                 </form>
             </div>
-        </div>
-    );
+    )
 };
 
 export default RegistrationForm;

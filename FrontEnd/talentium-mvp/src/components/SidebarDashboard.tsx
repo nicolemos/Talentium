@@ -19,8 +19,9 @@ const SidebarDashboard: React.FC = () => {
     const auth = useAuth();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        auth.logout();
+  const handleLogout = () => {
+       localStorage.removeItem('user');
+      auth.logout();
         navigate('/');
     };
     const [showMenu, setShowMenu] = useState(false);

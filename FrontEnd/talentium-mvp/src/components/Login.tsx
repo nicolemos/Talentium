@@ -18,11 +18,14 @@ const Login: React.FC = () => {
     const [error, setError] = useState<string>('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+      setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+        localStorage.setItem('user', JSON.stringify({ id: 2, email: loginForm.email })
+        );
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+      e.preventDefault();
+        navigate('/dashboardcliente/inicio');
 
         if (!loginForm.email || !loginForm.password) {
             setError('Todos los campos son obligatorios');
@@ -35,7 +38,7 @@ const Login: React.FC = () => {
             if (isLoginSuccessful) {
                 console.log('Login successful');
 
-                navigate('/DashboardCliente');
+                navigate('/DashboardCliente/inicio');
             } else {
                 setError('Login failed. Please check your credentials.');
             }
