@@ -5,6 +5,7 @@ import SidebarDashboard from '../components/SidebarDashboard';
 import HeaderDashboard from '../components/HeaderDashboard';
 import RegistrationForm from '../components/RegistrationForm';
 import { UserType } from '../interfaces/RegistrationFormTypes';
+import InicioDashboard from '../components/InicioDashboard'
 
 const DashboardRouter: React.FC = () => {
     return (
@@ -15,14 +16,13 @@ const DashboardRouter: React.FC = () => {
                     <HeaderDashboard />
                     <div className='absolute left-0 top-0 h-full w-full overflow-auto'>
                         <Routes>
-                            <Route path='/' element={<DashboardCliente />} />
+                            <Route
+                                path='/'
+                                element={<DashboardCliente />}
+                            />
                             <Route
                                 path='/Inicio'
-                                element={
-                                    <h1 className='text-black'>
-                                        aca va el componente inicio.-
-                                    </h1>
-                                }
+                                element={<InicioDashboard />}
                             />
                             <Route
                                 path='/Ordenes'
@@ -63,3 +63,4 @@ const DashboardRouter: React.FC = () => {
 };
 
 export default DashboardRouter;
+//

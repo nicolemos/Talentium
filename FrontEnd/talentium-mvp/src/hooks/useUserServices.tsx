@@ -7,7 +7,7 @@ const useCreateUser = () => {
     const createUser = async (userData: UserProps): Promise<boolean> => {
         const url = 'http://localhost:8080/usuarios';
 
-        try {
+      try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -16,7 +16,9 @@ const useCreateUser = () => {
                 body: JSON.stringify(userData),
             });
 
-            if (response.ok) {
+          if (response.ok) {
+               const user = await response.json();
+               auth.login(user);
                 return true;
             } else {
                 return false;
@@ -60,7 +62,7 @@ const useCreateUser = () => {
         userType: string,
         updatedUserData: UserProps,
     ): Promise<boolean> => {
-        const url = `http://localhost:8080/${userType}/${userId}`;
+        const url = `http://localhost:8080/api/${userType}/${userId}`;
 
         try {
             const response = await fetch(url, {
@@ -86,3 +88,4 @@ const useCreateUser = () => {
 };
 
 export default useCreateUser;
+//
