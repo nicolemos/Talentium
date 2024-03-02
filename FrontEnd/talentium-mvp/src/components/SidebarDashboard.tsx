@@ -49,27 +49,27 @@ const SidebarDashboard: React.FC = () => {
                 <div className='flex h-[60vh] w-full flex-col justify-between gap-2 rounded-tr-[70px] bg-royal-blue-800 p-6'>
                     <nav className='flex flex-col gap-4 text-white'>
                         <CustomLink
-                            to='/'
+                            to='/DashboardCliente/Inicio'
                             content='Inicio'
                             children={<RiHome2Line />}
                         />
                         <CustomLink
-                            to='/Datos'
+                            to='/DashboardCliente/Datos'
                             content='Datos'
                             children={<RiProfileLine />}
                         />
                         <CustomLink
-                            to='/Ordenes'
+                            to='/DashboardCliente/Ordenes'
                             content='Ordenes'
                             children={<RiListUnordered />}
                         />
                         <CustomLink
-                            to='/Agenda'
+                            to='/DashboardCliente/Agenda'
                             content='Agenda'
                             children={<AiOutlineSchedule />}
                         />
                         <CustomLink
-                            to='/Soporte'
+                            to='/DashboardCliente/Soporte'
                             content='Soporte'
                             children={<RiMessage3Line />}
                         />
