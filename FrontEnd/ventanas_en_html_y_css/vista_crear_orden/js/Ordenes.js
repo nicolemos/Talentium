@@ -22,7 +22,7 @@ export class Ordenes {
         const button = document.createElement('button');
         button.innerText = "Crear";
         button.addEventListener('click', () => {
-            // console.log(this.datos);
+             console.log(this.datos);
 
             this.orden.description = document.querySelector('textarea').value;
             this.textarea = console.log(this.orden);
