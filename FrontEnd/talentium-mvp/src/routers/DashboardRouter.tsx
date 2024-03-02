@@ -13,49 +13,47 @@ const DashboardRouter: React.FC = () => {
                 <SidebarDashboard />
                 <div className='col-span-6 bg-royal-blue-400 text-center lg:col-span-5 '>
                     <HeaderDashboard />
-                    <div className='absolute left-0 top-0 h-full w-full overflow-auto'>
-                        <Routes>
-                            <Route path='/' element={<DashboardCliente />} />
-                            <Route
-                                path='/Inicio'
-                                element={
-                                    <h1 className='text-black'>
-                                        aca va el componente inicio.-
-                                    </h1>
-                                }
-                            />
-                            <Route
-                                path='/Ordenes'
-                                element={
-                                    <h1 className='text-black'>
-                                        aca quiero mostrar las ordenes
-                                    </h1>
-                                }
-                            />
-                            <Route
-                                path='/Datos'
-                                element={
-                                    <RegistrationForm
-                                        user={{}}
-                                        userType={UserType.Professional}
-                                    />
-                                }
-                            />
-                            <Route
-                                path='/Agenda'
-                                element={<h1>Próximamente Agenda...</h1>}
-                            />
-                            <Route
-                                path='/Soporte'
-                                element={
-                                    <h1 className='text-black'>
-                                        Próximamente soporte...
-                                    </h1>
-                                }
-                            />
-                            {/* Add more routes as needed */}
-                        </Routes>
-                    </div>
+                    <Routes>
+                        <Route path='/' element={<DashboardCliente />} />
+                        <Route
+                            path='/Inicio'
+                            element={
+                                <h1 className='text-black'>
+                                    aca va el componente inicio.-
+                                </h1>
+                            }
+                        />
+                        <Route
+                            path='/Ordenes'
+                            element={
+                                <h1 className='text-black'>
+                                    aca quiero mostrar las ordenes
+                                </h1>
+                            }
+                        />
+                        <Route
+                            path='/Datos'
+                            element={
+                                <RegistrationForm
+                                    user={{}}
+                                    userType={UserType.Professional}
+                                />
+                            }
+                        />
+                        <Route
+                            path='/Agenda'
+                            element={<h1>Próximamente Agenda...</h1>}
+                        />
+                        <Route
+                            path='/Soporte'
+                            element={
+                                <h1 className='text-black'>
+                                    Próximamente soporte...
+                                </h1>
+                            }
+                        />
+                        {/* Add more routes as needed */}
+                    </Routes>
                 </div>
             </div>
         </>
