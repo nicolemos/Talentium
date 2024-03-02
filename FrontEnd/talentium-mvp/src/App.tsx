@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import { UserTypeProvider } from './context/UserTypeContext';
 
 const App: React.FC = () => {
+
     return (
         <>
             <AuthProvider>
@@ -19,3 +20,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+//

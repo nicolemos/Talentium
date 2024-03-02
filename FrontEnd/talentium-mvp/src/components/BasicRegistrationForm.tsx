@@ -214,3 +214,6 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
 };
 
 export default BasicRegistrationForm;
+
+
+//

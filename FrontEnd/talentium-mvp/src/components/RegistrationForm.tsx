@@ -376,3 +376,5 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
 };
 
 export default RegistrationForm;
+
+//
