@@ -2,14 +2,16 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DashboardCliente from '../screens/DashboardCliente';
 import SidebarDashboard from '../components/SidebarDashboard';
-// import HeaderDashboard from '../components/HeaderDashboard';
 import RegistrationForm from '../components/RegistrationForm';
 import { UserType } from '../interfaces/RegistrationFormTypes';
 import { IoSearch } from 'react-icons/io5';
 import InicioDashboard from '../components/InicioDashboard';
+import CreateOrdersClient from '../components/CreateOrdersClient';
+import { Datos } from '../data/Datos';
 
 const DashboardRouter: React.FC = () => {
- const userType = localStorage.getItem('userType');
+    //  const userType = localStorage.getItem('userType');
+    const clienteDatos = Datos.cliente();
 
     return (
         <>
@@ -57,9 +59,9 @@ const DashboardRouter: React.FC = () => {
                                 <Route
                                     path='/Ordenes'
                                     element={
-                                        <h1 className='text-black'>
-                                            aca quiero mostrar las ordenes
-                                        </h1>
+                                        <CreateOrdersClient
+                                            cliente={clienteDatos}
+                                        />
                                     }
                                 />
                                 <Route

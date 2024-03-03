@@ -1,8 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { OrderForm , Estado} from '../interfaces/OrderForm';
+import { OrderForm, Estado } from '../interfaces/OrderForm';
 import { toast } from 'react-toastify';
 import useOrderServices from '../hooks/userOrderServices';
-
 
 const CreateOrderForm: React.FC = () => {
     const {
@@ -24,11 +23,11 @@ const CreateOrderForm: React.FC = () => {
             const orderData = {
                 ...data,
                 cliente_id: Number(cliente_id.id),
-                estado: "INICIAL" as Estado,
+                estado: 'INICIAL' as Estado,
                 profesional: undefined,
                 precio: undefined,
             };
-          console.log('Orden creada:', orderData);
+            console.log('Orden creada:', orderData);
             if (data) {
                 const createdOrder = await createOrder(orderData);
 
