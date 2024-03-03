@@ -9,6 +9,7 @@
     padding: 2em;
     overflow: scroll;
     transition: background-color 0.3s transform 0.2s;
+    position: relative;
 
     textarea {
         max-width:  100%;
@@ -35,6 +36,14 @@
         }
         &:active {
             transform: scale(0.95);
+          }
+
+          &:first-child{
+            width: 3em;
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: .5em;
           }
     }
 }
