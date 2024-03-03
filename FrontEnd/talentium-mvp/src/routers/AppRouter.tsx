@@ -2,10 +2,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Login from '../components/Login';
 import PageNotFound from '../screens/PageNotFound';
 import LandingPage from '../screens/LandingPage';
-//import LoadingPage from "../screens/LoadingPage";
 import BasicRegistrationForm from '../components/BasicRegistrationForm';
 import 'react-toastify/dist/ReactToastify.css';
-//import DashboardCliente from '../screens/DashboardCliente';
 import DashboardRouter from './DashboardRouter'
 
 export const AppRouter: React.FC = () => {
