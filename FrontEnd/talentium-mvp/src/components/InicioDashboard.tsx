@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const InicioDashboard: React.FC = () => {
     const { updateUserType } = useUserType();
     const navigate = useNavigate();
-
+    const userTypeFromLocalStorage = localStorage.getItem('userType');
 
     const onSelectedUserType = (selectedUserType: UserType) => {
         localStorage.setItem('userType', JSON.stringify(selectedUserType));
@@ -17,7 +17,11 @@ const InicioDashboard: React.FC = () => {
 
     return (
         <>
-            <UserTypeSelector onSelectedUserType={onSelectedUserType} />
+            {userTypeFromLocalStorage ? (
+                <h1>Bienvenido!!!</h1>
+            ) : (
+                <UserTypeSelector onSelectedUserType={onSelectedUserType} />
+            )}
         </>
     );
 };
