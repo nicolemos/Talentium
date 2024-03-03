@@ -372,9 +372,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                     </button>
                 </form>
             </div>
-    )
+    );
 };
 
 export default RegistrationForm;
-
-//

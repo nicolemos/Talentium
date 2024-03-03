@@ -5,9 +5,12 @@ import SidebarDashboard from '../components/SidebarDashboard';
 import HeaderDashboard from '../components/HeaderDashboard';
 import RegistrationForm from '../components/RegistrationForm';
 import { UserType } from '../interfaces/RegistrationFormTypes';
-import InicioDashboard from '../components/InicioDashboard'
+import InicioDashboard from '../components/InicioDashboard';
+import CreateOrderForm from '../components/CreateOrderForm';
 
 const DashboardRouter: React.FC = () => {
+ const userType = localStorage.getItem('userType');
+
     return (
         <>
             <div className='overflow:hidden grid h-screen grid-cols-6'>
@@ -16,22 +19,18 @@ const DashboardRouter: React.FC = () => {
                     <HeaderDashboard />
                     <div className='absolute left-0 top-0 h-full w-full overflow-auto'>
                         <Routes>
-                            <Route
-                                path='/'
-                                element={<DashboardCliente />}
-                            />
+                            <Route path='/' element={<DashboardCliente />} />
                             <Route
                                 path='/Inicio'
                                 element={<InicioDashboard />}
                             />
                             <Route
                                 path='/Ordenes'
-                                element={
-                                    <h1 className='text-black'>
-                                        aca quiero mostrar las ordenes
-                                    </h1>
-                                }
-                            />
+                                element={userType === UserType.Client ? <CreateOrderForm /> : <h1>
+                                        ACA VA EL COMPONENTE DE LISTADO DE
+                                        ORDENES INICIALES PARA QUE EL
+                                        PROFESIONAL PRESUPUESTE{' '}
+                                    </h1>} />
                             <Route
                                 path='/Datos'
                                 element={
