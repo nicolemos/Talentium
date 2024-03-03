@@ -3,7 +3,7 @@ export class Ordenes {
         this.datos = datoOrden;
         this.textarea;
         this.divPadre = divPadre ?? '#front';
-        this.comentario;
+        this.comentario = datoOrden.comentarios ?? "";
         this.description = datoOrden.description;
         this.precio;
         this.profesional = profesionalDto;
@@ -21,23 +21,23 @@ export class Ordenes {
         const div = document.createElement('div');
         div.classList.add("CrearOrden");
 
-        const textarea = document.createElement('textarea');
-        textarea.name = "descripcion";
-        textarea.placeholder = "comentario";
-        textarea.cols = "30";
-        textarea.rows = "8";
-        textarea.innerText = this.textarea ?? "";
+        this.textarea = document.createElement('textarea');
+        this.textarea.name = "descripcion";
+        this.textarea.placeholder = 'comentario';
+        this.textarea.cols = "30";
+        this.textarea.rows = "8";
+        this.textarea.innerText = this.comentario;
 
-        const precio = document.createElement('input');
-        precio.type = "number";
-        precio.placeholder = '$$$';
+        this.precio = document.createElement('input');
+        this.precio.type = "number";
+        this.precio.placeholder = '$$$';
 
         const button = document.createElement('button');
         button.innerText = "Crear";
         button.addEventListener('click', () => {
 
-            this.orden.comentarios = document.querySelector('textarea').value;
-            this.orden.precio = document.querySelector('input').value
+            this.orden.comentarios = this.textarea.value;
+            this.orden.precio = this.precio.value;
 
             console.log(this.orden);
 
@@ -57,7 +57,7 @@ export class Ordenes {
             div.classList.add("aceptarOrden");
         });
 
-            div.append(buttonX, textarea, precio, button, descripcionOrden);
+            div.append(buttonX, this.textarea, this.precio, button, descripcionOrden);
         return div;
     }
     agregarAlFront() {

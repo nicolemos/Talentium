@@ -6,6 +6,10 @@ const nuevaOrden = new Ordenes(datos.orden(), datos.profesional());
 nuevaOrden.agregarAlFront();
 nuevaOrden.agregarAlFront();
 nuevaOrden.agregarAlFront();
+nuevaOrden.agregarAlFront();
+nuevaOrden.agregarAlFront();
+nuevaOrden.agregarAlFront();
+nuevaOrden.agregarAlFront();
 
 //alert(profecional1.description)
 
