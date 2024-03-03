@@ -19,7 +19,7 @@ export class Ordenes {
 
     crearOrden() {
         const div = document.createElement('div');
-        div.id = "CrearOrden";
+        div.classList.add("CrearOrden");
 
         const textarea = document.createElement('textarea');
         textarea.name = "descripcion";
@@ -46,14 +46,15 @@ export class Ordenes {
         const buttonX = document.createElement('button');
         buttonX.innerText = "X";
         buttonX.addEventListener('click', () => {
-            const padre = div.parentNode;
-            padre.removeChild(div);
+            div.classList.remove('aceptarOrden');
+            div.classList.add("CrearOrden");
         });
 
         const descripcionOrden = document.createElement('div');
         descripcionOrden.innerText = this.description;
         descripcionOrden.addEventListener('click', ()=>{
-alert('descripcion');
+            div.classList.remove('CrearOrden');
+            div.classList.add("aceptarOrden");
         });
 
             div.append(buttonX, textarea, precio, button, descripcionOrden);

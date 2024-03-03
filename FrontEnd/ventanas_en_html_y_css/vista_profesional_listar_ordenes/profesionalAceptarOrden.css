@@ -1,18 +1,6 @@
-#front {
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  background: inherit;
-  backdrop-filter: blur(10px);
-  width: min(100%,50em);
-  border: 1px dotted gainsboro;
-  margin: 1em;
-  overflow: scroll;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
 
-  #CrearOrden {
+
+  .aceptarOrden {
     box-shadow: 1px 1px 1px 2px black;
     border-radius: 15px;
     width: min(20em, 100%);
@@ -27,6 +15,7 @@
     text-align: center;
 
     textarea {
+      display: inline;
       max-width: 100%;
       max-height: fit-content;
       text-align: center;
@@ -38,6 +27,7 @@
     }
 
     input{
+      display: inline;
       text-align: center;
       border-radius: 15px;
       width: 50%;
@@ -47,6 +37,7 @@
     }
 
     button {
+      display: inline;
       color: aliceblue;
       background-color: inherit;
       border-radius: 15px;
@@ -64,6 +55,7 @@
       }
 
       &:first-child {
+        display: inline;
         width: 3em;
         position: absolute;
         right: 0;
@@ -75,4 +67,3 @@
       display: none;
     }
   }
-}
