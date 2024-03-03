@@ -6,6 +6,7 @@ import SidebarDashboard from '../components/SidebarDashboard';
 import RegistrationForm from '../components/RegistrationForm';
 import { UserType } from '../interfaces/RegistrationFormTypes';
 import { IoSearch } from 'react-icons/io5';
+import InicioDashboard from '../components/InicioDashboard';
 
 const DashboardRouter: React.FC = () => {
     return (
@@ -40,11 +41,7 @@ const DashboardRouter: React.FC = () => {
                                 />
                                 <Route
                                     path='/Inicio'
-                                    element={
-                                        <h1 className='text-black'>
-                                            aca va el componente inicio.-
-                                        </h1>
-                                    }
+                                    element={<InicioDashboard />}
                                 />
                                 <Route
                                     path='/Datos'

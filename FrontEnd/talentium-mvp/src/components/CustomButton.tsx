@@ -5,12 +5,14 @@ const CustomButton: React.FC<ButtonProps> = ({
     children,
     onClick,
     customClass,
+    disabled,
 }) => {
     return (
         <button
             type='submit'
             className={`flex items-center rounded-md text-white transition-colors hover:bg-royal-blue-700 ${customClass}`}
             onClick={onClick}
+            disabled={disabled}
         >
             {children}
         </button>
