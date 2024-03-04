@@ -1,7 +1,6 @@
 package cohorte16.homeservice.models;
 
 import cohorte16.homeservice.dtos.OrderDTO;
-import cohorte16.homeservice.dtos.OrderProfessionalDTO;
 import cohorte16.homeservice.enums.Orderstatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
@@ -52,16 +51,5 @@ public class Order {
         this.client.setId(orderDTO.cliente_id());
         this.description = orderDTO.description();
     }
-
-    /*
-    public Order(OrderProfessionalDTO orderProfessionalDTO){
-        this.professional.setId(orderProfessionalDTO.professional_Id());
-        this.price = orderProfessionalDTO.price();
-        this.description_professional =  orderProfessionalDTO.description_Professional();
-        this.orderstatus = orderProfessionalDTO.orderStatus();
-    }
-
-     */
-
 
 }

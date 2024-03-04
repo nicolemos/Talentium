@@ -7,10 +7,8 @@ import java.math.BigDecimal;
 
 public record OrderProfessionalDTO(
         @NotNull
-        Long id, //Id del professional
-        String description_Professional,
-        BigDecimal price,
-        Orderstatus orderStatus
-
+        Long idProfessional, //Id del professional
+        String descriptionProfessional,
+        BigDecimal price
 ) {
 }

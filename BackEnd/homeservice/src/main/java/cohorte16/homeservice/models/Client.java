@@ -2,6 +2,7 @@ package cohorte16.homeservice.models;
 
 
 import cohorte16.homeservice.dtos.ClientDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,7 +33,7 @@ public class Client {
     @NotBlank
     private String dni;
 
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_usuario_id")
     private User user;

@@ -12,8 +12,6 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-   // @Query("select o from Order o where o.ESTADO =  ': Status' ")
-
-    @Query("select u from Order u where u.orderstatus = :Status ")
-    List<Order> findByOrderstatus( @Param("Status") Orderstatus orderStatus);
+    @Query("select o from Order o where o.orderstatus = :status")
+    List<Order> findByOrderStatus(@Param("status") Orderstatus orderstatus);
 }

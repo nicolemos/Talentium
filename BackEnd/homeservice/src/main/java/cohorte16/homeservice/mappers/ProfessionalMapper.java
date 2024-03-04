@@ -1,9 +1,6 @@
 package cohorte16.homeservice.mappers;
 
-import cohorte16.homeservice.dtos.DirectionDTO;
-import cohorte16.homeservice.dtos.ProfessionalDTO;
-import cohorte16.homeservice.dtos.ProfessionalResponseDTO;
-import cohorte16.homeservice.dtos.UserDTO;
+import cohorte16.homeservice.dtos.*;
 import cohorte16.homeservice.models.Professional;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +8,16 @@ import java.util.Collections;
 
 @Service
 public class ProfessionalMapper {
+
+    public ProfessionalMiniDTO professionalToProfessionalMiniDTO(Professional professional){
+        return new ProfessionalMiniDTO(
+                professional.getId(),
+                professional.getName(),
+                professional.getLastname(),
+                professional.getProfession(),
+                professional.getRating()
+        );
+    }
 
     public ProfessionalDTO professionalToProfessionalDTO(Professional professional){
         return new ProfessionalDTO(

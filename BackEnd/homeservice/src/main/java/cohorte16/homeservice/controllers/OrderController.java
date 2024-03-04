@@ -2,6 +2,7 @@ package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.dtos.OrderDTO;
 import cohorte16.homeservice.dtos.OrderProfessionalDTO;
+import cohorte16.homeservice.dtos.OrderRatingDTO;
 import cohorte16.homeservice.dtos.UpdateOrderDTO;
 import cohorte16.homeservice.services.impl.OrderServiceImpl;
 import jakarta.validation.Valid;
@@ -54,12 +55,19 @@ public class OrderController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<?> updateOrder(@RequestBody  UpdateOrderDTO updateOrderDTO){
+    @PutMapping(value = "/description", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> updateOrderDescription(@RequestBody UpdateOrderDTO updateOrderDTO){
         try{
-            var nuevoOrdenDto = orderService.updateOrder(updateOrderDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(
-                    new UpdateOrderDTO(nuevoOrdenDto.getId(),nuevoOrdenDto.getDescription()));
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.updateOrderDescription(updateOrderDTO));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
+        }
+    }
+
+    @PutMapping(value = "/rating", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> updateOrderRating(@RequestBody OrderRatingDTO updateOrderDTO){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.updateRating(updateOrderDTO));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
@@ -75,17 +83,26 @@ public class OrderController {
         }
     }
 
-    @PutMapping(value = "/cancelorder/{id}", consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> cancelOrderOfProfessional(@Valid @PathVariable Long id){
+    @PatchMapping(value = "/acepted/{id}", produces = "application/json")
+    public ResponseEntity<?> aceptedOrder( @Valid @PathVariable Long id){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(orderService.cancelOrderOfProfessional(id));
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.orderAcepted(id));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error! Something went wrong");
         }
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> deleteOrder(@PathVariable Long id){
+    @PatchMapping(value = "/cancelorder/{id}",produces = "application/json")
+    public ResponseEntity<?> cancelOrderOfProfessional(@PathVariable Long id){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.cancelOrderOfProfessional(id));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error! Something went wrong");
+        }
+    }
+
+    @DeleteMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> deleteOrder(@Valid @PathVariable Long id){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(orderService.deleteOrder(id));
         }catch (Exception e){
