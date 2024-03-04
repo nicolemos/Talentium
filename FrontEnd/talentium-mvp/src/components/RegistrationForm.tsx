@@ -382,9 +382,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                 </CustomButton>
             </div>
         </div>
-    );
+    )
 };
 
 export default RegistrationForm;
-
-//

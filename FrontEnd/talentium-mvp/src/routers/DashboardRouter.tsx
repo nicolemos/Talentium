@@ -8,10 +8,136 @@ import { IoSearch } from 'react-icons/io5';
 import InicioDashboard from '../components/InicioDashboard';
 import CreateOrdersClient from '../components/CreateOrdersClient';
 import { Datos } from '../data/Datos';
+import OrdersListProf from '../components/OrdersListProf';
 
 const DashboardRouter: React.FC = () => {
     //  const userType = localStorage.getItem('userType');
     const clienteDatos = Datos.cliente();
+
+    const orders = [
+        // Aquí proporciona tu arreglo de órdenes
+        {
+            id: 1,
+            descripcion: 'Descripción de la orden 1',
+            professional: 1,
+            precio: '100',
+            comentarios: 'Comentario de la orden 1',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 2,
+            descripcion: 'Necesito alguien que me pueda reparar un tv de 52 pulgadas que no le enciende la pantalla.',
+            professional: 2,
+            precio: '200',
+            comentarios: 'Comentario de la orden 2',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 3,
+            descripcion: 'Descripción de la orden 3',
+            professional: 3,
+            precio: '300',
+            comentarios: 'Comentario de la orden 3',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 1,
+            descripcion: 'Descripción de la orden 1',
+            professional: 1,
+            precio: '100',
+            comentarios: 'Comentario de la orden 1',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 2,
+            descripcion: 'Necesito alguien que me pueda reparar un tv de 52 pulgadas que no le enciende la pantalla.',
+            professional: 2,
+            precio: '200',
+            comentarios: 'Comentario de la orden 2',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 3,
+            descripcion: 'Descripción de la orden 3',
+            professional: 3,
+            precio: '300',
+            comentarios: 'Comentario de la orden 3',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 1,
+            descripcion: 'Descripción de la orden 1',
+            professional: 1,
+            precio: '100',
+            comentarios: 'Comentario de la orden 1',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 2,
+            descripcion: 'Necesito alguien que me pueda reparar un tv de 52 pulgadas que no le enciende la pantalla.',
+            professional: 2,
+            precio: '200',
+            comentarios: 'Comentario de la orden 2',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 3,
+            descripcion: 'Descripción de la orden 3',
+            professional: 3,
+            precio: '300',
+            comentarios: 'Comentario de la orden 3',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 1,
+            descripcion: 'Descripción de la orden 1',
+            professional: 1,
+            precio: '100',
+            comentarios: 'Comentario de la orden 1',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 2,
+            descripcion: 'Necesito alguien que me pueda reparar un tv de 52 pulgadas que no le enciende la pantalla.',
+            professional: 2,
+            precio: '200',
+            comentarios: 'Comentario de la orden 2',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 3,
+            descripcion: 'Descripción de la orden 3',
+            professional: 3,
+            precio: '300',
+            comentarios: 'Comentario de la orden 3',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 1,
+            descripcion: 'Descripción de la orden 1',
+            professional: 1,
+            precio: '100',
+            comentarios: 'Comentario de la orden 1',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 2,
+            descripcion: 'Necesito alguien que me pueda reparar un tv de 52 pulgadas que no le enciende la pantalla.',
+            professional: 2,
+            precio: '200',
+            comentarios: 'Comentario de la orden 2',
+            orderstatus: 'PENDIENTE',
+        },
+        {
+            id: 3,
+            descripcion: 'Descripción de la orden 3',
+            professional: 3,
+            precio: '300',
+            comentarios: 'Comentario de la orden 3',
+            orderstatus: 'PENDIENTE',
+        },
+        // ... más órdenes
+    ];
 
     return (
         <>
@@ -66,7 +192,7 @@ const DashboardRouter: React.FC = () => {
                                 />
                                 <Route
                                     path='/Agenda'
-                                    element={<h1>Próximamente Agenda...</h1>}
+                                    element={<OrdersListProf orders={orders} />}
                                 />
                                 <Route
                                     path='/Soporte'

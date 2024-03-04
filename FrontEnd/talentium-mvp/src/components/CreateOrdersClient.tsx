@@ -8,7 +8,7 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
     const navigate = useNavigate();
 
     const [orden, setOrden] = useState<Order>({
-        description: "nueva orden test",
+        description: 'nueva orden test',
         cliente_id: cliente.clienteId,
         date: '03/03/2024',
     });
@@ -38,23 +38,27 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
                     atrás
                 </CustomButton>
             </div>
-            <div>
-            <textarea className='flex flex-col rounded-md bg-royal-blue-100/50 shadow-md '
-                name="descripcion"
-                placeholder="Escribe la descripción de la orden aquí..."
-                cols={30}
-                rows={8}
-                value={orden.description}
-                onChange={handleChange}
-            />
+            <div className='flex flex-col items-center gap-4'>
+                <h1 className='text-center text-2xl font-bold text-slate-600'>
+                    Nueva Orden
+                </h1>
+                <textarea
+                    className='flex flex-col rounded-md bg-royal-blue-100/50 shadow-md '
+                    name='descripcion'
+                    placeholder='Escribe la descripción de la orden aquí...'
+                    cols={30}
+                    rows={8}
+                    value={orden.description}
+                    onChange={handleChange}
+                />
             </div>
             <div>
                 <CustomButton
-                        onClick={handleSubmit}
-                        customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md p-2'
-                    >
-                        Crear Orden
-                    </CustomButton>
+                    onClick={handleSubmit}
+                    customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md p-2'
+                >
+                    Crear Orden
+                </CustomButton>
             </div>
         </div>
     );
