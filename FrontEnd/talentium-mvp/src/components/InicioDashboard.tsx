@@ -2,6 +2,7 @@ import UserTypeSelector from './UserTypeSelector';
 import { UserType } from '../interfaces/RegistrationFormTypes';
 import { useUserType } from '../context/UserTypeContext';
 import { useNavigate } from 'react-router-dom';
+import InitialWindowProf from './InitialWindowProf';
 //import { useState } from 'react';
 
 const InicioDashboard: React.FC = () => {
@@ -18,7 +19,7 @@ const InicioDashboard: React.FC = () => {
     return (
         <>
             {userTypeFromLocalStorage ? (
-                <h1>Bienvenido!!!</h1>
+                <InitialWindowProf />
             ) : (
                 <UserTypeSelector onSelectedUserType={onSelectedUserType} />
             )}

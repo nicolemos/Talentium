@@ -4,7 +4,7 @@ export interface Order {
     id: number;
     descripcion: string;
     professional: number;
-    precio: string;
+    precio: number;
     comentarios: string;
     orderstatus: string;
 }
@@ -17,8 +17,9 @@ export interface Professional {
 export interface OrderData {
     id: number;
     orderstatus: ReactNode;
-    comentarios?: string;
+    comentarios: string;
     descripcion: string;
+    precio: number;
 }
 
 export interface OrdersListProfProps {

@@ -13,14 +13,14 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
     const createOrder = (
         descripcion: string,
         comentarios: string,
-        precio: string,
+        precio: number,
     ) => {
         const newOrder: Order = {
             id: ordersState.length + 1,
             descripcion: descripcion,
             professional: 1,
-            precio,
-            comentarios,
+            precio: precio,
+            comentarios: comentarios,
             orderstatus: 'PENDIENTE',
         };
 
@@ -29,24 +29,16 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
     };
 
     const acceptOrder = (orderId: number) => {
-        // Lógica para cambiar el estado de la orden a "ACEPTADA"
+        // Eliminar la orden aceptada de la lista
         setOrdersState((prevOrders) =>
-            prevOrders.map((order) =>
-                order.id === orderId
-                    ? { ...order, orderstatus: 'ACEPTADA' }
-                    : order,
-            ),
+            prevOrders.filter((order) => order.id !== orderId),
         );
     };
 
     const rejectOrder = (orderId: number) => {
-        // Lógica para cambiar el estado de la orden a "RECHAZADA"
+        // Eliminar la orden rechazada de la lista
         setOrdersState((prevOrders) =>
-            prevOrders.map((order) =>
-                order.id === orderId
-                    ? { ...order, orderstatus: 'RECHAZADA' }
-                    : order,
-            ),
+            prevOrders.filter((order) => order.id !== orderId),
         );
     };
 
@@ -113,8 +105,8 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
                                     onClick={() => {
                                         createOrder(
                                             order.descripcion,
-                                            'Nuevo comentario',
-                                            'Nuevo precio',
+                                            order.comentarios,
+                                            order.precio,
                                         );
                                     }}
                                     customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md px-2'
