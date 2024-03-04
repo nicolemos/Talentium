@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface Order {
     id: number;
@@ -24,4 +24,16 @@ export interface OrderData {
 
 export interface OrdersListProfProps {
     orders: OrderData[];
-} 
+}
+
+export interface OrderListAcceptedProps {
+    orders: Order[];
+}
+
+export interface OrderListPendingProps {
+    orders: Order[];
+}
+
+export interface OrderListCompletedProps {
+    orders: Order[];
+}
