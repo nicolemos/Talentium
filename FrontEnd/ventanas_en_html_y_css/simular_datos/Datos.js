@@ -23,7 +23,7 @@ export class datos {
 
         }
     }
-    p
+    
     static profesional() {
         return {
             "id": "10",
