@@ -1,9 +1,11 @@
 export class Cartel {
 
-    constructor(mensaje, divPadre) {
+    constructor(mensaje,ordenDato,datosOrdenes, divPadre) {
         this.mensaje = mensaje ?? '¿estas seguro?';
         this.divPadre = divPadre ?? 'main';
         this.div;
+        this.orden = ordenDato;
+        this.datosOrdenes = datosOrdenes;
     }
 
     crearCartel() {
@@ -17,14 +19,22 @@ export class Cartel {
         const cancelar = document.createElement('button');
         cancelar.innerText = 'cancelar';
         cancelar.addEventListener('click', ()=>{
-            this.cerrar();
+            this.cerrar(this.div);
         });
 
         const aceptar = document.createElement('button');
         aceptar.innerText = 'aceptar';
         aceptar.addEventListener('click', ()=>{
-            alert('aca va la logica');
-            this.cerrar();
+           // alert('aca va la logica');
+            this.orden.profecional = null;
+            this.orden.precio = null;
+            this.orden.comentarios = null;
+
+            console.log(this.orden);
+
+            this.cerrar(this.datosOrdenes);
+            this.cerrar(this.div);
+
         });
 
         this.div.append(vista, cancelar, aceptar);
@@ -38,8 +48,8 @@ export class Cartel {
 
     }
 
-    cerrar() {
-        const padre = this.div.parentNode;
-        padre.removeChild(this.div);
+    cerrar(hijo) {
+        const padre = hijo.parentNode;
+        padre.removeChild(hijo);
     }
 }

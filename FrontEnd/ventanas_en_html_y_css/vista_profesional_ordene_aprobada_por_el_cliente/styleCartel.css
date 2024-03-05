@@ -6,7 +6,11 @@
     border-radius: 50px;
     position: sticky;
     z-index: 1;
-    background-color: rgba(119, 136, 153, 20%);
+    background-color: rgba(233, 75, 75, 0.8);
+    position: absolute;
+    right: 5rem;
+    bottom: 15rem;
+
 
     div {
         font-size: 1.5em;
@@ -21,7 +25,7 @@
         font-weight: bolder;
         transition: transform 1s;
 
-        &:hover{
+        &:hover {
             transform: scale(.9);
         }
     }

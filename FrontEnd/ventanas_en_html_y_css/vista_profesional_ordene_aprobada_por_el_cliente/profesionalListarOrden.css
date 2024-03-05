@@ -3,6 +3,7 @@
   background: inherit;
   backdrop-filter: blur(10px);
   width: min(100%,50em);
+  height: 100vh;
   border: 1px dotted gainsboro;
   margin: 1em;
   overflow: scroll;
@@ -26,11 +27,15 @@
 
     text-align: center;
 
-    textarea, input, button {
+    input, button {
      display: none;
     }
 
-    div{
+    div:nth-child(2){
+      display: none;
+     }
+
+    div:last-child{
       display: block;
       width: inherit;
       &:hover {
