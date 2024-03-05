@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `ordenes` (
   `descripcion_profesional` varchar(1500),
   `precio` decimal(18,2) DEFAULT NULL,
   `fecha` date NOT NULL,
-  `ESTADO` enum('Inicial','Pendiente','Aprobada') NOT NULL DEFAULT 'Inicial',
+  `ESTADO` enum('Inicial','Pendiente','Aprobada','Finalizada') NOT NULL DEFAULT 'Inicial',
   `cliente_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `profesional_id_idx` (`profesional_id`),
