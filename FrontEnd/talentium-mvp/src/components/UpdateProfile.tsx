@@ -10,7 +10,7 @@ const Perfil: React.FC<PerfilProps> = ({ userId }) => {
     const [userData, setUserData] = useState<UserData>({
         nombre: 'Angel',
         apellido: 'Alvarez',
-        dni: '96204316',
+        dni: '123456789',
         email: 'angel@gmail.com',
         direccion: 'mendoza',
     });
