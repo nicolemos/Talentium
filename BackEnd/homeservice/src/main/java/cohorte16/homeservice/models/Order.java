@@ -32,7 +32,7 @@ public class Order {
     private String description_professional;
 
     @Column(name = "precio")
-    @DecimalMin(value = "0.01")
+    @DecimalMin(value = "0.00")
     private BigDecimal price;
 
     @Column(name = "fecha")

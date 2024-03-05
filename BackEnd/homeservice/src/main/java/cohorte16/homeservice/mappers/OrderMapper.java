@@ -11,7 +11,8 @@ public class OrderMapper {
         return new OrderRatingDTO(
                 order.getId(),
                 order.getClient().getRating(),
-                order.getProfessional().getRating()
+                order.getProfessional().getRating(),
+                order.getProfessional().getWallet()
         );
     }
     public OrderAceptedDTO orderToOrderAceptedDTO(Order order){

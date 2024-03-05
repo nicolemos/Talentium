@@ -5,6 +5,8 @@ import cohorte16.homeservice.models.Direction;
 import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
 
+import java.math.BigDecimal;
+
 public record ProfessionalDTO(
         Long id,
         String name,
@@ -14,7 +16,8 @@ public record ProfessionalDTO(
         Integer rating,
         String cbu,
         User user,
-        Direction direction
+        Direction direction,
+        BigDecimal wallet
 ) {
     public ProfessionalDTO(Professional professional) {
        this(    professional.getId(),
@@ -24,7 +27,8 @@ public record ProfessionalDTO(
                 professional.getProfession(),
                 professional.getRating(),
                 null,
-                LoginUserDTO.LoginUserDTO(professional.getUser()), professional.getDirection()
+                LoginUserDTO.LoginUserDTO(professional.getUser()), professional.getDirection(),
+               professional.getWallet()
        );
     }
 

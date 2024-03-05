@@ -29,7 +29,8 @@ public class ProfessionalMapper {
                 professional.getRating(),
                 professional.getCbu(),
                 professional.getUser(),
-                professional.getDirection()
+                professional.getDirection(),
+                professional.getWallet()
         );
     }
 
@@ -45,7 +46,8 @@ public class ProfessionalMapper {
                 professionalDTO.direction(),
                 professionalDTO.user(),
                 Collections.emptyList(),
-                Boolean.TRUE
+                Boolean.TRUE,
+                professionalDTO.wallet()
         );
     }
 

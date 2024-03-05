@@ -3,10 +3,12 @@ package cohorte16.homeservice.models;
 import cohorte16.homeservice.enums.Profession;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.Fetch;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 
@@ -59,4 +61,9 @@ public class Professional {
 
     @Column(name = "activo")
     private boolean active = Boolean.TRUE;
+
+    @Column(name = "billetera")
+    @DecimalMin(value = "0.00")
+    private BigDecimal wallet;
+
 }
