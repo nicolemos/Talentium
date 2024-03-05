@@ -20,9 +20,9 @@
     width: min(20em, 100%);
     height: fit-content;
     display: grid;
-    justify-content: baseline;
+    /* justify-content: baseline; */
     align-items: center;
-    transition: background-color 0.3s transform 0.2s;
+    transition:  transform 0.2s;
     position: relative;
 
     text-align: center;

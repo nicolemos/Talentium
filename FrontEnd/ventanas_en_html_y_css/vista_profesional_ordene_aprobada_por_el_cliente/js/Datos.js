@@ -33,7 +33,7 @@ export class datos {
             "cbu": "20772345670",
             "rating": 5,
             "profession": "ELECTRICIAN",
-
+            "wallet": 0,
 
             "direction": {
                 "street": "calle falsa",
@@ -55,8 +55,8 @@ export class datos {
             "id": 1,
             "description": "nueva orden 5 para realizar muchas cosas empezando por camiar, una canilla y luego revisar el lavarropas",
             "profecional": 1,
-            "precio": 0.00,
-            "profecional": NaN,
+            "precio": 20.00,
+            "profecional": 10,
             "fecha": "",
             "comentarios": "",
             "orderstatus": "PENDIENTE",

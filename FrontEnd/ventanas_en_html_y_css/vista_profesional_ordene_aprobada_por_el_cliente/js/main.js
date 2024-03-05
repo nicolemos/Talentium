@@ -1,6 +1,6 @@
 import {datos} from './Datos.js';
 import {datosOrdenes} from './datosOrdenes.js';
-
+import { CartelPuntuar } from './cartelPuntuar.js';
 
 const profecional1 = datos.orden();
 
@@ -9,3 +9,6 @@ const nuevaOrden = new datosOrdenes(datos.orden(), datos.profesional());
 nuevaOrden.agregarAlFront();
 }
 
+/*
+const cartel = new CartelPuntuar(datos.orden());
+cartel.agregarALFront();*/

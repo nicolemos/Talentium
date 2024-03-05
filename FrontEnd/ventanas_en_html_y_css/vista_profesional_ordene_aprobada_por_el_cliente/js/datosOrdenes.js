@@ -2,12 +2,12 @@ import { Cartel } from './Cartel.js';
 import { CartelPuntuar } from './cartelPuntuar.js';
 
 export class datosOrdenes {
-    constructor(datoOrden, profesionalDto, aprobada, divPadre) {
-        this.datos = datoOrden;
+    constructor(ordenDto, profesionalDto, aprobada, divPadre) {
+        this.orden = ordenDto;
         this.vistaDatos;
         this.div;
         this.divPadre = divPadre ?? '#front';
-        this.description = datoOrden.description;
+        this.description = ordenDto.description;
         this.profesional = profesionalDto;
         this.aprobada = aprobada ?? false;
         this.orden = {
@@ -49,8 +49,9 @@ export class datosOrdenes {
         aceptarTrabajo.innerText = "Trabajo realizado";
         aceptarTrabajo.addEventListener('click', () => {
 
-            const cartel = new CartelPuntuar();
+            const cartel = new CartelPuntuar(this.orden);
             cartel.agregarALFront();
+            this.cerrar();
 
         });
 

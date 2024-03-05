@@ -5,10 +5,10 @@
   height: min(100%, 15em);
   display: grid;
   grid-template-areas: 'vista vista';
-  justify-content: baseline;
+  /* justify-content: baseline; */
   align-items: center;
   padding: 2em;
-  transition: background-color 0.3s transform 0.2s;
+  transition:transform 0.2s;
   position: relative;
   margin-top: 1em;
   text-align: center;
