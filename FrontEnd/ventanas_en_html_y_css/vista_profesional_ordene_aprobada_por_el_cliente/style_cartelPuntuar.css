@@ -13,21 +13,22 @@
     place-content: center;
     border-radius: 15px;
     border: 2px solid wheat;
-   
+
 
     div {
         margin: 1em;
     }
-    div:last-child{
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-gap: 10px;
 
-button{
-    background-color: yellow;
-    border-color: aliceblue;
-    border-radius: 15px;
-   text
-}
+    div:last-child {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 10px;
+
+        button {
+            background-color: yellow;
+            border-color: aliceblue;
+            border-radius: 15px;
+            
+        }
     }
 }
