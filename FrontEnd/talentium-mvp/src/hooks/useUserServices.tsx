@@ -4,21 +4,28 @@ import { useAuth } from '../context/AuthContext';
 const useCreateUser = () => {
     const auth = useAuth();
 
-    const createUser = async (userData: UserProps): Promise<boolean> => {
+    const createUser = async (credentials: {
+        email: string;
+        password: string;
+    }): Promise<boolean> => {
         const url = 'http://localhost:8080/usuarios';
 
-      try {
+        try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(userData),
+                body: JSON.stringify(credentials),
             });
 
-          if (response.ok) {
-               const user = await response.json();
-               auth.login(user);
+            if (response.ok) {
+              const user = await response.json();
+              const credentials = {
+                  email: user.email,
+                  password: user.password,
+              };
+                auth.login(credentials);
                 return true;
             } else {
                 return false;

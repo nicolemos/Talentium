@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { PerfilProps, UserData } from '../interfaces/UserProps';
 import CustomButton from './CustomButton';
-import { FaArrowLeft } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+//import { FaArrowLeft } from 'react-icons/fa';
+//import { useNavigate } from 'react-router-dom';
 
 const Perfil: React.FC<PerfilProps> = ({ userId }) => {
     const [userData, setUserData] = useState<UserData>({
@@ -41,24 +41,11 @@ const Perfil: React.FC<PerfilProps> = ({ userId }) => {
         }));
     };
 
-    const navigate = useNavigate();
 
-    const handleback = () => {
-        navigate('/DashboardCliente');
-    };
 
     return (
         <div className='mx-auto mt-10 flex max-w-md flex-col rounded-md p-6 shadow-md'>
             <div className='flex'>
-                <CustomButton
-                    onClick={handleback}
-                    customClass={
-                        'z-50 absolute top-[85px] md:top-[65px] right-[15px] md:left-[245px] w-24 text-white text-md md:text-xl font-bold cursor-pointer '
-                    }
-                >
-                    <FaArrowLeft className='h-10 w-10 p-2' />
-                    atrás
-                </CustomButton>
             </div>
             <h2 className='mb-4 flex items-center justify-center text-2xl font-semibold'>
                 Perfil de Usuario

@@ -11,7 +11,8 @@ import { User } from '../interfaces/UserProps';
 interface AuthContextType {
     user: User | null;
     login: (user: User) => void;
-    logout: () => void;
+  logout: () => void;
+  register: (user: User) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -42,6 +43,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         saveUserToLocalStorage(user);
     }, []);
 
+   const register = useCallback((user: User) => {
+       setUser(user);
+       saveUserToLocalStorage(user);
+   }, []);
+  
     const logout = useCallback(() => {
         setUser(null);
         clearUserFromLocalStorage();
@@ -56,7 +62,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, register, logout }}>
             {children}
         </AuthContext.Provider>
     );

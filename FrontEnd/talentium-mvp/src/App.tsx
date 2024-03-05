@@ -1,18 +1,16 @@
-import { Suspense } from 'react';
 import { AppRouter } from './routers/AppRouter';
-import LoadingPage from './screens/LoadingPage';
 import { AuthProvider } from './context/AuthContext';
 import { UserTypeProvider } from './context/UserTypeContext';
+import { UserDataProvider } from './context/UserDataContext';
 
 const App: React.FC = () => {
-
     return (
         <>
             <AuthProvider>
                 <UserTypeProvider>
-                    <Suspense fallback={<LoadingPage />}>
+                    <UserDataProvider>
                         <AppRouter />
-                    </Suspense>
+                    </UserDataProvider>
                 </UserTypeProvider>
             </AuthProvider>
         </>

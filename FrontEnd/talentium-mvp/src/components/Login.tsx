@@ -5,6 +5,8 @@ import useUserServices from '../hooks/useUserServices';
 import NoAvatar from '/NoAvatar.png?url';
 import { FaArrowLeft } from 'react-icons/fa';
 import CustomButton from './CustomButton';
+import { useUserType } from '../context/UserTypeContext';
+import { useUserData } from '../context/UserDataContext';
 
 const Login: React.FC = () => {
     const { loginUser } = useUserServices();
@@ -16,15 +18,19 @@ const Login: React.FC = () => {
     });
 
     const [error, setError] = useState<string>('');
+    const { updateUserType } = useUserType();
+    const { updateUserData } = useUserData();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
-        localStorage.setItem('user', JSON.stringify({ id: 2, email: loginForm.email })
+        setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+        localStorage.setItem(
+            'user',
+            JSON.stringify({ id: 2, email: loginForm.email }),
         );
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
+        e.preventDefault();
         navigate('/dashboardcliente/inicio');
 
         if (!loginForm.email || !loginForm.password) {
@@ -37,7 +43,12 @@ const Login: React.FC = () => {
 
             if (isLoginSuccessful) {
                 console.log('Login successful');
-
+                const userType =
+                    localStorage.getItem('userType') || null || undefined;
+                const userData =
+                    localStorage.getItem('userData') || null || undefined;
+                userType && updateUserType(JSON.parse(userType));
+                userData && updateUserData(JSON.parse(userData));
                 navigate('/DashboardCliente/inicio');
             } else {
                 setError('Login failed. Please check your credentials.');

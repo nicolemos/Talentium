@@ -6,7 +6,7 @@ const InitialWindowClient = () => {
     const navigate = useNavigate();
 
     const handleback = () => {
-        navigate('/DashboardCliente');
+        navigate('/DashboardCliente/inicio');
     };
 
     return (
