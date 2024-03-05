@@ -10,14 +10,7 @@ export class datosOrdenes {
         this.description = ordenDto.description;
         this.profesional = profesionalDto;
         this.aprobada = aprobada ?? false;
-        this.orden = {
-            "id": 1,
-            "profecional": this.profesional.id,
-            "precio": NaN,
-            "comentarios": this.comentario,
-            "orderstatus": "PENDIENTE"
-
-        }
+     
     }
 
     crearOrden() {

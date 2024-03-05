@@ -5,6 +5,7 @@ export class CartelPuntuar {
         this.divPadre = divPadre ?? 'main';
         this.rating;
         this.div;
+      
     }
 
     crearCartel() {
@@ -81,7 +82,7 @@ export class CartelPuntuar {
         console.log(clientePuntuado);
 
         const profesionalDto = {
-            'id': this.orden.cliente_id,
+            'id': this.orden.profecional,
             "wallet": this.orden.precio
         }
         console.log(profesionalDto);

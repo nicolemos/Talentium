@@ -57,9 +57,9 @@ export class datos {
             "profecional": 1,
             "precio": 20.00,
             "profecional": 10,
-            "fecha": "",
-            "comentarios": "",
-            "orderstatus": "PENDIENTE",
+            "fecha": "5/03/2024",
+            "comentarios": "arreglocon materiales incluidos",
+            "orderstatus": "APROBADA",
             "cliente_id": 15
         }
     }

@@ -30,6 +30,7 @@ export class Cartel {
             this.orden.precio = null;
             this.orden.comentarios = null;
             this.orden.orderstatus = 'INICIAL';
+         
 
             console.log(this.orden);
 
