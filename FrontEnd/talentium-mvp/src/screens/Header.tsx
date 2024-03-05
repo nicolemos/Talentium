@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     const [isProfVisible, setIsProfVisible] = useState(false);
     const closeModalProf = () => setIsProfVisible(false);
 
-    // Datos de ejemplo para el modal
+    // Datos del modal
     const InfoCardClientContent = {
         title: 'Como Cliente puedes...',
         content:
