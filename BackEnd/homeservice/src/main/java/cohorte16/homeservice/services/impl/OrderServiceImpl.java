@@ -134,11 +134,13 @@ public class OrderServiceImpl implements OrderService {
         try{
             Order orderEntity = orderRepository.findById(order.id())
                     .orElseThrow(() -> new EntityNotFoundException("Order not found"));
-            if(order.ratingClient() != null){
+            if(order.ratingClient() != null) {
                 orderEntity.getClient().setRating(order.ratingClient());
-            }else if (order.ratingProfessional() != null && orderEntity.getPrice() != null) {
+            }
+            if (order.ratingProfessional() != null && orderEntity.getPrice() != null) {
                 orderEntity.getProfessional().setRating(order.ratingProfessional());
                 orderEntity.getProfessional().setWallet(orderEntity.getPrice());
+                orderEntity.setOrderstatus(Orderstatus.Finalizada);
             }
             Order orderSaved = orderRepository.save(orderEntity);
             return orderMapper.orderToOrderRatingDTO(orderSaved);
