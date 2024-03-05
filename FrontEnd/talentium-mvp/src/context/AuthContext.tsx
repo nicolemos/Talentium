@@ -6,7 +6,7 @@ import React, {
     useCallback,
 } from 'react';
 
-import { User } from '../interfaces/User';
+import { User } from '../interfaces/UserProps';
 
 interface AuthContextType {
     user: User | null;

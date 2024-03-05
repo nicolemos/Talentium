@@ -2,14 +2,15 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DashboardCliente from '../screens/DashboardCliente';
 import SidebarDashboard from '../components/SidebarDashboard';
-import RegistrationForm from '../components/RegistrationForm';
-import { UserType } from '../interfaces/RegistrationFormTypes';
+// import RegistrationForm from '../components/RegistrationForm';
+// import { UserType } from '../interfaces/RegistrationFormTypes';
 import { IoSearch } from 'react-icons/io5';
 import InicioDashboard from '../components/InicioDashboard';
 import CreateOrdersClient from '../components/CreateOrdersClient';
 import { Datos } from '../data/Datos';
 import { Orders } from '../data/OrdersData';
 import OrdersListProf from '../components/OrdersListProf';
+import UpdateProfile from '../components/UpdateProfile';
 
 const DashboardRouter: React.FC = () => {
     //  const userType = localStorage.getItem('userType');
@@ -54,10 +55,7 @@ const DashboardRouter: React.FC = () => {
                                 <Route
                                     path='/Datos'
                                     element={
-                                        <RegistrationForm
-                                            user={{}}
-                                            userType={UserType.Professional}
-                                        />
+                                        <UpdateProfile userId={''} />
                                     }
                                 />
                                 <Route
