@@ -7,7 +7,7 @@ import SidebarDashboard from '../components/SidebarDashboard';
 import { IoSearch } from 'react-icons/io5';
 import InicioDashboard from '../components/InicioDashboard';
 import CreateOrdersClient from '../components/CreateOrdersClient';
-import { Datos } from '../data/Datos';
+import { Datos } from '../data/DatosPrueba';
 import { Orders } from '../data/OrdersData';
 import OrdersListProf from '../components/OrdersListProf';
 //import UpdateProfile from '../components/UpdateProfile';
