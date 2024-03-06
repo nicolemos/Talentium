@@ -4,28 +4,31 @@ import Login from '../components/Login';
 import LandingPage from '../screens/LandingPage';
 import BasicRegistrationForm from '../components/BasicRegistrationForm';
 import 'react-toastify/dist/ReactToastify.css';
-import DashboardRouter from './DashboardRouter'
+import DashboardRouter from './DashboardRouter';
+import FaqSection from '../screens/FaqSection';
+import TermsAndConditionsPage from '../screens/TermsAndConditionPage'
+import AboutUsPage from '../screens/AboutUs'
 
 export const AppRouter: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<LandingPage />} />
-                <Route path='/DashboardCliente/*' element={<DashboardRouter />} />
+                <Route
+                    path='/DashboardCliente/*'
+                    element={<DashboardRouter />}
+                />
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Register' element={<BasicRegistrationForm />} />
                 {/*<Route path='/*' element={<PageNotFound />} /> */}
                 <Route
                     path='/acerca-de'
-                    element={<h1>ACA VA INFO DE ACERCA DE</h1>}
+                    element={<AboutUsPage/>}
                 />
-                <Route
-                    path='/preguntas-frecuentes'
-                    element={<h1>ACA VAN LAS PREGUNTAS FRECUENTES</h1>}
-                />
+                <Route path='/preguntas-frecuentes' element={<FaqSection />} />
                 <Route
                     path='/terminos-y-condiciones'
-                    element={<h1>ACA VAN LOS TERMINOS Y CONDICIONES</h1>}
+                    element={<TermsAndConditionsPage/>}
                 />
             </Routes>
         </BrowserRouter>
