@@ -1,13 +1,12 @@
-import { UserProps } from '../interfaces/RegistrationFormTypes';
+import { BasicRegistrationFormProps, UserProps } from '../interfaces/RegistrationFormTypes';
 import { useAuth } from '../context/AuthContext';
 
 const useCreateUser = () => {
     const auth = useAuth();
 
-    const createUser = async (credentials: {
-        email: string;
-        password: string;
-    }): Promise<boolean> => {
+    const createUser = async (
+        userData: BasicRegistrationFormProps,
+    ): Promise<UserProps | null> => {
         const url = 'http://localhost:8080/usuarios';
 
         try {
@@ -16,30 +15,26 @@ const useCreateUser = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(credentials),
+                body: JSON.stringify(userData),
             });
 
             if (response.ok) {
-              const user = await response.json();
-              const credentials = {
-                  email: user.email,
-                  password: user.password,
-              };
-                auth.login(credentials);
-                return true;
+                const user = await response.json();
+                auth.register(user);
+                return user;
             } else {
-                return false;
+                return null;
             }
         } catch (error) {
             console.error('Ocurrió un error:', error);
-            return false;
+            return null;
         }
     };
 
     const loginUser = async (credentials: {
         email: string;
         password: string;
-    }): Promise<boolean> => {
+    }): Promise<UserProps | null> => {
         const loginUrl = 'http://localhost:8080/login';
 
         try {
@@ -54,13 +49,13 @@ const useCreateUser = () => {
             if (response.ok) {
                 const user = await response.json();
                 auth.login(user);
-                return true;
+                return user;
             } else {
-                return false;
+                return null;
             }
         } catch (error) {
             console.error('An error occurred:', error);
-            return false;
+            return null;
         }
     };
 
@@ -73,7 +68,7 @@ const useCreateUser = () => {
 
         try {
             const response = await fetch(url, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },

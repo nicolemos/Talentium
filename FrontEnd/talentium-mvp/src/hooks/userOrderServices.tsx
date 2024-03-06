@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { OrderForm } from '../interfaces/OrderForm'
+import { Order } from '../interfaces/OrdersProps';
 
 const useOrderServices = () => {
   const [isLoading, setIsLoading] = useState(false);
    const [orders, setOrders] = useState([]);
 
 
-    const createOrder = async (orderData: OrderForm) => {
+    const createOrder = async (orderData: Order) => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8080/order', {
+            const response = await fetch('http://localhost:8080/api/order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,16 +27,16 @@ const useOrderServices = () => {
             return true;
         } catch (error) {
             setIsLoading(false);
-          console.error('Error al crear la orden:', error)
-          return false
+            console.error('Error al crear la orden:', error);
+            return false;
         }
-  };
+    };
   
-  const getOrders = async () => {
+  const getInitialOrders = async () => {
     setIsLoading(true)
 
     try {
-      const response = await fetch('http://localhost:8080/order');
+      const response = await fetch('http://localhost:8080/api/order/allinitial');
       if (!response.ok) {
         throw new Error('Error al obtener la lista de órdenes')
       }
@@ -50,7 +50,9 @@ const useOrderServices = () => {
     }
   }
 
-    return { createOrder, getOrders, isLoading, orders  };
+
+
+    return { createOrder, getInitialOrders, isLoading, orders  };
 };
 
 export default useOrderServices;

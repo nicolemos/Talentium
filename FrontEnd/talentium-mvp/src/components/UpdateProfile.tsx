@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { PerfilProps, UserData } from '../interfaces/UserProps';
 import CustomButton from './CustomButton';
 //import { FaArrowLeft } from 'react-icons/fa';
-//import { useNavigate } from 'react-router-dom';
+//  import { useNavigate } from 'react-router-dom';
 
 const Perfil: React.FC<PerfilProps> = ({ userId }) => {
     const [userData, setUserData] = useState<UserData>({
@@ -42,6 +42,9 @@ const Perfil: React.FC<PerfilProps> = ({ userId }) => {
     };
 
 
+    const handleback = () => {
+        navigate('/DashboardCliente');
+    };
 
     return (
         <div className='mx-auto mt-10 flex max-w-md flex-col rounded-md p-6 shadow-md'>
@@ -64,7 +67,7 @@ const Perfil: React.FC<PerfilProps> = ({ userId }) => {
             </div>
             <div className='mb-4'>
                 <label className='mb-2 block text-sm font-bold text-gray-700'>
-                    DNI:
+                    Teléfono:
                 </label>
                 <p>{userData.dni}</p>
             </div>

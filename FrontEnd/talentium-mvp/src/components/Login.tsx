@@ -7,6 +7,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import CustomButton from './CustomButton';
 import { useUserType } from '../context/UserTypeContext';
 import { useUserData } from '../context/UserDataContext';
+import { toast } from 'react-toastify'
 
 const Login: React.FC = () => {
     const { loginUser } = useUserServices();
@@ -18,15 +19,12 @@ const Login: React.FC = () => {
     });
 
     const [error, setError] = useState<string>('');
+
     const { updateUserType } = useUserType();
     const { updateUserData } = useUserData();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
-        localStorage.setItem(
-            'user',
-            JSON.stringify({ id: 2, email: loginForm.email }),
-        );
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -38,23 +36,29 @@ const Login: React.FC = () => {
             return;
         }
 
-        try {
-            const isLoginSuccessful = await loginUser(loginForm);
-
-            if (isLoginSuccessful) {
-                console.log('Login successful');
+      try {
+          localStorage.setItem('user', JSON.stringify({id: 2})) /// linea hardcodeada hasta hacer el fetch
+            const user = await loginUser(loginForm);
+            if (user) {
+              toast.success('Te has registrado exitosamente!');
+               navigate('/dashboardcliente/inicio');
+                if (user.id) {
+                    localStorage.setItem('userId', user.id);
+                }
                 const userType =
                     localStorage.getItem('userType') || null || undefined;
                 const userData =
                     localStorage.getItem('userData') || null || undefined;
                 userType && updateUserType(JSON.parse(userType));
                 userData && updateUserData(JSON.parse(userData));
-                navigate('/DashboardCliente/inicio');
+
             } else {
+              toast.error('Hubo un error con el login, vuelve a intentarlo');
                 setError('Login failed. Please check your credentials.');
             }
         } catch (error) {
-            console.error('Login error:', error);
+        console.error('Login error:', error);
+         toast.error('Ha ocurrido un error inesperado');
             setError('An error occurred during login. Please try again later.');
         }
     };

@@ -1,5 +1,5 @@
 export interface UserProps {
-    id?: string;
+    id?: number;
     name?: string;
     lastname?: string;
     email?: string;
@@ -45,5 +45,5 @@ type Speciality = [
     'Plomero',
     'Ingeniero',
     'Jardinero',
-    'Electricista',
+    'Electricista'
 ];
