@@ -5,7 +5,7 @@ const PageNotFound = () => {
     const navigate = useNavigate();
     useEffect(() => {
         setTimeout(() => navigate('/'), 2000);
-    }, [navigate]);
+    }, []);
 
     return (
         <div className='flex h-screen flex-col items-center justify-center bg-royal-blue-500'>

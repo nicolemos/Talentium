@@ -43,7 +43,7 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
     };
 
     const handleback = () => {
-        navigate('/DashboardCliente');
+        navigate('/DashboardCliente/inicio');
     };
 
     return (

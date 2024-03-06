@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Login from '../components/Login';
-import PageNotFound from '../screens/PageNotFound';
+//import PageNotFound from '../screens/PageNotFound';
 import LandingPage from '../screens/LandingPage';
 import BasicRegistrationForm from '../components/BasicRegistrationForm';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ export const AppRouter: React.FC = () => {
                 <Route path='/DashboardCliente/*' element={<DashboardRouter />} />
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Register' element={<BasicRegistrationForm />} />
-                <Route path='/*' element={<PageNotFound />} />
+                {/*<Route path='/*' element={<PageNotFound />} /> */}
                 <Route
                     path='/acerca-de'
                     element={<h1>ACA VA INFO DE ACERCA DE</h1>}
