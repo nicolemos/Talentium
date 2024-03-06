@@ -12,7 +12,7 @@ const InitialWindowProf = () => {
         <div className='flex max-h-[350px] max-w-[800px] p-2'>
             <div className='flex'>
                 <CustomButton
-                    onClick={() => navigate('/DashboardCliente/inicio')}
+                    onClick={() => navigate('/DashboardCliente')}
                     customClass={
                         'z-50 absolute top-[85px] md:top-[65px] right-[15px] md:left-[245px] w-24 text-white text-md md:text-xl font-bold cursor-pointer '
                     }
@@ -33,22 +33,22 @@ const InitialWindowProf = () => {
                     </div>
                 </Link>
 
-                <Link to='/DashboardCliente/Ordenes'>
+                <Link to='/DashboardCliente/Ordenes/lista'>
                     <div
                         className='flex h-40 w-60 items-center justify-center rounded-md bg-royal-blue-700 text-white shadow-md hover:bg-royal-blue-500'
                         onClick={() =>
-                            handleLinkClick('/DashboardCliente/Ordenes')
+                            handleLinkClick('/DashboardCliente/Ordenes/lista')
                         }
                     >
                         Lista de Ordenes
                     </div>
                 </Link>
 
-                <Link to='/DashboardCliente/Ordenes'>
+                <Link to='/DashboardCliente/Ordenes/nueva-orden'>
                     <div
                         className='flex h-40 w-60 items-center justify-center rounded-md bg-royal-blue-700 text-white shadow-md hover:bg-royal-blue-500'
                         onClick={() =>
-                            handleLinkClick('/DashboardCliente/Ordenes')
+                            handleLinkClick('/DashboardCliente/Ordenes/nueva-orden')
                         }
                     >
                         Crear Orden
