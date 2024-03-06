@@ -1,18 +1,31 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useEffect, useState } from 'react'
 
 const Footer: React.FC = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
-    const currentYear = new Date().getFullYear();
-
+  const currentYear = new Date().getFullYear();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  
+  useEffect(() => {
+      const userLog = localStorage.getItem('user')
+        setIsLoggedIn(!!userLog);
+    }, [user]); 
+  
+  
     const handleLogout = () => {
-        logout();
+      logout();
+      setIsLoggedIn(false);
         navigate('/');
   };
   
   const handleDashboardIn = () => {
+    if (user) {
       navigate('/dashboardcliente/inicio');
+   }
+    navigate('/')
+     window.location.reload();
   }
 
     return (
@@ -29,7 +42,7 @@ const Footer: React.FC = () => {
                         Links
                     </h4>
                     <ul>
-                        {user ? (
+                        {isLoggedIn ? (
                             <>
                                 <li>
                                     {' '}

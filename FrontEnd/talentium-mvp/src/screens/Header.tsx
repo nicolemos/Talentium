@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomLink from '../components/CustomLink';
 import { RiCloseLine, RiMenuLine } from 'react-icons/ri';
 import InfoCardProf from '../components/InfoCardProf';
 import InfoCardClient from '../components/InfoCardClient';
 
 const Header: React.FC = () => {
+const navigate = useNavigate()
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -29,8 +31,11 @@ const Header: React.FC = () => {
   
   const handleLogout = () => {
       // Eliminar el usuario del localStorage y actualizar el estado de isLoggedIn
-      localStorage.removeItem('user');
-      setIsLoggedIn(false);
+    localStorage.removeItem('user');
+    localStorage.removeItem('userData');
+     localStorage.removeItem('userType');
+    setIsLoggedIn(false);
+    navigate('/')
   };
     // Datos del modal
     const InfoCardClientContent = {
