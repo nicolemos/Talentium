@@ -18,14 +18,15 @@ import CustomButton from './CustomButton';
 const SidebarDashboard: React.FC = () => {
     const auth = useAuth();
     const navigate = useNavigate();
+    const userTypeFromLocalStorage = localStorage.getItem('userType');
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('userData');
-    localStorage.removeItem('userType');
-      auth.logout();
-    navigate('/');
-     window.location.reload(); 
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('userData');
+        localStorage.removeItem('userType');
+        auth.logout();
+        navigate('/');
+        window.location.reload();
     };
     const [showMenu, setShowMenu] = useState(false);
 
@@ -46,7 +47,8 @@ const SidebarDashboard: React.FC = () => {
                         className='ocject-cover h-20 w-20 rounded-full ring-2 ring-royal-blue-200 '
                     />
                     <h2 className='rounded-full bg-royal-blue-700 p-1 text-sm font-bold text-white'>
-                        Cliente
+                        {userTypeFromLocalStorage ?
+                            JSON.parse(userTypeFromLocalStorage) : 'Usuario'}
                     </h2>
                 </div>
 
