@@ -2,7 +2,8 @@ import UserTypeSelector from './UserTypeSelector';
 import { UserType } from '../interfaces/RegistrationFormTypes';
 import { useUserType } from '../context/UserTypeContext';
 import { useNavigate } from 'react-router-dom';
-import InitialWindowProf from './InitialWindowProf';
+import InitialWindowClient from './InitialWindowClient'
+import InitialWindowProf from './InitialWindowProf'
 //import { useState } from 'react';
 
 const InicioDashboard: React.FC = () => {
@@ -18,14 +19,24 @@ const InicioDashboard: React.FC = () => {
 
     return (
         <>
-            {userTypeFromLocalStorage ? (
-                <InitialWindowProf />
+            {(userTypeFromLocalStorage &&
+                JSON.parse(userTypeFromLocalStorage) === UserType.Client) ||
+            (userTypeFromLocalStorage &&
+                JSON.parse(userTypeFromLocalStorage) ===
+                    UserType.Professional) ? (
+                userTypeFromLocalStorage &&
+                JSON.parse(userTypeFromLocalStorage) === UserType.Client ? (
+                    <InitialWindowClient />
+                ) : (
+                    <InitialWindowProf />
+                )
             ) : (
                 <UserTypeSelector onSelectedUserType={onSelectedUserType} />
             )}
         </>
     );
 };
+
 
 export default InicioDashboard;
 
