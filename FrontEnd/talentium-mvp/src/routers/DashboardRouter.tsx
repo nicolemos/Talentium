@@ -13,6 +13,7 @@ import OrdersListProf from '../components/OrdersListProf';
 //import UpdateProfile from '../components/UpdateProfile';
 import LoadingPage from '../screens/LoadingPage';
 import OrdersWindow from '../components/OrdersWindow';
+import { User } from '../interfaces/UserProps';
 
 const DashboardRouter: React.FC = () => {
     //  const userType = localStorage.getItem('userType');
@@ -20,9 +21,17 @@ const DashboardRouter: React.FC = () => {
 
     const ordenesDatos = Orders;
 
+  const [userData, setUserData] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
+  
     useEffect(() => {
+        const userData = localStorage.getItem('userData');
+        if (userData) {
+          const userDataParsed = JSON.parse(userData);
+          console.log('userDataString', userDataParsed);
+            setUserData(userDataParsed);
+        }
         setTimeout(() => {
             setIsLoading(false);
         }, 3000);
@@ -39,7 +48,7 @@ const DashboardRouter: React.FC = () => {
                             <h1 className='px-6 text-xl font-bold text-white'>
                                 Hola,{' '}
                                 <span className='text-royal-blue-100'>
-                                    Usuario
+                                    {userData ? userData.name : 'Usuario'}
                                 </span>
                             </h1>
 
