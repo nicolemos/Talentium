@@ -1,75 +1,72 @@
 // Perfil.tsx
 
-import React, { useState, useEffect } from 'react';
-import { PerfilProps, UserData } from '../interfaces/UserProps';
+import React, { useState } from 'react';
+import { UserData } from '../interfaces/UserProps';
 import CustomButton from './CustomButton';
+import { useUserType } from '../context/UserTypeContext';
+import { useAuth } from '../context/AuthContext';
+import useCreateUser from '../hooks/useUserServices';
+import { toast } from 'react-toastify';
 //import { FaArrowLeft } from 'react-icons/fa';
 //  import { useNavigate } from 'react-router-dom';
 
-const Perfil: React.FC<PerfilProps> = ({ userId }) => {
+const Perfil: React.FC<UserData> = ({ name, lastname, dni, email, direction }) => {
     const [userData, setUserData] = useState<UserData>({
-        nombre: 'Angel',
-        apellido: 'Alvarez',
-        dni: '123456789',
-        email: 'angel@gmail.com',
-        direccion: 'mendoza',
+        name: name,
+        lastname: lastname,
+        dni: dni,
+        email: email,
+        direction: direction
     });
 
-    useEffect(() => {
-        // Simula la obtención de datos del almacenamiento local
-        const fetchData = () => {
-            // Recupera los datos del usuario según el userId
-            // Puedes ajustar esta lógica según tu implementación real
-            const dataFromStorage = {};
-            /* Lógica para recuperar datos de almacenamiento */
+    const { userType } = useUserType();
+    const type = JSON.stringify(userType);
 
-            setUserData(dataFromStorage);
-        };
+    const { getUserFromLocalStorage } = useAuth();
+    const userId = Number(getUserFromLocalStorage()?.id);
 
-        fetchData();
-    }, [userId]);
+    const { updateUser } = useCreateUser();
 
-    const handleUpdateProfile = () => {
-        // Implementa la lógica para actualizar el perfil (solo email y dirección)
-        // Puedes utilizar una función o enviar una solicitud al servidor
-
-        // Ejemplo de cómo podrías actualizar solo email y dirección
-        setUserData((prevData) => ({
-            ...prevData,
-            email: 'nuevoemail@example.com',
-            direccion: 'Nueva dirección',
-        }));
-    };
-
-
-    const handleback = () => {
-        navigate('/DashboardCliente');
+    const handleUpdateProfile = async () => {
+        const updatedUser = await updateUser(userId, type, userData);
+        if (updatedUser) {
+            setUserData((prevData) => ({
+                ...prevData,
+                email: userData.email,
+                direccion: userData.direction,
+            }));
+            toast.success('Perfil actualizado exitosamente');
+        } else {
+            console.log('Error al actualizar el perfil.');
+            toast.error(
+                'Hubo un error al actualizar el perfil. Vuelve a intentarlo.',
+            );
+        }
     };
 
     return (
-        <div className='mx-auto mt-10 flex max-w-md flex-col rounded-md p-6 shadow-md'>
-            <div className='flex'>
-            </div>
+        <div className='mx-auto mt-10 flex max-w-md flex-col overflow-auto rounded-md p-6 shadow-md'>
+            <div className='flex'></div>
             <h2 className='mb-4 flex items-center justify-center text-2xl font-semibold'>
-                Perfil de Usuario
+                Actualiza tu Perfil
             </h2>
-            <div className='mb-4'>
+            <div className='mb-4 flex'>
                 <label className='mb-2 block text-sm font-bold text-gray-700'>
                     Nombre:
                 </label>
-                <p>{userData.nombre}</p>
+                <p className='ml-2'>{userData.name}</p>
             </div>
-            <div className='mb-4'>
+            <div className='mb-4 flex'>
                 <label className='mb-2 block text-sm font-bold text-gray-700'>
                     Apellido:
                 </label>
-                <p>{userData.apellido}</p>
+                <p className='ml-2'>{userData.lastname}</p>
             </div>
-            <div className='mb-4'>
+            <div className='mb-4 flex'>
                 <label className='mb-2 block text-sm font-bold text-gray-700'>
                     Teléfono:
                 </label>
-                <p>{userData.dni}</p>
+                <p className='ml-2'>{userData.dni}</p>
             </div>
             <div className='mb-4'>
                 <label className='mb-2 block text-sm font-bold text-gray-700'>
@@ -79,9 +76,13 @@ const Perfil: React.FC<PerfilProps> = ({ userId }) => {
                     type='text'
                     value={userData.email}
                     onChange={(e) =>
-                        setUserData({ ...userData, email: e.target.value })
+                      setUserData({
+                        ...userData,
+                        email: e.target.value
+                      })
                     }
-                    className='w-full rounded-md border border-gray-300 p-2'
+                    placeholder='Email'
+                    className='w-full rounded-md border border-gray-300 p-2 py-0.5'
                 />
             </div>
             <div className='mb-4'>
@@ -90,11 +91,63 @@ const Perfil: React.FC<PerfilProps> = ({ userId }) => {
                 </label>
                 <input
                     type='text'
-                    value={userData.direccion}
+                    value={userData.direction.street}
                     onChange={(e) =>
-                        setUserData({ ...userData, direccion: e.target.value })
+                        setUserData({
+                            ...userData,
+                            direction: {
+                                ...userData.direction,
+                                street: e.target.value,
+                            },
+                        })
                     }
-                    className='w-full rounded-md border border-gray-300 p-2'
+                    placeholder='Calle'
+                    className='w-full rounded-md border border-gray-300 p-2 py-0.5'
+                />
+                <input
+                    type='text'
+                    value={userData.direction.number}
+                    onChange={(e) =>
+                        setUserData({
+                            ...userData,
+                            direction: {
+                                ...userData.direction,
+                                number: e.target.value,
+                            },
+                        })
+                    }
+                    placeholder='Número'
+                    className='w-full rounded-md border border-gray-300 p-2 py-0.5'
+                />
+                <input
+                    type='text'
+                    value={userData.direction.location}
+                    onChange={(e) =>
+                        setUserData({
+                            ...userData,
+                            direction: {
+                                ...userData.direction,
+                                location: e.target.value,
+                            },
+                        })
+                    }
+                    placeholder='Localidad'
+                    className='w-full rounded-md border border-gray-300 p-2 py-0.5'
+                />
+                <input
+                    type='text'
+                    value={userData.direction.province}
+                    onChange={(e) =>
+                        setUserData({
+                            ...userData,
+                            direction: {
+                                ...userData.direction,
+                                province: e.target.value,
+                            },
+                        })
+                    }
+                    placeholder='Provincia'
+                    className='w-full rounded-md border border-gray-300 p-2 py-0.5'
                 />
             </div>
             <CustomButton

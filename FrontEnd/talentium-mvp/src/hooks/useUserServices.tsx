@@ -1,4 +1,7 @@
-import { BasicRegistrationFormProps, UserProps } from '../interfaces/RegistrationFormTypes';
+import {
+    BasicRegistrationFormProps,
+    UserProps,
+} from '../interfaces/RegistrationFormTypes';
 import { useAuth } from '../context/AuthContext';
 
 const useCreateUser = () => {
@@ -59,32 +62,34 @@ const useCreateUser = () => {
         }
     };
 
-    const updateUser = async (
-        userId: string,
-        userType: string,
-        updatedUserData: UserProps,
-    ): Promise<boolean> => {
-        const url = `http://localhost:8080/api/${userType}/${userId}`;
+      const updateUser = async (
+          userId: number,
+          userType: string,
+          updatedUserData: UserProps,
+      ): Promise<UserProps | number | null> => {
+          const url = `http://localhost:8080/api/${userType}/${userId}`;
 
-        try {
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedUserData),
-            });
+          try {
+              const response = await fetch(url, {
+                  method: 'PUT',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(updatedUserData),
+              });
 
-            if (response.ok) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-            return false;
-        }
-    };
+              if (response.ok) {
+                  const updateUser = await response.json();
+                  auth.getUserFromLocalStorage();
+                  return updateUser;
+              } else {
+                  return null;
+              }
+          } catch (error) {
+              console.error('An error occurred:', error);
+              return null;
+          }
+      };
 
     return { createUser, loginUser, updateUser };
 };

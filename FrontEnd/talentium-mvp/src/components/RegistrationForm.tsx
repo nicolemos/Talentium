@@ -35,11 +35,13 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
     const { userType, updateUserType } = useUserType();
     const { userData, updateUserData } = useUserData();
 
+  
     useEffect(() => {
         const userType = localStorage.getItem('userType') || null || undefined;
         userType && updateUserType(JSON.parse(userType));
         const userData = localStorage.getItem('userData') || null || undefined;
-        userData && updateUserData(JSON.parse(userData));
+      userData && updateUserData(JSON.parse(userData));
+              // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     {
@@ -416,7 +418,22 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                     </div>
                 </>
             )}
-            {userType && userData && <Perfil userId={''} />}
+            {userType && userData && (
+                <Perfil
+                    name={userData?.name || ''}
+                    lastname={userData?.lastname || ''}
+                    dni={userData?.dni || ''}
+                    email={userData?.email || ''}
+                    direction={
+                        userData?.direction || {
+                            street: '',
+                            number: '',
+                            location: '',
+                            province: '',
+                        }
+                    }
+                />
+            )}
 
             {!userType && !userData && (
                 <h1>

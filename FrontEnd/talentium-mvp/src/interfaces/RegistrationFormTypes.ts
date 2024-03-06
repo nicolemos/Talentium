@@ -3,8 +3,10 @@ export interface UserProps {
     name?: string;
     lastname?: string;
     email?: string;
+    dni?: string;
     password?: string;
     speciality?: Speciality;
+    direction?: AddressProps;
 }
 
 export interface BasicRegistrationFormProps {
@@ -25,7 +27,7 @@ export interface RegistrationFormProps extends BasicRegistrationFormProps {
     direction?: AddressProps;
 }
 
-interface AddressProps {
+export interface AddressProps {
     street: string;
     number: string;
     province: string;
@@ -45,5 +47,5 @@ type Speciality = [
     'Plomero',
     'Ingeniero',
     'Jardinero',
-    'Electricista'
+    'Electricista',
 ];
