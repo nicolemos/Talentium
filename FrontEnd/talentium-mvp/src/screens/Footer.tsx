@@ -9,7 +9,11 @@ const Footer: React.FC = () => {
     const handleLogout = () => {
         logout();
         navigate('/');
-    };
+  };
+  
+  const handleDashboardIn = () => {
+      navigate('/dashboardcliente/inicio');
+  }
 
     return (
         <footer className='text-gray-900'>
@@ -25,12 +29,26 @@ const Footer: React.FC = () => {
                         Links
                     </h4>
                     <ul>
-                        {user?.email ? (
-                            <li>
-                                <button type='button' onClick={handleLogout}>
-                                    Cerrar sesión
-                                </button>
-                            </li>
+                        {user ? (
+                            <>
+                                <li>
+                                    {' '}
+                                    <button
+                                        type='button'
+                                        onClick={handleDashboardIn}
+                                    >
+                                        Mi Cuenta
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        type='button'
+                                        onClick={handleLogout}
+                                    >
+                                        Cerrar sesión
+                                    </button>
+                                </li>
+                            </>
                         ) : (
                             <>
                                 <li>
