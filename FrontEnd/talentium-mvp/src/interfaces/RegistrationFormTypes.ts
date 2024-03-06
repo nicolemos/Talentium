@@ -8,7 +8,8 @@ export interface UserProps {
 }
 
 export interface BasicRegistrationFormProps {
-    email?: string;
+    id: string;
+    email: string;
     password?: string;
     avatar?: string | null;
 }

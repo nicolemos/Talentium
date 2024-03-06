@@ -5,8 +5,8 @@ const useCreateUser = () => {
     const auth = useAuth();
 
     const createUser = async (credentials: {
+        id: string;
         email: string;
-        password: string;
     }): Promise<boolean> => {
         const url = 'http://localhost:8080/usuarios';
 
@@ -20,11 +20,11 @@ const useCreateUser = () => {
             });
 
             if (response.ok) {
-              const user = await response.json();
-              const credentials = {
-                  email: user.email,
-                  password: user.password,
-              };
+                const user = await response.json();
+                const credentials = {
+                    email: user.email,
+                    password: user.password,
+                };
                 auth.login(credentials);
                 return true;
             } else {

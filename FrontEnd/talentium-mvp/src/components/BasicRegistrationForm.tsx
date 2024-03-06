@@ -29,11 +29,12 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
         data,
     ) => {
         try {
-          localStorage.setItem('user', JSON.stringify({ id: 2, email: data.email }));
-          navigate('/dashboardcliente/inicio')
             const userCreated = await createUser(data);
 
             if (userCreated) {
+
+                localStorage.setItem('user', JSON.stringify({ id: data.id, email: data.email }));
+
                 toast.success('Te has registrado exitosamente!');
                 navigate('/dashboardcliente/inicio');
             } else {
