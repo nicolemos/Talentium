@@ -13,7 +13,7 @@ const InitialWindowClient = () => {
         <div className='flex max-h-[350px] max-w-[800px] p-2'>
             <div className='flex'>
                 <CustomButton
-                    onClick={() => navigate('/DashboardCliente')}
+                    onClick={() => navigate('/')}
                     customClass={
                         'z-50 absolute top-[85px] md:top-[65px] right-[15px] md:left-[245px] w-24 text-white text-md md:text-xl font-bold cursor-pointer '
                     }

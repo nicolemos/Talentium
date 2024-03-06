@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CustomLink from '../components/CustomLink';
 import { RiCloseLine, RiMenuLine } from 'react-icons/ri';
@@ -6,7 +6,8 @@ import InfoCardProf from '../components/InfoCardProf';
 import InfoCardClient from '../components/InfoCardClient';
 
 const Header: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -18,6 +19,19 @@ const Header: React.FC = () => {
     const [isProfVisible, setIsProfVisible] = useState(false);
     const closeModalProf = () => setIsProfVisible(false);
 
+    useEffect(() => {
+        // Verificar si hay un usuario en el localStorage al cargar el componente
+        const user = localStorage.getItem('user');
+        if (user) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+  
+  const handleLogout = () => {
+      // Eliminar el usuario del localStorage y actualizar el estado de isLoggedIn
+      localStorage.removeItem('user');
+      setIsLoggedIn(false);
+  };
     // Datos del modal
     const InfoCardClientContent = {
         title: 'Como Cliente puedes...',
@@ -97,8 +111,22 @@ const Header: React.FC = () => {
                     className={`${isMenuOpen ? 'grid' : 'hidden'} col-span-3 grid-cols-2 justify-items-center gap-4 p-4 lg:col-span-1 lg:grid lg:justify-items-center`}
                 >
                     <div className='col-span-3 grid grid-cols-2 content-center justify-items-center '>
-                        <CustomLink to='/Login' content='Ingresar' />
-                        <CustomLink to='/Register' content='Registrate' />
+                        {isLoggedIn ? (
+                            <>
+                                <CustomLink to='/dashboardcliente/inicio'>Mi Cuenta</CustomLink>
+                                <CustomLink to='/' onClick={handleLogout}>
+                                    Cerrar Sesión
+                                </CustomLink>
+                            </>
+                        ) : (
+                            <>
+                                <CustomLink to='/Login' content='Ingresar' />
+                                <CustomLink
+                                    to='/Register'
+                                    content='Registrarse'
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
             </nav>
