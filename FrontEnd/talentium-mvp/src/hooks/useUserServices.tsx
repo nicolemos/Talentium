@@ -39,8 +39,8 @@ const useCreateUser = () => {
         email: string;
         password: string;
     }): Promise<UserProps | null> => {
-        const loginUrl = 'http://localhost:8080/login';
-
+        const loginUrl = 'http://localhost:8080/usuarios/login';
+        console.log(credentials)
         try {
             const response = await fetch(loginUrl, {
                 method: 'POST',

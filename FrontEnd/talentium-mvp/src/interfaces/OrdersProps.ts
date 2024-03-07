@@ -1,6 +1,6 @@
 
 export interface Client {
-    cliente_id: number;
+    clienteId: number;
     name: string;
     lastname: string;
     dni: string;

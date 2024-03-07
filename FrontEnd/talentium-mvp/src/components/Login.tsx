@@ -43,7 +43,7 @@ const Login: React.FC = () => {
               toast.success('Te has registrado exitosamente!');
                navigate('/dashboardcliente/inicio');
                 if (user.id) {
-                    localStorage.setItem('userId', user.id);
+                    localStorage.setItem('userId', JSON.stringify(user.id));
                 }
                 const userType =
                     localStorage.getItem('userType') || null || undefined;

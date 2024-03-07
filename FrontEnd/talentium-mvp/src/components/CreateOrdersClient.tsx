@@ -11,7 +11,7 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
 
     const [orden, setOrden] = useState<Order>({
         description: '',
-        cliente_id: cliente ? cliente.cliente_id : 1
+        cliente_id: cliente ? cliente.clienteId : 1 // Mal hecha la logica! Ojo!
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
