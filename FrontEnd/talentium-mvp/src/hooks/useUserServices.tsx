@@ -39,7 +39,7 @@ const useCreateUser = () => {
         email: string;
         password: string;
     }): Promise<UserProps | null> => {
-        const loginUrl = 'http://localhost:8080/login';
+        const loginUrl = 'http://localhost:8080/usuarios/login';
 
         try {
             const response = await fetch(loginUrl, {
@@ -64,15 +64,13 @@ const useCreateUser = () => {
     };
 
       const updateUser = async (
-          userId: number,
           userType: string,
           updatedUserData: UserProps,
       ): Promise<UserProps | number | null> => {
-          const url = `http://localhost:8080/api/${userType}/${userId}`;
-
+          const url = 'http://localhost:8080/api/client'
           try {
               const response = await fetch(url, {
-                  method: 'PUT',
+                  method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
                   },

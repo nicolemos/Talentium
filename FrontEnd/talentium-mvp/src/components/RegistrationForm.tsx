@@ -44,39 +44,31 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    {
-        /* const filterEmptyFields = (data: RegistrationFormProps) => {
-        const filteredData = {};
-
-        // Iterate through the fields in the data
-        for (const key in data) {
-            // Check if the field is not empty
-            if (data[key] !== '') {
-                // Add the non-empty field to the filteredData object
-                filteredData[key] = data[key];
-            }
-        }
-
-        return filteredData;
-      */
+    const userLocalStorage = {
+        id: Number(localStorage.getItem('user')),
+        email:'',
+        password:'',
+        avatar:''
     }
 
     const onSubmit: SubmitHandler<RegistrationFormProps> = async (
         updatedUserData,
     ) => {
-
+        const data = {...userLocalStorage, ...updatedUserData}
+        console.log('userLocalStorage:'+JSON.stringify(userLocalStorage))
+        console.log('userType:'+ userType)
+        console.log('userData:'+ JSON.stringify(data))
         try {
             localStorage.setItem('userData', JSON.stringify(updatedUserData));
             const userType = localStorage.getItem('userType') || null;
             const userData = localStorage.getItem('userData') || null;
             userType && updateUserType(JSON.parse(userType));
             userData && updateUserData(JSON.parse(userData));
-            navigate("/DashboardCliente/Inicio")
-            if (user.id && userType) {
+            navigate("/dashboardcliente/Inicio")
+            if (userType) {
                 const userUpdated = await updateUser(
-                    user.id,
                     userType,
-                    updatedUserData
+                    data
                 );
 
                 if (userUpdated) {
@@ -184,7 +176,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
                                 )}
                             </label>
 
-                            {userType === 'Cliente' && (
+                            {userType === 'client' && (
                                 <>
                                     <label className='w-full text-xs font-bold'>
                                         DNI
@@ -214,7 +206,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
                                 </>
                             )}
 
-                            {userType === 'Profesional' && (
+                            {userType === 'professional' && (
                                 <>
                                     <label className='w-full text-xs font-bold'>
                                         CUIT
@@ -340,7 +332,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
                         </div>
 
                         <div className='col-span-1 flex flex-col gap-4 p-4'>
-                            {userType === 'Profesional' && (
+                            {userType === 'professional' && (
                                 <>
                                     <label className='w-full text-xs font-bold'>
                                         CBU

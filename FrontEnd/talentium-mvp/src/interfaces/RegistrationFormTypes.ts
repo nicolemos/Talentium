@@ -4,12 +4,14 @@ export interface UserProps {
     lastname?: string;
     email?: string;
     dni?: string;
+    user?:BasicRegistrationFormProps;
     password?: string;
     speciality?: Speciality;
     direction?: AddressProps;
 }
 
 export interface BasicRegistrationFormProps {
+    id?:number,
     email?: string;
     password?: string;
     avatar?: string | null;
@@ -39,8 +41,8 @@ export interface UserTypeSelectorProps {
 }
 
 export enum UserType {
-    Client = 'Cliente',
-    Professional = 'Profesional',
+    Client = 'client',
+    Professional = 'professional',
 }
 type Speciality = [
     'Abogado',
