@@ -11,6 +11,7 @@ const useCreateUser = () => {
         userData: BasicRegistrationFormProps,
     ): Promise<UserProps | null> => {
         const url = 'http://localhost:8080/usuarios';
+        console.log('userData:', userData);
 
         try {
             const response = await fetch(url, {
@@ -62,34 +63,34 @@ const useCreateUser = () => {
         }
     };
 
-      const updateUser = async (
-          userId: number,
-          userType: string,
-          updatedUserData: UserProps,
-      ): Promise<UserProps | number | null> => {
-          const url = `http://localhost:8080/api/${userType}/${userId}`;
+    const updateUser = async (
+        userId: number,
+        userType: string,
+        updatedUserData: UserProps,
+    ): Promise<UserProps | number | null> => {
+        const url = `http://localhost:8080/api/${userType}/${userId}`;
 
-          try {
-              const response = await fetch(url, {
-                  method: 'PUT',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify(updatedUserData),
-              });
+        try {
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedUserData),
+            });
 
-              if (response.ok) {
-                  const updateUser = await response.json();
-                  auth.getUserFromLocalStorage();
-                  return updateUser;
-              } else {
-                  return null;
-              }
-          } catch (error) {
-              console.error('An error occurred:', error);
-              return null;
-          }
-      };
+            if (response.ok) {
+                const updateUser = await response.json();
+                auth.getUserFromLocalStorage();
+                return updateUser;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+            return null;
+        }
+    };
 
     return { createUser, loginUser, updateUser };
 };
