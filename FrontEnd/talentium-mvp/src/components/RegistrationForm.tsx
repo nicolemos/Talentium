@@ -23,7 +23,7 @@ const Specialities = [
     'Nanny',
 ];
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
+const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
     const navigate = useNavigate();
     const {
         register,
@@ -34,7 +34,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
     const { updateUser } = useUserServices();
     const { userType, updateUserType } = useUserType();
     const { userData, updateUserData } = useUserData();
-
+    console.log(user)
   
     useEffect(() => {
         const userType = localStorage.getItem('userType') || null || undefined;
@@ -65,12 +65,14 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
         updatedUserData,
     ) => {
         try {
+
             localStorage.setItem('userData', JSON.stringify(updatedUserData));
             const userType = localStorage.getItem('userType') || null;
             const userData = localStorage.getItem('userData') || null;
             userType && updateUserType(JSON.parse(userType));
             userData && updateUserData(JSON.parse(userData));
-
+            navigate("/DashboardCliente/Inicio")
+            console.log((user))
             if (user.id && userType) {
                 const userUpdated = await updateUser(
                     user.id,
@@ -80,7 +82,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
 
                 if (userUpdated) {
                     console.log(userUpdated);
-
                     toast.success('Perfil actualizado exitosamente');
                 } else {
                     toast.error(

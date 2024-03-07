@@ -14,11 +14,11 @@ import OrdersListProf from '../components/OrdersListProf';
 import LoadingPage from '../screens/LoadingPage';
 import OrdersWindow from '../components/OrdersWindow';
 import { User } from '../interfaces/UserProps';
-
+import { useAuth } from '../context/AuthContext';
 const DashboardRouter: React.FC = () => {
     //  const userType = localStorage.getItem('userType');
     const clienteDatos = Datos.cliente();
-
+    const { user } = useAuth();
     const ordenesDatos = Orders;
 
   const [userData, setUserData] = useState<User | null>(null);
@@ -78,7 +78,7 @@ const DashboardRouter: React.FC = () => {
                                         path='/Datos'
                                         element={
                                             <RegistrationForm
-                                                user={{}}
+                                                user={user ? user : {}}
                                                 userType={UserType.Professional}
                                             />
                                         }
