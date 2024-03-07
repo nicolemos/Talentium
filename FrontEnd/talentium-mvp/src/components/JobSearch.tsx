@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import OrdenCard from './OrdenClient';
-import { OrderForm } from "../interfaces/OrderForm";
+import { Order } from "../interfaces/OrdersProps";
 
 //filtro de busqueda por categoria de especialidad
 
@@ -30,7 +30,7 @@ const FilterOptions: React.FC<FilterOptionsProps> = ({ onFilterChange }) => {
 //--------//
 
 interface OrdenListProps {
-  orders: OrderForm[];
+  orders: Order[];
 }
 
 const OrdenList: React.FC<OrdenListProps> = ({ orders }) => {
