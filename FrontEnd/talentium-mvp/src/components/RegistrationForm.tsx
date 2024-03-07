@@ -64,20 +64,19 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
     const onSubmit: SubmitHandler<RegistrationFormProps> = async (
         updatedUserData,
     ) => {
-        try {
 
+        try {
             localStorage.setItem('userData', JSON.stringify(updatedUserData));
             const userType = localStorage.getItem('userType') || null;
             const userData = localStorage.getItem('userData') || null;
             userType && updateUserType(JSON.parse(userType));
             userData && updateUserData(JSON.parse(userData));
             navigate("/DashboardCliente/Inicio")
-            console.log((user))
             if (user.id && userType) {
                 const userUpdated = await updateUser(
                     user.id,
                     userType,
-                    updatedUserData,
+                    updatedUserData
                 );
 
                 if (userUpdated) {
