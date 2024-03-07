@@ -38,7 +38,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 toast.success('Te has registrado exitosamente!');
                 navigate('/dashboardcliente/inicio');
                 if (userCreated.id) {
-                    localStorage.setItem('userId', userCreated.id);
+                    localStorage.setItem('userId', JSON.stringify(userCreated.id));
                 }
             } else {
                 toast.error(
@@ -196,7 +196,7 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
                 >
                     Avatar (opcional):
                     <input
-                        type='file'
+                        type='text'
                         {...register('avatar')}
                         accept='image/*'
                         onChange={handleAvatarChange}
