@@ -64,7 +64,6 @@ const useCreateUser = () => {
     };
 
       const updateUser = async (
-          userType: string,
           updatedUserData: UserProps,
       ): Promise<UserProps | number | null> => {
           const url = 'http://localhost:8080/api/client'
@@ -90,7 +89,26 @@ const useCreateUser = () => {
           }
       };
 
-    return { createUser, loginUser, updateUser };
+      const getClient = async (id:number) => {
+        const url = 'http://localhost:8080/api/client/' + id;
+        try{
+            const response = await fetch(url, {
+                method: 'GET',
+                headers:{
+                    'Content-Type' : 'application/json'
+                },
+            });
+            if(response.ok){
+                const userClient = await response.json();
+                return userClient;
+            }
+        }catch(error){
+            console.error('Se pudrio todo: ',error);
+        }
+      }
+
+
+    return { createUser, loginUser, updateUser, getClient };
 };
 
 export default useCreateUser;

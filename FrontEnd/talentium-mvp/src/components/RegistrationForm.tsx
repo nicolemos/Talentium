@@ -57,7 +57,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
         const data = {...userLocalStorage, ...updatedUserData}
         console.log('userLocalStorage:'+JSON.stringify(userLocalStorage))
         console.log('userType:'+ userType)
-        console.log('userData:'+ JSON.stringify(data))
+        console.log('userData:'+ JSON.stringify(data.user))
         try {
             localStorage.setItem('userData', JSON.stringify(updatedUserData));
             const userType = localStorage.getItem('userType') || null;
@@ -67,7 +67,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
             navigate("/dashboardcliente/Inicio")
             if (userType) {
                 const userUpdated = await updateUser(
-                    userType,
                     data
                 );
 

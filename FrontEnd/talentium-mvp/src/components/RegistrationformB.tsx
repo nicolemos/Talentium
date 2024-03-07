@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import CustomButton from './CustomButton';
 import { FaArrowLeft } from 'react-icons/fa';
 import Perfil from './UpdateProfile';
-import { useUserServices } from '../hooks/useUserServices';
+import useCreateUser from '../hooks/useUserServices';
 import { useUserType } from '../context/UserTypeContext';
 import { useUserData } from '../context/UserDataContext';
 
@@ -23,7 +23,7 @@ const Specialities = [
 
 const RegistrationForm = ({ user }) => {
     const navigate = useNavigate();
-    const { updateUser } = useUserServices();
+    const { updateUser } = useCreateUser();
     const { userType, updateUserType } = useUserType();
     const { userData, updateUserData } = useUserData();
     const [formState, setFormState] = useState({
@@ -75,7 +75,6 @@ const RegistrationForm = ({ user }) => {
 
             if (user.id && userType) {
                 const userUpdated = await updateUser(
-                    user.id,
                     userType,
                     formState
                 );
@@ -136,7 +135,7 @@ const RegistrationForm = ({ user }) => {
                                 Nombre
                                 <input
                                     value={formState.name}
-                                    onChange={(e: { target: { value: any; }; }) => handleInputChange('name', e.target.value)}
+                                    onChange={(e: { target: { value: string; }; }) => handleInputChange('name', e.target.value)}
                                     placeholder='Ingrese su nombre'
                                     className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal outline-none'
                                 />
@@ -149,7 +148,7 @@ const RegistrationForm = ({ user }) => {
                                 Calle
                                 <input
                                     value={formState.direction.street}
-                                    onChange={(e: { target: { value: any; }; }) =>
+                                    onChange={(e: { target: { value: string; }; }) =>
                                         handleDirectionChange('street', e.target.value)
                                     }
                                     placeholder='Ingrese la calle'
@@ -160,13 +159,13 @@ const RegistrationForm = ({ user }) => {
                         </div>
 
                         <div className='col-span-1 flex flex-col gap-4 p-4'>
-                            {userType === 'Profesional' && (
+                            {userType === 'professional' && (
                                 <>
                                     <label className='w-full text-xs font-bold'>
                                         CBU
                                         <input
                                             value={formState.cbu}
-                                            onChange={(e: { target: { value: any; }; }) => handleInputChange('cbu', e.target.value)}
+                                            onChange={(e: { target: { value: string; }; }) => handleInputChange('cbu', e.target.value)}
                                             aria-invalid={formState.cbu ? 'true' : 'false'}
                                             maxLength={22}
                                             placeholder='Ingrese su CBU'
@@ -178,7 +177,7 @@ const RegistrationForm = ({ user }) => {
                                         Especialidad
                                         <select
                                             value={formState.speciality}
-                                            onChange={(e: { target: { value: any; }; }) =>
+                                            onChange={(e: { target: { value: string; }; }) =>
                                                 handleInputChange('speciality', e.target.value)
                                             }
                                             className='mt-1 w-full rounded-md bg-white/70 px-2 py-1 text-base font-normal outline-none'

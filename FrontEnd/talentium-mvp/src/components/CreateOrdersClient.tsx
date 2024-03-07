@@ -4,15 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import CustomButton from './CustomButton';
 import { FaArrowLeft } from 'react-icons/fa';
 import useOrderServices from '../hooks/userOrderServices';
+import useCreateUser from '../hooks/useUserServices';
 
 const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
   const navigate = useNavigate();
   const {createOrder} = useOrderServices()
+  const {getClient} = useCreateUser()
 
     const [orden, setOrden] = useState<Order>({
         description: '',
-        cliente_id: cliente ? cliente.clienteId : 1 // Mal hecha la logica! Ojo!
+        cliente_id: cliente.clienteId
     });
+
+    const getClietId = async (orden:Order) =>{
+        await getClient(orden.cliente_id)
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setOrden({ ...orden, description: e.target.value });
