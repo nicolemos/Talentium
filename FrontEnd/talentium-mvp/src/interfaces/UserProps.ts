@@ -1,3 +1,5 @@
+import { AddressProps } from './RegistrationFormTypes';
+
 export interface User {
     name?: string;
     email?: string;
@@ -5,13 +7,13 @@ export interface User {
 }
 
 export interface PerfilProps {
-    userId: string;
+    userId: number;
 }
 
 export interface UserData {
-    nombre: string;
-    apellido: string;
+    name: string;
+    lastname: string;
     dni: string;
     email: string;
-    direccion: string;
+    direction: AddressProps;
 }

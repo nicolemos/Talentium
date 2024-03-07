@@ -3,14 +3,15 @@ import { Order, CreateOrdersProps } from '../interfaces/OrdersProps';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from './CustomButton';
 import { FaArrowLeft } from 'react-icons/fa';
+import useOrderServices from '../hooks/userOrderServices';
 
 const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const {createOrder} = useOrderServices()
 
     const [orden, setOrden] = useState<Order>({
-        description: 'nueva orden test',
-        cliente_id: cliente.clienteId,
-        date: '03/03/2024',
+        description: '',
+        cliente_id: cliente ? cliente.cliente_id : 1
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -18,7 +19,7 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
     };
 
     const handleSubmit = () => {
-        console.log('Orden:', orden);
+        createOrder(orden)
     };
 
     const handleback = () => {

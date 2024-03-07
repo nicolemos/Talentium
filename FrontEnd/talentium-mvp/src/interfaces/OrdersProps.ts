@@ -1,6 +1,6 @@
 
 export interface Client {
-    clienteId: number;
+    cliente_id: number;
     name: string;
     lastname: string;
     dni: string;
@@ -26,7 +26,7 @@ export interface Order {
     cliente_id: number;
     proffesional?: number;
     price?: number;
-    date: string;
+    date?: string;
     state?: string;
 }
 

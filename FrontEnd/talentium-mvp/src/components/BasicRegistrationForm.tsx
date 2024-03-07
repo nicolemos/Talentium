@@ -10,6 +10,7 @@ import CustomButton from './CustomButton';
 
 import useUserServices from '../hooks/useUserServices';
 
+
 const MAX_FILE_SIZE_BYTES = 102400; // 100KB
 
 const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
@@ -25,18 +26,23 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
 
     const { createUser } = useUserServices();
 
+
     const onSubmit: SubmitHandler<BasicRegistrationFormProps> = async (
         data,
     ) => {
         try {
+            localStorage.setItem('user', JSON.stringify({ id: 2 })); /// linea hardcodeada hasta hacer el fetch
+            navigate('/dashboardcliente/inicio'); /// linea hardcodeada hasta hacer el fetch
             const userCreated = await createUser(data);
-
             if (userCreated) {
 
                 localStorage.setItem('user', JSON.stringify({ id: data.id, email: data.email }));
 
                 toast.success('Te has registrado exitosamente!');
                 navigate('/dashboardcliente/inicio');
+                if (userCreated.id) {
+                    localStorage.setItem('userId', userCreated.id);
+                }
             } else {
                 toast.error(
                     'Hubo un error con el registro, vuelve a intentarlo',
@@ -215,6 +221,5 @@ const BasicRegistrationForm: React.FC<BasicRegistrationFormProps> = () => {
 };
 
 export default BasicRegistrationForm;
-
 
 //
