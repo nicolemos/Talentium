@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import CustomButton from './CustomButton';
 import { FaArrowLeft } from 'react-icons/fa';
 import useOrderServices from '../hooks/userOrderServices';
-import useCreateUser from '../hooks/useUserServices';
+//import useCreateUser from '../hooks/useUserServices';
 
 const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
   const navigate = useNavigate();
   const {createOrder} = useOrderServices()
-  const {getClient} = useCreateUser()
+  //const {getClient} = useCreateUser()
 
     const [orden, setOrden] = useState<Order>({
         description: '',

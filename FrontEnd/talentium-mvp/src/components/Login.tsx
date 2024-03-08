@@ -37,14 +37,19 @@ const Login: React.FC = () => {
         }
 
       try {
-          localStorage.setItem('user', JSON.stringify({id: 2})) /// linea hardcodeada hasta hacer el fetch
-            const user = await loginUser(loginForm);
-            if (user) {
+        localStorage.setItem('user', JSON.stringify({ ...loginForm, id: 2 }))
+        const mail = loginForm.email
+        localStorage.setItem('email', JSON.stringify(mail));
+        /// linea hardcodeada hasta hacer el fetch
+        const user1 = localStorage.getItem('user')
+         //   const user = await loginUser(loginForm);
+            if (user1) {
               toast.success('Te has registrado exitosamente!');
                navigate('/dashboardcliente/inicio');
-                if (user.id) {
+             /*   if (user.id) {
                     localStorage.setItem('userId', JSON.stringify(user.id));
                 }
+                */
                 const userType =
                     localStorage.getItem('userType') || null || undefined;
                 const userData =

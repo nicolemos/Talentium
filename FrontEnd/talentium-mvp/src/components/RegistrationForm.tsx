@@ -11,19 +11,19 @@ import { useEffect } from 'react';
 import Perfil from './UpdateProfile';
 
 const Specialities = [
-    'Plumber',
-    'Electrician',
-    'Construction_Worker',
-    'Painter',
-    'Gardener',
-    'Gasman',
-    'Teacher',
-    'Programmer',
-    'Designer',
-    'Nanny',
+    'Plomero',
+    'Electricista',
+    'Albañil',
+    'Pintor',
+    'Jardinero',
+    'Gasista',
+    'Profesor',
+    'Programador',
+    'Diseñador',
+    'Cuidadora',
 ];
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
+const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
     const navigate = useNavigate();
     const {
         register,
@@ -34,41 +34,39 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({user}) => {
     const { updateUser } = useUserServices();
     const { userType, updateUserType } = useUserType();
     const { userData, updateUserData } = useUserData();
-    console.log(user)
-  
+    console.log(user);
+
     useEffect(() => {
         const userType = localStorage.getItem('userType') || null || undefined;
         userType && updateUserType(JSON.parse(userType));
         const userData = localStorage.getItem('userData') || null || undefined;
-      userData && updateUserData(JSON.parse(userData));
-              // eslint-disable-next-line react-hooks/exhaustive-deps
+        userData && updateUserData(JSON.parse(userData));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const userLocalStorage = {
         id: Number(localStorage.getItem('user')),
-        email:'',
-        password:'',
-        avatar:''
-    }
+        email: '',
+        password: '',
+        avatar: '',
+    };
 
     const onSubmit: SubmitHandler<RegistrationFormProps> = async (
         updatedUserData,
     ) => {
-        const data = {...userLocalStorage, ...updatedUserData}
-        console.log('userLocalStorage:'+JSON.stringify(userLocalStorage))
-        console.log('userType:'+ userType)
-        console.log('userData:'+ JSON.stringify(data.user))
+        const data = { ...userLocalStorage, ...updatedUserData };
+        console.log('userLocalStorage:' + JSON.stringify(userLocalStorage));
+        console.log('userType:' + userType);
+        console.log('userData:' + JSON.stringify(data.user));
         try {
             localStorage.setItem('userData', JSON.stringify(updatedUserData));
             const userType = localStorage.getItem('userType') || null;
             const userData = localStorage.getItem('userData') || null;
             userType && updateUserType(JSON.parse(userType));
             userData && updateUserData(JSON.parse(userData));
-            navigate("/dashboardcliente/Inicio")
+            navigate('/dashboardcliente/Inicio');
             if (userType) {
-                const userUpdated = await updateUser(
-                    data
-                );
+                const userUpdated = await updateUser(data);
 
                 if (userUpdated) {
                     console.log(userUpdated);
