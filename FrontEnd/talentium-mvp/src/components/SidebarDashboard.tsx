@@ -23,8 +23,8 @@ const SidebarDashboard: React.FC = () => {
     const handleLogout = () => {
         localStorage.removeItem('user');
         localStorage.removeItem('userData');
-      localStorage.removeItem('userType');
-       localStorage.removeItem('email');
+        localStorage.removeItem('userType');
+        localStorage.removeItem('email');
         auth.logout();
         navigate('/');
         window.location.reload();
