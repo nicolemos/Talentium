@@ -1,6 +1,6 @@
 const Hero: React.FC = () => {
     return (
-        <section className='flex flex-col items-center gap-4 p-4 md:m-4 md:flex md:flex-col md:gap-6 lg:flex lg:flex-row lg:items-center lg:justify-center '>
+        <section className=' max-w-[90rem]  flex flex-col items-center gap-4 p-4 md:m-4 md:flex md:flex-col md:gap-6 lg:flex lg:flex-row lg:mx-auto '>
             <div className='mb-4 py-2 md:flex md:flex-col md:gap-6 '>
                 <h1 className='text-3xl font-bold text-gray-300 lg:text-5xl '>
                     La plataforma donde el talento vale.
@@ -22,9 +22,9 @@ const Hero: React.FC = () => {
                 </p>
             </div>
 
-            <div className='h-auto w-full md:mb-4 md:flex md:flex-col md:p-4 md:w-screen '>
+            <div className='h-auto w-auto ml-20 md:mb-4 md:flex md:flex-col md:p-4 md:w-screen '>
                 <img
-                    className='mb-4 -skew-x-6 p-4'
+                    className='mb-4 -skew-x-6 p-4 w-[700px]'
                     alt='hero'
                     src='/Banner.jpg'
                 />
