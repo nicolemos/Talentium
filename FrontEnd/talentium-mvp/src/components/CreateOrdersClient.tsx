@@ -21,10 +21,11 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
     
 
     const handleSubmit = () => {
-        localStorage.setItem('currentOrder', JSON.stringify(orden));
-        
-        createOrder(orden);
+        const storedOrders = JSON.parse(localStorage.getItem('currentOrders') || '[]');
+       
+        storedOrders.push(orden);
 
+        localStorage.setItem('currentOrder', JSON.stringify(storedOrders));
         navigate('/DashboardCliente/inicio');
     };
         
