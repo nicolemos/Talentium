@@ -73,6 +73,82 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
                 </h1>
             </div>
             <div className='flex max-h-[350px] flex-col items-center gap-2 overflow-auto '>
+            {ordersState.map((order, index) => (
+            <div
+            key={index}
+            className='relative flex flex-col items-center justify-center gap-4 rounded-md bg-royal-blue-600 p-2 font-semibold text-white'
+        >
+            { (
+                <span className='absolute right-0 top-0 rounded-md bg-white px-1 py-0.5 text-xs font-semibold text-black'>
+                    Inicial
+                </span>
+            )}
+            <div
+                className='flex cursor-pointer items-center justify-between gap-2'
+                onClick={() => {
+                    setOpenOrder(
+                        openOrder === index ? null : index,
+                    );
+                    <RiCloseLine className='h-10 w-10 p-2' />;
+                }}
+                style={{ marginRight: '60px' }}
+            >
+                {openOrder === index
+                    ? order.description
+                    : `${order.description.split(' ').slice(0, 10).join(' ')}${order.description.split(' ').length > 10 ? '...' : ''}`}
+                {openOrder === index && (
+                    <RiCloseLine className='h-10 w-10 p-2' />
+                )}
+            </div>
+            {openOrder === index && (
+                <div className='flex flex-col items-center gap-2 rounded-md bg-royal-blue-300 p-2 font-normal text-black'>
+                    <textarea
+                        className='rounded-md bg-royal-blue-100/50'
+                        name='descripcion'
+                        placeholder='comentario'
+                        cols={30}
+                        rows={4}
+                        defaultValue={order.comentarios}
+                    />
+                    <input
+                        type='number'
+                        placeholder='$$$'
+                        className=''
+                    />
+                    <CustomButton
+                        onClick={() => {
+                            createOrder(
+                                order.descripcion,
+                                order.comentarios,
+                                order.precio,
+                            );
+                        }}
+                        customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md px-2'
+                    >
+                        Comentar
+                    </CustomButton>
+
+                    <div className='font-semibold text-white'>
+                        Estado: {order.orderstatus}
+                    </div>
+                    <div className='flex flex-row items-center justify-between gap-2'>
+                        <CustomButton
+                            onClick={() => acceptOrder(order.id)}
+                            customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md px-2'
+                        >
+                            Aceptar
+                        </CustomButton>
+                        <CustomButton
+                            onClick={() => rejectOrder(order.id)}
+                            customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md px-2'
+                        >
+                            Rechazar
+                        </CustomButton>
+                    </div>
+                </div>
+            )}
+        </div>
+    ))}
                 {orders.map((order, index) => (
                     <div
                         key={index}

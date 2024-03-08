@@ -20,6 +20,8 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
         await getClient(orden.cliente_id)
     }
 */
+
+
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -29,6 +31,11 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
     const handleSubmit = () => {
         setShowSuccessMessage(true);
         localStorage.setItem('currentOrder', JSON.stringify(orden));
+        
+        const storedOrders = JSON.parse(localStorage.getItem('currentOrders') || '[]');
+        storedOrders.push(orden);
+        localStorage.setItem('currentOrder', JSON.stringify(storedOrders));
+
         setTimeout(() => {
             setShowSuccessMessage(false);
             navigate('/dashboardcliente/inicio');
