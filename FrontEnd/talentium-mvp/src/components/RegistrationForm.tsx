@@ -20,10 +20,10 @@ const Specialities = [
     'Profesor',
     'Programador',
     'Diseñador',
-    'Cuidadora',
+    'Cuidador/a',
 ];
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
+const RegistrationForm: React.FC<RegistrationFormProps> = () => {
     const navigate = useNavigate();
     const {
         register,
@@ -34,13 +34,16 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
     const { updateUser } = useUserServices();
     const { userType, updateUserType } = useUserType();
     const { userData, updateUserData } = useUserData();
-    console.log(user);
+
 
     useEffect(() => {
         const userType = localStorage.getItem('userType') || null || undefined;
         userType && updateUserType(JSON.parse(userType));
         const userData = localStorage.getItem('userData') || null || undefined;
-        userData && updateUserData(JSON.parse(userData));
+      userData && updateUserData(JSON.parse(userData));
+      localStorage.getItem('user')
+     
+       
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -51,6 +54,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
         avatar: '',
     };
 
+  const userlocal = localStorage.getItem('user') || null || undefined
+  const user = JSON.stringify(userlocal);
     const onSubmit: SubmitHandler<RegistrationFormProps> = async (
         updatedUserData,
     ) => {
@@ -106,7 +111,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                     atrás
                 </CustomButton>
             </div>
-            {userType && userData === null && (
+            {user && userType && userData === null && (
                 <>
                     <form
                         onSubmit={handleSubmit(onSubmit)}
@@ -176,7 +181,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                             {userType === 'client' && (
                                 <>
                                     <label className='w-full text-xs font-bold'>
-                                        DNI
+                                        TELÉFONO
                                         <input
                                             {...register('dni', {
                                                 required:
@@ -188,7 +193,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                                                 },
                                             })}
                                             maxLength={9}
-                                            placeholder='Ingrese su DNI'
+                                            placeholder='Ingrese su teléfono'
                                             className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal outline-none'
                                         />
                                         {errors.dni?.type === 'required' && (
@@ -407,7 +412,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ user }) => {
                     </div>
                 </>
             )}
-            {userType && userData && (
+            {user && userType && userData && (
                 <Perfil
                     name={userData?.name || ''}
                     lastname={userData?.lastname || ''}

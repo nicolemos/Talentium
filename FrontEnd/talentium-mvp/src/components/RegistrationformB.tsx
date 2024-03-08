@@ -9,16 +9,16 @@ import { useUserType } from '../context/UserTypeContext';
 import { useUserData } from '../context/UserDataContext';
 
 const Specialities = [
-    'Plumber',
-    'Electrician',
-    'Construction_Worker',
-    'Painter',
-    'Gardener',
-    'Gasman',
-    'Teacher',
-    'Programmer',
-    'Designer',
-    'Nanny',
+    'Plomero',
+    'Electricista',
+    'Albañil',
+    'Pintor',
+    'Jardinero',
+    'Gasista',
+    'Profesor',
+    'Programador',
+    'Diseñador',
+    'Cuidador/a',
 ];
 
 const RegistrationForm = ({ user }) => {
@@ -56,7 +56,7 @@ const RegistrationForm = ({ user }) => {
     };
 
     const handleDirectionChange = (field: string, value: any) => {
-        setFormState((prevState: { direction: any; }) => ({
+        setFormState((prevState: { direction: any }) => ({
             ...prevState,
             direction: {
                 ...prevState.direction,
@@ -74,28 +74,25 @@ const RegistrationForm = ({ user }) => {
             if (storedUserData) updateUserData(JSON.parse(storedUserData));
 
             if (user.id && userType) {
-                const userUpdated = await updateUser(
-                    userType,
-                    formState
-                );
+          /*      const userUpdated = await updateUser(userType, formState);
 
                 if (userUpdated) {
                     console.log(userUpdated);
                     toast.success('Perfil actualizado exitosamente');
                 } else {
                     toast.error(
-                        'Hubo un error al actualizar el perfil. Vuelve a intentarlo.'
+                        'Hubo un error al actualizar el perfil. Vuelve a intentarlo.',
                     );
                 }
             } else {
                 toast.error(
-                    'Hubo un error al actualizar el perfil. Vuelve a intentarlo.'
+                    'Hubo un error al actualizar el perfil. Vuelve a intentarlo.',
                 );
             }
         } catch (error) {
             console.error('Error during profile update:', error);
             toast.error(
-                'Ha ocurrido un error inesperado al actualizar el perfil'
+                'Ha ocurrido un error inesperado al actualizar el perfil',
             );
         }
     };
@@ -120,7 +117,7 @@ const RegistrationForm = ({ user }) => {
             {userType && userData === null && (
                 <>
                     <form
-                        onSubmit={(e: { preventDefault: () => void; }) => {
+                        onSubmit={(e: { preventDefault: () => void }) => {
                             e.preventDefault();
                             onSubmit();
                         }}
@@ -135,7 +132,14 @@ const RegistrationForm = ({ user }) => {
                                 Nombre
                                 <input
                                     value={formState.name}
-                                    onChange={(e: { target: { value: string; }; }) => handleInputChange('name', e.target.value)}
+                                    onChange={(e: {
+                                        target: { value: string };
+                                    }) =>
+                                        handleInputChange(
+                                            'name',
+                                            e.target.value,
+                                        )
+                                    }
                                     placeholder='Ingrese su nombre'
                                     className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal outline-none'
                                 />
@@ -148,8 +152,13 @@ const RegistrationForm = ({ user }) => {
                                 Calle
                                 <input
                                     value={formState.direction.street}
-                                    onChange={(e: { target: { value: string; }; }) =>
-                                        handleDirectionChange('street', e.target.value)
+                                    onChange={(e: {
+                                        target: { value: string };
+                                    }) =>
+                                        handleDirectionChange(
+                                            'street',
+                                            e.target.value,
+                                        )
                                     }
                                     placeholder='Ingrese la calle'
                                     className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal outline-none'
@@ -165,8 +174,17 @@ const RegistrationForm = ({ user }) => {
                                         CBU
                                         <input
                                             value={formState.cbu}
-                                            onChange={(e: { target: { value: string; }; }) => handleInputChange('cbu', e.target.value)}
-                                            aria-invalid={formState.cbu ? 'true' : 'false'}
+                                            onChange={(e: {
+                                                target: { value: string };
+                                            }) =>
+                                                handleInputChange(
+                                                    'cbu',
+                                                    e.target.value,
+                                                )
+                                            }
+                                            aria-invalid={
+                                                formState.cbu ? 'true' : 'false'
+                                            }
                                             maxLength={22}
                                             placeholder='Ingrese su CBU'
                                             className='mt-1 w-full rounded-md bg-white/80 px-2 py-1 text-base font-normal outline-none'
@@ -177,14 +195,24 @@ const RegistrationForm = ({ user }) => {
                                         Especialidad
                                         <select
                                             value={formState.speciality}
-                                            onChange={(e: { target: { value: string; }; }) =>
-                                                handleInputChange('speciality', e.target.value)
+                                            onChange={(e: {
+                                                target: { value: string };
+                                            }) =>
+                                                handleInputChange(
+                                                    'speciality',
+                                                    e.target.value,
+                                                )
                                             }
                                             className='mt-1 w-full rounded-md bg-white/70 px-2 py-1 text-base font-normal outline-none'
                                         >
-                                            <option value=''>Selecciona una especialidad</option>
+                                            <option value=''>
+                                                Selecciona una especialidad
+                                            </option>
                                             {Specialities.map((option) => (
-                                                <option key={option} value={option}>
+                                                <option
+                                                    key={option}
+                                                    value={option}
+                                                >
                                                     {option}
                                                 </option>
                                             ))}
@@ -223,7 +251,8 @@ const RegistrationForm = ({ user }) => {
 
             {!userType && !userData && (
                 <h1>
-                    Ups! Debes seleccionar primero tu Perfil desde la pestaña Inicio.
+                    Ups! Debes seleccionar primero tu Perfil desde la pestaña
+                    Inicio.
                 </h1>
             )}
         </div>

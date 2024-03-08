@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../interfaces/LoginForm';
 import useUserServices from '../hooks/useUserServices';
@@ -27,6 +27,13 @@ const Login: React.FC = () => {
         setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
     };
 
+  useEffect(() => {
+      const storedUserType = localStorage.getItem('userType');
+      if (storedUserType) updateUserType(JSON.parse(storedUserType));
+     
+  }, [updateUserType]);
+
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         navigate('/dashboardcliente/inicio');
@@ -38,8 +45,6 @@ const Login: React.FC = () => {
 
       try {
         localStorage.setItem('user', JSON.stringify({ ...loginForm, id: 2 }))
-        const mail = loginForm.email
-        localStorage.setItem('email', JSON.stringify(mail));
         /// linea hardcodeada hasta hacer el fetch
         const user1 = localStorage.getItem('user')
          //   const user = await loginUser(loginForm);
