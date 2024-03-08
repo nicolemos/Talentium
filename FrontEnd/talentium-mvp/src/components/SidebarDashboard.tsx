@@ -72,7 +72,7 @@ const SidebarDashboard: React.FC = () => {
                         />
                         <CustomLink
                             to='/DashboardCliente/Agenda'
-                            content='Agenda'
+                            content='Listas'
                             children={<AiOutlineSchedule />}
                         />
                         <CustomLink
