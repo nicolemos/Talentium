@@ -104,7 +104,7 @@ const DashboardRouter: React.FC = () => {
                                         }
                                     />
                                     <Route
-                                        path='/Agenda'
+                                        path='/Listas'
                                         element={
                                             <OrdersListProf
                                                 orders={ordenesDatos}

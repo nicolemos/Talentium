@@ -71,7 +71,7 @@ const SidebarDashboard: React.FC = () => {
                             children={<RiListUnordered />}
                         />
                         <CustomLink
-                            to='/DashboardCliente/Agenda'
+                            to='/DashboardCliente/Listas'
                             content='Listas'
                             children={<AiOutlineSchedule />}
                         />
