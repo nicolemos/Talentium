@@ -6,7 +6,7 @@ export const Orders = [
         professional: 1,
         precio: 0,
         comentarios: 'Comentario de la orden 1',
-        orderstatus: 'PENDIENTE',
+        orderstatus: 'INICIAL',
     },
     {
         id: 2,
@@ -31,7 +31,7 @@ export const Orders = [
         professional: 1,
         precio: 0,
         comentarios: 'Comentario de la orden 1',
-        orderstatus: 'PENDIENTE',
+        orderstatus: 'ACEPTADA',
     },
     {
         id: 2,
@@ -40,7 +40,7 @@ export const Orders = [
         professional: 2,
         precio: 0,
         comentarios: 'Comentario de la orden 2',
-        orderstatus: 'PENDIENTE',
+        orderstatus: 'RECHAZADA',
     },
     {
         id: 3,
