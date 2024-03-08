@@ -13,8 +13,8 @@ const FaqDesplegable = ({ question, answer }: FaqItemProps) => {
         <div
             className={
                 isActive
-                    ? 'linear-transition active flex flex-col border-b border-[#96a0b5] border-t-[#96a0b5] bg-royal-blue-300/50 pb-3'
-                    : 'linear-transition flex flex-col border-b border-[#96a0b5] bg-royal-blue-300/50'
+                    ? 'linear-transition active flex flex-col border-b border-[#96a0b5] border-t-[#96a0b5] rounded-lg bg-white/60  pb-3'
+                    : 'linear-transition flex flex-col border-b border-[#96a0b5] rounded-lg bg-white/60 '
             }
         >
             {/* question */}

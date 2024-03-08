@@ -22,11 +22,11 @@ const TermsAndConditionsPage = () => {
                         Atrás
                     </CustomButton>
                 </div>
-                <h1 className='mb-8 text-center text-3xl font-bold text-gray-800'>
+                <h1 className='mb-8 text-center text-3xl font-bold text-black'>
                     Términos y Condiciones de Uso
                 </h1>
 
-                <div className='rounded-lg bg-gradient-to-b from-royal-blue-500 to-royal-blue-100 p-8 text-gray-800 shadow-md'>
+                <div className='rounded-lg bg-white/60  p-8 text-gray-800 shadow-md'>
                     <h2 className='mb-4 text-xl font-bold'>
                         1. Uso de la Plataforma
                     </h2>

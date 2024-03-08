@@ -24,7 +24,7 @@ const FaqSection = () => {
                         Atrás
                     </CustomButton>
                 </div>
-                <h1 className='title-font mb-20 text-center text-2xl font-bold text-gray-800 sm:text-3xl'>
+                <h1 className='title-font mb-20 text-center text-2xl font-bold text-gray-800 sm:text-3xl '>
                     Preguntas Frecuentes
                 </h1>
 

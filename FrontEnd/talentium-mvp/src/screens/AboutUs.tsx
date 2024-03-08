@@ -21,11 +21,11 @@ const AboutUsPage = () => {
                         atrás
                     </CustomButton>
                 </div>
-                <h1 className='mb-8 text-center text-3xl font-bold text-gray-800'>
+                <h1 className='mb-8 text-center text-3xl font-bold text-black'>
                     Acerca de Talentium
                 </h1>
 
-                <div className='mx-auto max-w-3xl rounded-lg bg-gradient-to-b from-royal-blue-500 p-8 text-gray-800 shadow-md'>
+                <div className='mx-auto max-w-3xl rounded-lg bg-white/60 p-8 text-black shadow-md'>
                     <p className='mb-4'>
                         Talentium es una plataforma en línea que conecta a
                         usuarios con profesionales de diversos campos para la
