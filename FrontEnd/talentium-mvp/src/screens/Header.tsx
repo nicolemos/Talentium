@@ -33,7 +33,8 @@ const navigate = useNavigate()
       // Eliminar el usuario del localStorage y actualizar el estado de isLoggedIn
     localStorage.removeItem('user');
     localStorage.removeItem('userData');
-     localStorage.removeItem('userType');
+    localStorage.removeItem('userType');
+     localStorage.removeItem('email');
     setIsLoggedIn(false);
     navigate('/')
   };

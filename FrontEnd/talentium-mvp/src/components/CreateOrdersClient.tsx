@@ -16,16 +16,24 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
         cliente_id: cliente.clienteId
     });
 
-    const getClietId = async (orden:Order) =>{
+  /*  const getClietId = async (orden:Order) =>{
         await getClient(orden.cliente_id)
     }
+*/
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setOrden({ ...orden, description: e.target.value });
     };
 
     const handleSubmit = () => {
-        createOrder(orden)
+        setShowSuccessMessage(true);
+        localStorage.setItem('currentOrder', JSON.stringify(orden));
+        setTimeout(() => {
+            setShowSuccessMessage(false);
+            navigate('/dashboardcliente/inicio');
+        }, 2000);
+        createOrder(orden);
     };
 
     const handleback = () => {
@@ -60,6 +68,11 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
                 />
             </div>
             <div>
+                {showSuccessMessage && (
+                    <p className='ml-2 text-center'>
+                        Orden creada exitosamente!
+                    </p>
+                )}
                 <CustomButton
                     onClick={handleSubmit}
                     customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md p-2'

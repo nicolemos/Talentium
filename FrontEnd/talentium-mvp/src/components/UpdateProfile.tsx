@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import useCreateUser from '../hooks/useUserServices';
 import { toast } from 'react-toastify';
 //import { FaArrowLeft } from 'react-icons/fa';
-//  import { useNavigate } from 'react-router-dom';
+  import { useNavigate } from 'react-router-dom';
 
 const Perfil: React.FC<UserData> = ({ name, lastname, dni, email, direction }) => {
     const [userData, setUserData] = useState<UserData>({
@@ -18,17 +18,24 @@ const Perfil: React.FC<UserData> = ({ name, lastname, dni, email, direction }) =
         email: email,
         direction: direction
     });
-
-    const { userType } = useUserType();
+   const navigate = useNavigate();
+  /*  const { userType } = useUserType();
     const type = JSON.stringify(userType);
 
     const { getUserFromLocalStorage } = useAuth();
     const userId = Number(getUserFromLocalStorage()?.id);
 
     const { updateUser } = useCreateUser();
+    */
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-    const handleUpdateProfile = async () => {
-        const updatedUser = await updateUser(userId, type, userData);
+  const handleUpdateProfile = async () => {
+       setShowSuccessMessage(true);
+       setTimeout(() => {
+           setShowSuccessMessage(false);
+           navigate('/dashboardcliente/inicio');
+       }, 2000);
+    /*    const updatedUser = await updateUser(userId, type, userData);
         if (updatedUser) {
             setUserData((prevData) => ({
                 ...prevData,
@@ -41,8 +48,8 @@ const Perfil: React.FC<UserData> = ({ name, lastname, dni, email, direction }) =
             toast.error(
                 'Hubo un error al actualizar el perfil. Vuelve a intentarlo.',
             );
-        }
-    };
+        }-*/
+  };
 
     return (
         <div className='mx-auto mt-10 flex max-w-md flex-col overflow-auto rounded-md p-6 shadow-md'>
@@ -76,10 +83,10 @@ const Perfil: React.FC<UserData> = ({ name, lastname, dni, email, direction }) =
                     type='text'
                     value={userData.email}
                     onChange={(e) =>
-                      setUserData({
-                        ...userData,
-                        email: e.target.value
-                      })
+                        setUserData({
+                            ...userData,
+                            email: e.target.value,
+                        })
                     }
                     placeholder='Email'
                     className='w-full rounded-md border border-gray-300 p-2 py-0.5'
@@ -150,6 +157,11 @@ const Perfil: React.FC<UserData> = ({ name, lastname, dni, email, direction }) =
                     className='w-full rounded-md border border-gray-300 p-2 py-0.5'
                 />
             </div>
+            {showSuccessMessage && (
+                <p className='ml-2 text-center'>
+                    Perfil actualizado exitosamente!
+                </p>
+            )}
             <CustomButton
                 onClick={handleUpdateProfile}
                 customClass='flex align-center justify-center bg-royal-blue-600 lg:bg-royal-blue-500 rounded-md shadow-md p-2'

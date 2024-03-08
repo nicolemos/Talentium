@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Order, OrdersListProfProps } from '../interfaces/OrdersListProps';
 import CustomButton from './CustomButton';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { RiCloseLine } from 'react-icons/ri';
+// import CreateOrdersClient from './CreateOrdersClient';
 
 const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
     const navigate = useNavigate();
     const [ordersState, setOrdersState] = useState<Order[]>([]);
     const [openOrder, setOpenOrder] = useState<number | null>(null);
+
+    useEffect(() => {
+        const storedOrder = JSON.parse(
+            localStorage.getItem('currentOrder') || '[]',
+        );
+        setOrdersState(storedOrder);
+    }, []);
 
     const createOrder = (
         descripcion: string,
@@ -68,8 +76,28 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
                 {orders.map((order, index) => (
                     <div
                         key={index}
-                        className='flex flex-col items-center justify-center gap-4 rounded-md bg-royal-blue-600 p-2 font-semibold text-white'
+                        className='relative flex flex-col items-center justify-center gap-4 rounded-md bg-royal-blue-600 p-2 font-semibold text-white'
                     >
+                        {order.orderstatus === 'INICIAL' && (
+                            <span className='absolute right-0 top-0 rounded-md bg-white px-1 py-0.5 text-xs font-semibold text-black'>
+                                Inicial
+                            </span>
+                        )}
+                        {order.orderstatus === 'PENDIENTE' && (
+                            <span className='absolute right-0 top-0 rounded-md bg-yellow-500 px-1 py-0.5 text-xs font-semibold text-white'>
+                                Pendiente
+                            </span>
+                        )}
+                        {order.orderstatus === 'ACEPTADA' && (
+                            <span className='absolute right-0 top-0 rounded-md bg-green-500 px-1 py-0.5 text-xs font-semibold text-white'>
+                                Aceptada
+                            </span>
+                        )}
+                        {order.orderstatus === 'RECHAZADA' && (
+                            <span className='absolute right-0 top-0 rounded-md bg-red-500 px-1 py-0.5 text-xs font-semibold text-white'>
+                                Rechazada
+                            </span>
+                        )}
                         <div
                             className='flex cursor-pointer items-center justify-between gap-2'
                             onClick={() => {
@@ -78,6 +106,7 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
                                 );
                                 <RiCloseLine className='h-10 w-10 p-2' />;
                             }}
+                            style={{ marginRight: '60px' }}
                         >
                             {openOrder === index
                                 ? order.descripcion
