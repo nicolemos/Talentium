@@ -38,9 +38,9 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className='md:text-md col-span-1 md:col-span-1 md:grid lg:text-lg  '>
-                    <h4 className='text-md text-semibold text-gray-800 md:text-lg lg:text-xl'>
+                    <strong className='p-1 text-md text-semibold text-gray-800 md:text-lg lg:text-xl '>
                         Links
-                    </h4>
+                    </strong>
                     <ul>
                         {isLoggedIn ? (
                             <>
@@ -65,10 +65,10 @@ const Footer: React.FC = () => {
                         ) : (
                             <>
                                 <li>
-                                    <Link to='/Login'>Ingresar</Link>
+                                    <Link to='/Login' className='p-1 rounded-sm transition-colors hover:bg-royal-blue-700 hover:text-white'>Ingresar</Link>
                                 </li>
                                 <li>
-                                    <Link to='/Register'>Registrate</Link>
+                                    <Link to='/Register' className='p-1 rounded-sm transition-colors hover:bg-royal-blue-700 hover:text-white'>Registrate</Link>
                                 </li>
                             </>
                         )}
@@ -76,20 +76,20 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className='md:text-md col-span-3 md:col-span-1 md:grid lg:text-lg '>
-                    <h4 className='text-md text-semibold text-gray-800 md:text-lg lg:text-xl '>
+                    <strong className='p-1 text-md text-semibold text-gray-800 md:text-lg lg:text-xl stroke-black '>
                         +Info
-                    </h4>
+                    </strong>
                     <ul>
                         <li>
-                            <Link to='/acerca-de'>Acerca de</Link>
+                            <Link to='/acerca-de' className='p-1 rounded-sm transition-colors hover:bg-royal-blue-700 hover:text-white'>Acerca de</Link>
                         </li>
                         <li>
-                            <Link to='/preguntas-frecuentes'>
+                            <Link to='/preguntas-frecuentes' className='p-1 rounded-sm transition-colors hover:bg-royal-blue-700 hover:text-white'>
                                 Preguntas Frecuentes
                             </Link>
                         </li>
                         <li>
-                            <Link to='/terminos-y-condiciones'>
+                            <Link to='/terminos-y-condiciones' className='p-1 rounded-sm transition-colors hover:bg-royal-blue-700 hover:text-white'>
                                 Términos y condiciones
                             </Link>
                         </li>
@@ -97,9 +97,9 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className='md:text-md col-span-3 md:col-span-1 md:grid lg:text-lg  '>
-                    <h4 className='text-md text-semibold text-gray-800 md:text-lg lg:text-xl '>
+                    <strong className='p-1 text-md text-semibold text-gray-800 md:text-lg lg:text-xl '>
                         Contacto
-                    </h4>
+                    </strong>
                     <p>Dirección: Calle Pichincha n°1234</p>
                     <p>Teléfono: 111-111-1111</p>
                     <p>Email: contacto@talentium.com</p>
