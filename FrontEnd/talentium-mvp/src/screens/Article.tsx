@@ -1,21 +1,21 @@
 const Article: React.FC = () => {
     return (
         <article className='body-font text-gray-600 '>
-            <div className='container mx-auto px-5 py-24'>
-                <h1 className='title-font mb-20 text-center text-2xl font-bold text-gray-800 sm:text-3xl'>
+            <div className=' max-w-[90rem] mx-auto px-5 py-24'>
+                <h1 className='title-font mb-20 text-center text-2xl font-bold text-gray-800 sm:text-4xl'>
                     ¿Cómo es el proceso?
                 </h1>
 
                 <div className='mx-4 mb-10 mt-4 flex flex-col gap-4 md:flex-1 md:flex-row '>
-                    <div className='flex rounded-md bg-royal-blue-300/50 p-4 shadow-md md:w-1/3'>
+                    <div className='flex rounded-md bg-white/60 p-4 shadow-md md:w-1/3'>
                         <div className='flex-grow pl-6 '>
-                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-700 '>
+                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-800'>
                                 01
                                 <span className='flex justify-center gap-2'>
                                     Registro
                                 </span>
                             </h2>
-                            <p className='leading-relaxed text-gray-900'>
+                            <p className='leading-relaxed text-black'>
                                 Ingresa a la pestaña de Registro.
                                 <br />
                                 Ingresa tu correo electrónico.
@@ -27,15 +27,15 @@ const Article: React.FC = () => {
                             </p>
                         </div>
                     </div>
-                    <div className='flex rounded-md bg-royal-blue-300/50 p-4 shadow-md md:w-1/3'>
+                    <div className='flex rounded-md bg-white/60  p-4 shadow-md md:w-1/3'>
                         <div className='flex-grow pl-6 '>
-                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-700 '>
+                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-800'>
                                 02
                                 <span className='flex justify-center gap-2'>
                                     Contacta
                                 </span>
                             </h2>
-                            <p className='leading-relaxed text-gray-900'>
+                            <p className='leading-relaxed text-black'>
                                 Ingresa a tu perfil.
                                 <br />
                                 Completa los datos en tu perfil de Cliente o
@@ -49,15 +49,15 @@ const Article: React.FC = () => {
                             </p>
                         </div>
                     </div>
-                    <div className='flex rounded-md bg-royal-blue-300/50 p-4 shadow-md md:w-1/3'>
+                    <div className='flex rounded-md bg-white/60  p-4 shadow-md md:w-1/3'>
                         <div className='flex-grow pl-6 '>
-                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-700 '>
+                            <h2 className='title-font mb-2 text-center text-lg font-bold text-gray-800'>
                                 03
                                 <span className='flex justify-center gap-2'>
                                     Contrata
                                 </span>
                             </h2>
-                            <p className='leading-relaxed text-gray-900'>
+                            <p className='leading-relaxed text-black'>
                                 Contáctate con el profesional o el cliente.
                                 <br />
                                 Coordina fechas y horarios para realizar el
