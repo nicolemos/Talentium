@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Order, OrdersListProfProps } from '../interfaces/OrdersListProps';
 import CustomButton from './CustomButton';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { RiCloseLine } from 'react-icons/ri';
+// import CreateOrdersClient from './CreateOrdersClient';
 
 const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
     const navigate = useNavigate();
     const [ordersState, setOrdersState] = useState<Order[]>([]);
     const [openOrder, setOpenOrder] = useState<number | null>(null);
 
+    useEffect(() => {
+        const storedOrder = JSON.parse(localStorage.getItem('currentOrder') || '[]');
+        setOrdersState(storedOrder);
+    }, []);
+    
     const createOrder = (
         descripcion: string,
         comentarios: string,
@@ -64,7 +70,8 @@ const OrdersListProf: React.FC<OrdersListProfProps> = ({ orders }) => {
                     Lista de Ordenes
                 </h1>
             </div>
-            <div className='flex max-h-[350px] flex-col items-center gap-2 overflow-auto '>
+            <div className='flex max-h-[350px] flex-col items-center gap-2 overflow-auto '>     
+             
                 {orders.map((order, index) => (
                     <div
                         key={index}

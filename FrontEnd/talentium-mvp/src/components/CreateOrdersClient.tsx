@@ -18,10 +18,16 @@ const CreateOrdersClient: React.FC<CreateOrdersProps> = ({ cliente }) => {
         setOrden({ ...orden, description: e.target.value });
     };
 
-    const handleSubmit = () => {
-        createOrder(orden)
-    };
+    
 
+    const handleSubmit = () => {
+        localStorage.setItem('currentOrder', JSON.stringify(orden));
+        
+        createOrder(orden);
+
+        navigate('/DashboardCliente/inicio');
+    };
+        
     const handleback = () => {
         navigate('/DashboardCliente/inicio');
     };
