@@ -2,7 +2,8 @@ export const Orders = [
     // Aquí proporciona tu arreglo de órdenes
     {
         id: 1,
-        descripcion: 'Descripción de la orden 1',
+        descripcion:
+            'Buenas, me gustaría hacer una remodelación en el baño de mi casa, quiero cambiar las baldosas.',
         professional: 1,
         precio: 0,
         comentarios: 'Comentario de la orden 1',
@@ -19,7 +20,8 @@ export const Orders = [
     },
     {
         id: 3,
-        descripcion: 'Descripción de la orden 3',
+        descripcion:
+            'Quisiera asesoría legal por parte de una abogado para resolver un problema de un seguro.',
         professional: 3,
         precio: 0,
         comentarios: 'Comentario de la orden 3',
@@ -27,7 +29,8 @@ export const Orders = [
     },
     {
         id: 1,
-        descripcion: 'Descripción de la orden 1',
+        descripcion:
+            'Me encuentro en la busqueda de una enefermera para cuidados de una persona mayor.',
         professional: 1,
         precio: 0,
         comentarios: 'Comentario de la orden 1',
@@ -36,7 +39,7 @@ export const Orders = [
     {
         id: 2,
         descripcion:
-            'Necesito alguien que me pueda reparar un tv de 52 pulgadas que no le enciende la pantalla.',
+            'Necesito un profesional electricista para que me haga unas instalaciones en mi casa.',
         professional: 2,
         precio: 0,
         comentarios: 'Comentario de la orden 2',
@@ -44,7 +47,8 @@ export const Orders = [
     },
     {
         id: 3,
-        descripcion: 'Descripción de la orden 3',
+        descripcion:
+            'Ando en busquedad de un profesor de inglés para clases particulares 1 o 2 veces por semana.',
         professional: 3,
         precio: 0,
         comentarios: 'Comentario de la orden 3',
@@ -52,7 +56,8 @@ export const Orders = [
     },
     {
         id: 1,
-        descripcion: 'Descripción de la orden 1',
+        descripcion:
+            'Busco mecánico que trabaje a domicilio, para revisar la falla de un auto en casa.',
         professional: 1,
         precio: 0,
         comentarios: 'Comentario de la orden 1',
@@ -61,7 +66,7 @@ export const Orders = [
     {
         id: 2,
         descripcion:
-            'Necesito alguien que me pueda reparar un tv de 52 pulgadas que no le enciende la pantalla.',
+            'Necesito un técnico en refrigeración para que me repare mi aire acondicionado.',
         professional: 2,
         precio: 0,
         comentarios: 'Comentario de la orden 2',
