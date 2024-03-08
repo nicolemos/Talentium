@@ -36,7 +36,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
     const { userData, updateUserData } = useUserData();
 
 
-    useEffect(() => {
+  useEffect(() => {
+      
         const userType = localStorage.getItem('userType') || null || undefined;
         userType && updateUserType(JSON.parse(userType));
         const userData = localStorage.getItem('userData') || null || undefined;
