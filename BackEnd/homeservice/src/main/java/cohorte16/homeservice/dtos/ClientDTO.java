@@ -7,6 +7,7 @@ import cohorte16.homeservice.models.User;
 public record ClientDTO(
         String name,
         String lastname,
+        String phone,
         String dni,
         Integer rating,
         User user,
@@ -16,6 +17,7 @@ public record ClientDTO(
     public ClientDTO(Client client) {
         this(client.getName(),
                 client.getLastname(),
+                client.getPhone(),
                 client.getDni(),
                 client.getRating(),
                 client.getUser(),

@@ -6,6 +6,7 @@ public record ProfessionalMiniDTO(
         Long id,
         String name,
         String lastname,
+        String phone,
         Profession profession,
         Integer rating
 ) {

@@ -26,6 +26,7 @@ public class OrderMapper {
                         order.getProfessional().getId(),
                         order.getProfessional().getName(),
                         order.getProfessional().getLastname(),
+                        order.getProfessional().getPhone(),
                         order.getProfessional().getUser().getEmail(),
                         order.getProfessional().getCuit(),
                         order.getProfessional().getCbu(),
@@ -53,6 +54,7 @@ public class OrderMapper {
                         order.getProfessional().getId(),
                         order.getProfessional().getName(),
                         order.getProfessional().getLastname(),
+                        order.getProfessional().getPhone(),
                         order.getProfessional().getProfession(),
                         order.getProfessional().getRating()
                 )
@@ -89,6 +91,7 @@ public class OrderMapper {
                         order.getClient().getId(),
                         order.getClient().getName(),
                         order.getClient().getLastname(),
+                        order.getClient().getPhone(),
                         order.getClient().getDni(),
                         order.getClient().getRating(),
                         new UserDTO(
@@ -107,6 +110,7 @@ public class OrderMapper {
                         order.getProfessional().getId(),
                         order.getProfessional().getName(),
                         order.getProfessional().getLastname(),
+                        order.getProfessional().getPhone(),
                         order.getProfessional().getCuit(),
                         order.getProfessional().getCbu(),
                         order.getProfessional().getRating(),

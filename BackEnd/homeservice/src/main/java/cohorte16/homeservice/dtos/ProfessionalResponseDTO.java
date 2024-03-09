@@ -6,6 +6,7 @@ public record ProfessionalResponseDTO(
         Long id,
         String name,
         String lastname,
+        String phone,
         String cuit,
         String cbu,
         Integer rating,

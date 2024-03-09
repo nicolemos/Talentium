@@ -29,6 +29,10 @@ public class Client {
     @NotBlank
     private String lastname;
 
+    @Column(name = "telefono")
+    @NotBlank
+    private String phone;
+
     @Column(name = "dni")
     @NotBlank
     private String dni;

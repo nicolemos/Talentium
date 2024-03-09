@@ -6,6 +6,7 @@ public record ProfessionalOrderDTO(
         Long id,
         String name,
         String lastname,
+        String phone,
         String email,
         String cuit,
         String cbu,

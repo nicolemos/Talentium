@@ -8,6 +8,7 @@ public record ClientResponseDTO(
         Long clientId,
         String name,
         String lastname,
+        String phone,
         String dni,
         Integer rating,
         UserDTO user,

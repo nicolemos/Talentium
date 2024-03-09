@@ -14,6 +14,7 @@ public class ProfessionalMapper {
                 professional.getId(),
                 professional.getName(),
                 professional.getLastname(),
+                professional.getPhone(),
                 professional.getProfession(),
                 professional.getRating()
         );
@@ -24,6 +25,7 @@ public class ProfessionalMapper {
                 professional.getId(),
                 professional.getName(),
                 professional.getLastname(),
+                professional.getPhone(),
                 professional.getCuit(),
                 professional.getProfession(),
                 professional.getRating(),
@@ -39,6 +41,7 @@ public class ProfessionalMapper {
                 null,
                 professionalDTO.name(),
                 professionalDTO.lastname(),
+                professionalDTO.phone(),
                 professionalDTO.cuit(),
                 professionalDTO.cbu(),
                 professionalDTO.rating(),
@@ -56,6 +59,7 @@ public class ProfessionalMapper {
                 professional.getId(),
                 professional.getName(),
                 professional.getLastname(),
+                professional.getPhone(),
                 professional.getCbu(),
                 professional.getCuit(),
                 professional.getRating(),
