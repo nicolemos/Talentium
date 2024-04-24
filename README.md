@@ -140,7 +140,7 @@ Una vez que tu solicitud haya sido completada, puedes expresar tu satisfacción 
 <tr>
 <td align="center"><a href="https://github.com/FedeBazan"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/julio-bazan-6ba406212/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 <td align="center"><a href="https://github.com/FTwork"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/ftallei/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
-<td align="center"><a href="https://github.com/nicordz"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nicolas-lemos/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
+<td align="center"><a href="https://github.com/nicolemos"><img src="proyecto/github.svg"  style="max-width: 100%;"></a> <a href="https://www.linkedin.com/in/nicolas-lemos/" rel="nofollow"><img src="proyecto/linkedin.svg" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
